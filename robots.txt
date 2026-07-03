@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aitransparency.com/sitemap.xml
+Sitemap: https://aitransparency.pages.dev/sitemap.xml
