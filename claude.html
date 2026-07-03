@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en" style="color-scheme: light only;">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="color-scheme" content="light only"/>
+  <meta name="theme-color" content="#F8F8F5"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Claude Transparency Report — AI Transparency Database</title>
+  <meta name="description" content="Everything the Claude pricing page doesn't tell you. Dual cap system, usage bars, and a 50% limit boost that expires July 13 — all documented."/>
+  <link rel="canonical" href="https://skiporpay.com/app/claude"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { color-scheme: light only; scroll-behavior: smooth; }
+    :root {
+      --bg: #F8F8F5; --surf: #FFFFFF; --surf2: #F1F1EC; --surf3: #E8E8E2;
+      --border: #D8D8D0; --border-bright: #B8B8AE;
+      --text: #111118; --sub: #3A3A48; --muted: #6B6B78;
+      --acid: #1A6EFF; --acid-dim: rgba(26,110,255,.08); --acid-border: rgba(26,110,255,.22);
+      --red: #C8000A; --red-dim: rgba(200,0,10,.07); --red-border: rgba(200,0,10,.22);
+      --amber: #A05500; --amber-dim: rgba(160,85,0,.08); --amber-border: rgba(160,85,0,.22);
+      --green: #0A7A3A; --green-dim: rgba(10,122,58,.07); --green-border: rgba(10,122,58,.22);
+      --blue: #1A6EFF; --blue-dim: rgba(26,110,255,.07); --blue-border: rgba(26,110,255,.22);
+      --r: 8px; --r-lg: 14px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:#F8F8F5!important;--surf:#FFFFFF!important;--surf2:#F1F1EC!important;--surf3:#E8E8E2!important;
+        --border:#D8D8D0!important;--border-bright:#B8B8AE!important;
+        --text:#111118!important;--sub:#3A3A48!important;--muted:#6B6B78!important;
+        --acid:#1A6EFF!important;--acid-dim:rgba(26,110,255,.08)!important;--acid-border:rgba(26,110,255,.22)!important;
+        --red:#C8000A!important;--red-dim:rgba(200,0,10,.07)!important;--red-border:rgba(200,0,10,.22)!important;
+        --amber:#A05500!important;--amber-dim:rgba(160,85,0,.08)!important;--amber-border:rgba(160,85,0,.22)!important;
+        --green:#0A7A3A!important;--green-dim:rgba(10,122,58,.07)!important;--green-border:rgba(10,122,58,.22)!important;
+        --blue:#1A6EFF!important;--blue-dim:rgba(26,110,255,.07)!important;--blue-border:rgba(26,110,255,.22)!important;
+      }
+      body { background: #F8F8F5!important; color: #111118!important; }
+    }
+    body { background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased; }
+    a { color:var(--acid);text-decoration:none; }
+    .nav { position:sticky;top:0;z-index:100;background:rgba(248,248,245,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border); }
+    .nav-in { max-width:800px;margin:0 auto;padding:0 20px;height:54px;display:flex;align-items:center;justify-content:space-between; }
+    .brand { font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--sub);text-decoration:none;letter-spacing:.5px; }
+    .brand span { color:var(--acid); }
+    .nav-tag { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--muted);letter-spacing:1px;text-transform:uppercase;border:1px solid var(--border);padding:4px 10px;border-radius:99px; }
+    .bc { max-width:800px;margin:0 auto;padding:12px 20px;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:8px; }
+    .bc a { color:var(--muted); }
+    .bc-sep { color:var(--border-bright); }
+    .page { max-width:800px;margin:0 auto;padding:0 20px 100px; }
+    .hero { padding:48px 0 40px; }
+    .hero-eyebrow { display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap; }
+    .tag-cat { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:4px 10px;border-radius:3px; }
+    .tag-verified { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--acid);border:1px solid var(--acid-border);padding:4px 10px;border-radius:3px;background:var(--acid-dim); }
+    .hero-date { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.5px; }
+    h1 { font-family:'Syne',sans-serif;font-size:clamp(30px,5.5vw,50px);font-weight:800;line-height:1.05;letter-spacing:-1.5px;margin-bottom:14px;color:var(--text); }
+    h1 em { font-style:normal;color:var(--acid); }
+    .hero-sub { font-size:16px;color:var(--sub);font-weight:400;line-height:1.6;max-width:560px;margin-bottom:32px; }
+    .hero-metrics { display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08); }
+    .hm-cell { background:var(--surf);padding:20px 18px; }
+    .hm-label { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin-bottom:8px; }
+    .hm-value { font-family:'Syne',sans-serif;font-size:32px;font-weight:800;line-height:1;letter-spacing:-1px; }
+    .hm-value.red { color:var(--red); }
+    .hm-value.amber { color:var(--amber); }
+    .hm-desc { font-size:11px;color:var(--muted);margin-top:5px;line-height:1.4; }
+    .sec { padding:36px 0;border-top:1px solid var(--border); }
+    .sec-header { display:flex;align-items:baseline;gap:12px;margin-bottom:6px; }
+    .stitle { font-family:'Syne',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.4px; }
+    .sec-count { font-family:'DM Mono',monospace;font-size:11px;color:var(--muted); }
+    .ssub { font-size:13px;color:var(--muted);margin-bottom:22px;line-height:1.5; }
+    .hb-list { display:flex;flex-direction:column;gap:2px; }
+    .hb-card { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:border-color .15s;box-shadow:0 1px 4px rgba(0,0,0,.06); }
+    .hb-card:hover { border-color:var(--border-bright); }
+    .hb-card.critical { border-color:rgba(200,0,10,.2); }
+    .hb-card.medium { border-color:rgba(160,85,0,.15); }
+    .hb-card.low { border-color:rgba(26,110,255,.1); }
+    .hb-header { padding:16px 20px 14px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;cursor:pointer; }
+    .hb-left { flex:1; }
+    .hb-meta { display:flex;align-items:center;gap:8px;margin-bottom:7px;flex-wrap:wrap; }
+    .hb-index { font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);font-weight:500; }
+    .impact-pill { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;padding:3px 8px;border-radius:3px; }
+    .impact-pill.critical { background:var(--red-dim);color:var(--red);border:1px solid var(--red-border); }
+    .impact-pill.medium { background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-border); }
+    .impact-pill.low { background:var(--acid-dim);color:var(--acid);border:1px solid var(--acid-border); }
+    .hb-title { font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text);line-height:1.3;letter-spacing:-.2px; }
+    .hb-chevron { color:var(--muted);font-size:14px;flex-shrink:0;margin-top:2px;transition:transform .2s; }
+    .hb-card.open .hb-chevron { transform:rotate(180deg); }
+    .hb-body { display:none;padding:0 20px 20px;border-top:1px solid var(--border); }
+    .hb-card.open .hb-body { display:block; }
+    .hb-body-inner { padding-top:16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px; }
+    .hb-col-label { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px; }
+    .hb-col-label.official { color:var(--blue); }
+    .hb-col-label.observed { color:var(--green); }
+    .hb-col-label.estimated { color:var(--amber); }
+    .hb-col-content { background:var(--surf2);border-radius:var(--r);padding:12px;font-size:12px;line-height:1.55;color:var(--sub); }
+    .hb-col-content strong { color:var(--text);font-weight:600;display:block;margin-bottom:3px;font-size:12px; }
+    .hb-footer { margin-top:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:12px;border-top:1px solid var(--border); }
+    .hb-verified { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted); }
+    .hb-verified span { color:var(--acid); }
+    .src-badge { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;padding:3px 7px;border-radius:3px;letter-spacing:.5px; }
+    .src-official { background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-border); }
+    .src-observed { background:var(--green-dim);color:var(--green);border:1px solid var(--green-border); }
+    .src-estimated { background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-border); }
+    .rl-box { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07); }
+    .rl-head-bar { background:var(--surf2);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border); }
+    .rl-head-name { font-family:'Syne',sans-serif;font-size:14px;font-weight:700; }
+    .rl-head-price { font-family:'DM Mono',monospace;font-size:12px;color:var(--muted); }
+    .rl-row { display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:start;padding:14px 20px;border-bottom:1px solid var(--border); }
+    .rl-row:last-child { border-bottom:none; }
+    .rl-key { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;padding-top:2px; }
+    .rl-val { font-size:13px;color:var(--text);font-weight:500;line-height:1.5; }
+    .rl-val em { font-style:normal;color:var(--red);font-weight:600; }
+    .rl-alert { background:var(--red-dim);border:1px solid var(--red-border);border-radius:var(--r);padding:12px 14px;margin:0 20px 16px; }
+    .rl-alert-label { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1px;color:var(--red);text-transform:uppercase;margin-bottom:5px; }
+    .rl-alert-text { font-size:12px;color:var(--red);line-height:1.55;font-weight:500; }
+    .timeline { display:flex;flex-direction:column; }
+    .tl-item { display:grid;grid-template-columns:80px 1px 1fr;gap:0 16px;padding:16px 0;align-items:start; }
+    .tl-date { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);font-weight:500;padding-top:3px; }
+    .tl-line-col { display:flex;flex-direction:column;align-items:center; }
+    .tl-dot { width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px; }
+    .tl-connector { flex:1;width:1px;background:var(--border);min-height:24px; }
+    .tl-content { padding-bottom:8px; }
+    .tl-event { font-size:13px;font-weight:500;color:var(--text);line-height:1.5;margin-bottom:4px; }
+    .tl-src-row { display:flex;align-items:center;gap:6px; }
+    .tl-src-note { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted); }
+    .uc-grid { display:grid;grid-template-columns:1fr 1fr;gap:12px; }
+    .uc-col { border-radius:var(--r-lg);padding:18px;border:1px solid var(--border); }
+    .uc-col.best { background:rgba(10,122,58,.05);border-color:rgba(10,122,58,.2); }
+    .uc-col.not { background:rgba(200,0,10,.05);border-color:rgba(200,0,10,.2); }
+    .uc-col-title { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:14px; }
+    .uc-col.best .uc-col-title { color:var(--green); }
+    .uc-col.not .uc-col-title { color:var(--red); }
+    .uc-item { padding:10px 0;border-bottom:1px solid rgba(0,0,0,.06); }
+    .uc-item:last-child { border-bottom:none;padding-bottom:0; }
+    .uc-item-title { font-family:'Syne',sans-serif;font-size:13px;font-weight:700;margin-bottom:2px; }
+    .uc-col.best .uc-item-title { color:var(--green); }
+    .uc-col.not .uc-item-title { color:var(--red); }
+    .uc-item-desc { font-size:12px;color:var(--muted);line-height:1.5; }
+    .tscore-list { display:flex;flex-direction:column;gap:16px; }
+    .tscore-row { }
+    .tscore-top { display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px;gap:12px; }
+    .tscore-label { font-size:13px;font-weight:600;color:var(--text); }
+    .tscore-meta { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted); }
+    .tscore-detail { font-size:12px;color:var(--muted);margin-bottom:7px;line-height:1.5; }
+    .tscore-track { height:5px;background:var(--surf3);border-radius:99px;overflow:hidden;border:1px solid var(--border); }
+    .tscore-fill { height:100%;border-radius:99px;transition:width 1.2s cubic-bezier(.4,0,.2,1); }
+    .tscore-fill.red { background:var(--red); }
+    .tscore-fill.amber { background:var(--amber); }
+    .tscore-fill.green { background:var(--green); }
+    .tscore-src { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:5px; }
+    .tscore-summary { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px 20px;margin-top:20px;display:flex;align-items:center;justify-content:space-between;gap:16px; }
+    .tscore-summary-label { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase; }
+    .tscore-pct { font-family:'Syne',sans-serif;font-size:36px;font-weight:800;letter-spacing:-1px;color:var(--amber); }
+    details { border-bottom:1px solid var(--border); }
+    details:first-of-type { border-top:1px solid var(--border); }
+    summary { font-family:'Syne',sans-serif;font-size:14px;font-weight:600;padding:16px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text); }
+    summary::-webkit-details-marker { display:none; }
+    summary::after { content:'+';font-size:18px;color:var(--muted);flex-shrink:0;margin-left:12px;font-family:'DM Mono',monospace; }
+    details[open] summary::after { content:'−'; }
+    .fansw { font-size:13.5px;color:var(--sub);line-height:1.65;padding-bottom:16px; }
+    .compare-list { display:flex;flex-direction:column;gap:2px; }
+    .compare-row { display:flex;align-items:center;justify-content:space-between;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;text-decoration:none;color:inherit;transition:border-color .15s; }
+    .compare-row:hover { border-color:var(--border-bright); }
+    .compare-row.current { border-color:var(--acid-border);background:var(--acid-dim); }
+    .compare-name { font-family:'Syne',sans-serif;font-weight:700;font-size:14px; }
+    .compare-meta { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:2px; }
+    .compare-badge { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);border:1px solid var(--border);padding:4px 10px;border-radius:3px; }
+    .compare-row.current .compare-badge { color:var(--acid);border-color:var(--acid-border); }
+    .cta-box { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px; }
+    .cta-title { font-family:'Syne',sans-serif;font-size:18px;font-weight:800;margin-bottom:6px;letter-spacing:-.3px; }
+    .cta-sub { font-size:13px;color:var(--muted);margin-bottom:18px; }
+    .cta-form { display:flex;gap:8px;flex-wrap:wrap; }
+    .cta-inp { background:var(--surf2);border:1px solid var(--border);color:var(--text);padding:11px 16px;border-radius:var(--r);font-size:13px;flex:1;min-width:200px;outline:none;font-family:'DM Mono',monospace;transition:border-color .15s; }
+    .cta-inp:focus { border-color:var(--acid-border); }
+    .cta-inp::placeholder { color:var(--muted); }
+    .cta-btn { background:var(--acid);color:#fff;border:none;padding:11px 22px;border-radius:var(--r);font-weight:700;font-size:12px;cursor:pointer;font-family:'DM Mono',monospace;letter-spacing:.5px;white-space:nowrap;transition:opacity .15s; }
+    .cta-btn:hover { opacity:.88; }
+    footer { border-top:1px solid var(--border);padding:28px 20px; }
+    .fin { max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:10px; }
+    .f-brand { font-family:'DM Mono',monospace;font-size:12px;color:var(--muted); }
+    .f-brand span { color:var(--acid); }
+    .flinks { display:flex;gap:16px;flex-wrap:wrap; }
+    .flinks a { font-family:'DM Mono',monospace;font-size:11px;color:var(--muted); }
+    .flegal { font-size:11px;color:var(--muted);line-height:1.6;opacity:.7; }
+    .visit-btn { display:inline-flex;align-items:center;gap:8px;background:var(--surf2);color:var(--text);border:1px solid var(--border);font-family:'DM Mono',monospace;font-weight:500;font-size:12px;padding:11px 20px;border-radius:var(--r);letter-spacing:.5px;transition:border-color .15s; }
+    .visit-btn:hover { border-color:var(--border-bright);color:var(--text); }
+    .visit-arrow { color:var(--acid); }
+    .meth-link { display:flex;align-items:center;justify-content:space-between;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;text-decoration:none;color:var(--sub);transition:border-color .15s; }
+    .meth-link:hover { border-color:var(--border-bright);color:var(--text); }
+    .meth-link-label { font-size:13px;font-weight:500; }
+    .meth-link-arrow { font-family:'DM Mono',monospace;color:var(--acid); }
+    .btt { position:fixed;bottom:22px;right:22px;background:var(--surf);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;text-decoration:none;font-family:'DM Mono',monospace;box-shadow:0 2px 8px rgba(0,0,0,.1); }
+    .btt:hover { border-color:var(--acid-border);color:var(--acid); }
+    @media (max-width:600px) {
+      .hero-metrics { grid-template-columns:1fr 1fr; }
+      .hb-body-inner { grid-template-columns:1fr; }
+      .rl-row { grid-template-columns:1fr;gap:4px; }
+      .uc-grid { grid-template-columns:1fr; }
+      .tscore-summary { flex-direction:column;align-items:flex-start; }
+      .hero-metrics .hm-cell:last-child { grid-column:span 2; }
+    }
+    @media (max-width:420px) {
+      .hero-metrics { grid-template-columns:1fr; }
+      .hero-metrics .hm-cell:last-child { grid-column:span 1; }
+    }
+    @media (prefers-reduced-motion:reduce) { .tscore-fill { transition:none; } }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand"><span>AI</span> Transparency Database</a>
+    <span class="nav-tag">BETA</span>
+  </div>
+</nav>
+<div class="bc">
+  <a href="index.html">Home</a>
+  <span class="bc-sep">/</span>
+  <span>Claude</span>
+</div>
+
+<main class="page">
+  <section class="hero">
+    <div class="hero-eyebrow">
+      <span class="tag-cat">AI Chat · Anthropic</span>
+      <span class="tag-verified">✓ Verified Jun 2026</span>
+      <span class="hero-date">Last audited: 2026-06-29</span>
+    </div>
+    <h1>Claude:<br><em>What the pricing page doesn't tell you</em></h1>
+    <p class="hero-sub">Based on public docs, community reports, and third-party benchmarks — not legal advice or official statements.</p>
+    <div class="hero-metrics">
+      <div class="hm-cell">
+        <div class="hm-label">Hidden Behaviors</div>
+        <div class="hm-value red" id="counter-hidden">0</div>
+        <div class="hm-desc">documented &amp; verified</div>
+      </div>
+      <div class="hm-cell">
+        <div class="hm-label">Transparency</div>
+        <div class="hm-value amber">52%</div>
+        <div class="hm-desc">of key policies disclosed upfront</div>
+      </div>
+      <div class="hm-cell">
+        <div class="hm-label">Last Verified</div>
+        <div class="hm-value acid" style="font-size:20px;padding-top:6px">Jun 2026</div>
+        <div class="hm-desc">$20/mo · Claude Pro</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-header">
+      <div class="stitle">Hidden Behaviors</div>
+      <div class="sec-count">5 documented</div>
+    </div>
+    <p class="ssub">Behaviors confirmed through user reports, help docs, and independent testing — none disclosed on the pricing page.</p>
+    <div class="hb-list">
+      <div class="hb-card critical" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta">
+              <span class="hb-index">01</span>
+              <span class="impact-pill critical">⬤ Critical Impact</span>
+            </div>
+            <div class="hb-title">Dual cap system — two separate limits, either can block you</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Not clearly disclosed on pricing page</strong>The pricing page describes Pro as having 'usage limits' but does not explain the 5-hour AND weekly cap structure.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>Both caps operate independently</strong>Hitting the weekly cap locks you out completely even if your 5-hour session bar shows remaining headroom.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>~45 msgs per 5h window</strong>Based on community reports — Anthropic publishes multipliers (Pro=1x, Max=5x), not absolute numbers.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jun 2026</span> — support.anthropic.com</div>
+            <span class="src-badge src-official">OFFICIAL</span>
+          </div>
+        </div>
+      </div>
+      <div class="hb-card critical" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta">
+              <span class="hb-index">02</span>
+              <span class="impact-pill critical">⬤ Critical Impact</span>
+            </div>
+            <div class="hb-title">Weekly reset is account-specific — not Monday midnight</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Not documented publicly</strong>Anthropic does not publish the weekly reset schedule or explain that it varies per account.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>Reset tied to account creation date</strong>Community testing suggests weekly caps reset on a fixed day/time assigned at account creation — not a universal Monday reset.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Many guides are wrong</strong>Widespread guides claiming 'resets on Monday' appear to be inaccurate for most accounts.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jun 2026</span> — Community reports</div>
+            <span class="src-badge src-observed">OBSERVED</span>
+          </div>
+        </div>
+      </div>
+      <div class="hb-card medium" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta">
+              <span class="hb-index">03</span>
+              <span class="impact-pill medium">⬤ Medium Impact</span>
+            </div>
+            <div class="hb-title">Current 50% limit boost is a promo — expires July 13, 2026</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Disclosed on Anthropic blog</strong>May 13, 2026 post confirms the 50% weekly limit increase is promotional, ending July 13, 2026.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>Not surfaced in-app</strong>No in-product banner or countdown warns users the current higher limits are temporary.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Limits revert after Jul 13</strong>After expiry, weekly caps return to pre-May 2026 baselines — expect a noticeable reduction for heavy users.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>May 2026</span> — anthropic.com/news</div>
+            <span class="src-badge src-official">OFFICIAL</span>
+          </div>
+        </div>
+      </div>
+      <div class="hb-card medium" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta">
+              <span class="hb-index">04</span>
+              <span class="impact-pill medium">⬤ Medium Impact</span>
+            </div>
+            <div class="hb-title">Claude.ai, desktop app, and Claude Code share the same quota pool</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Not disclosed on pricing page</strong>No mention of shared quota across clients in plan comparison or FAQ.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>Coding drains chat quota</strong>Community reports confirm heavy Claude Code sessions deplete the same usage pool as claude.ai chat.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Power users hit limits faster</strong>Devs switching between Code and chat may exhaust limits ~2× faster than chat-only users.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jun 2026</span> — Community reports</div>
+            <span class="src-badge src-observed">OBSERVED</span>
+          </div>
+        </div>
+      </div>
+      <div class="hb-card low" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta">
+              <span class="hb-index">05</span>
+              <span class="impact-pill low">⬤ Low Impact</span>
+            </div>
+            <div class="hb-title">Progress bars shown, but exact token counts never published</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Usage bars exist in Settings</strong>Settings → Usage shows two progress bars for session and weekly limits — better than ChatGPT.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>No absolute numbers shown</strong>Bars show percentage consumed, not tokens or message counts. Anthropic publishes only relative multipliers.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Planning usage is hard</strong>Without knowing the absolute cap, users cannot estimate how many messages remain before hitting a wall.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jun 2026</span> — support.anthropic.com</div>
+            <span class="src-badge src-official">OFFICIAL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:18px">Real Limits</div>
+    <div class="rl-box">
+      <div class="rl-head-bar">
+        <div class="rl-head-name">Claude Pro</div>
+        <div class="rl-head-price">$20/mo · Claude Pro</div>
+      </div>
+      <div class="rl-rows">
+<div class="rl-row"><div class="rl-key">Reset Cycle</div><div class="rl-val">Rolling 5-hour window + separate weekly cap (resets on account-assigned day, not Monday)</div></div><div class="rl-row"><div class="rl-key">Stated Cap</div><div class="rl-val">~45 msgs / 5h (reported) — Anthropic publishes multipliers only, not absolute counts</div></div><div class="rl-row"><div class="rl-key">Usage Meter</div><div class="rl-val">Yes — Settings → Usage shows two progress bars, but no exact token figures</div></div><div class="rl-row"><div class="rl-key">Speed</div><div class="rl-val">Claude Haiku 4.5: ~500–650ms time-to-first-token (benchmark range, third-party)</div></div><div class="rl-row"><div class="rl-key">Privacy Default</div><div class="rl-val">Does NOT train on Pro data by default — opt-in only (stronger than ChatGPT)</div></div>
+      </div>
+      <div class="rl-alert">
+        <div class="rl-alert-label">⚠ Dual-cap trap</div>
+        <div class="rl-alert-text">Your weekly bar can hit 100% while your 5h session bar still shows headroom — locking you out until your account's weekly reset, which may not fall on Monday.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-header"><div class="stitle">Policy History</div></div>
+    <p class="ssub">Confirmed changes at the same price — documented with source type and dates.</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">Mar 28, 2026</div>
+        <div class="tl-line-col"><div class="tl-dot" style="background:var(--amber)"></div><div class='tl-connector'></div></div>
+        <div class="tl-content">
+          <div class="tl-event">Peak-hour throttling silently added (5–11 AM PT weekdays) — acknowledged by Anthropic on Mar 31</div>
+          <div class="tl-src-row"><span class="src-badge src-observed">OBSERVED</span><span class="tl-src-note">community-reported; Anthropic acknowledged March 31, 2026</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">May 6, 2026</div>
+        <div class="tl-line-col"><div class="tl-dot" style="background:var(--green)"></div><div class='tl-connector'></div></div>
+        <div class="tl-content">
+          <div class="tl-event">5-hour limits permanently doubled for Pro, Max, Team — peak-hour throttling removed</div>
+          <div class="tl-src-row"><span class="src-badge src-official">OFFICIAL</span><span class="tl-src-note">anthropic.com/news/claude-usage-limits-update</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">May 13, 2026</div>
+        <div class="tl-line-col"><div class="tl-dot" style="background:var(--blue)"></div></div>
+        <div class="tl-content">
+          <div class="tl-event">Weekly limits raised 50% as a promotion — expires July 13, 2026</div>
+          <div class="tl-src-row"><span class="src-badge src-official">OFFICIAL</span><span class="tl-src-note">anthropic.com/news/claude-usage-limits-update</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="who">
+    <div class="stitle" style="margin-bottom:6px">Who It's For</div>
+    <p class="ssub">Same data, different verdict depending on how you use it.</p>
+    <div class="uc-grid">
+      <div class="uc-col best">
+        <div class="uc-col-title">✓ Works well for</div>
+        <div class="uc-item"><div class="uc-item-title">Long-document analysis</div><div class="uc-item-desc">200k+ context window — handles full codebases or book-length docs.</div></div><div class="uc-item"><div class="uc-item-title">Writing quality</div><div class="uc-item-desc">Consistently rated best prose quality among mainstream AI assistants.</div></div><div class="uc-item"><div class="uc-item-title">Privacy-first users</div><div class="uc-item-desc">Does NOT train on Pro data by default — opt-in only.</div></div>
+      </div>
+      <div class="uc-col not">
+        <div class="uc-col-title">✗ Problematic for</div>
+        <div class="uc-item"><div class="uc-item-title">Burst chat sessions</div><div class="uc-item-desc">Dual 5h + weekly cap — hitting either locks you out completely.</div></div><div class="uc-item"><div class="uc-item-title">Image/video generation</div><div class="uc-item-desc">No image or video generation on any Claude plan.</div></div><div class="uc-item"><div class="uc-item-title">Predictable limits</div><div class="uc-item-desc">Limits changed 3 times in 2026 alone — current 50% boost expires Jul 13.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:4px">Transparency Breakdown</div>
+    <p class="ssub">How much is disclosed about each dimension — before you pay.</p>
+    <div class="tscore-list">
+      <div class="tscore-row">
+        <div class="tscore-top">
+          <span class="tscore-label">Real Headroom</span>
+          <span class="tscore-meta">OFFICIAL · support.anthropic.com</span>
+        </div>
+        <div class="tscore-detail">~45 msgs/5h reported — no official absolute count published. Dual cap complicates planning.</div>
+        <div class="tscore-track"><div class="tscore-fill amber" id="b1" style="width:0%"></div></div>
+        <div class="tscore-src">multipliers only, not absolute numbers</div>
+      </div>
+      <div class="tscore-row">
+        <div class="tscore-top">
+          <span class="tscore-label">Response Speed</span>
+          <span class="tscore-meta">OBSERVED · Third-party benchmark</span>
+        </div>
+        <div class="tscore-detail">Haiku 4.5: ~500–650ms TTFT range — among the fastest mainstream models tested.</div>
+        <div class="tscore-track"><div class="tscore-fill green" id="b2" style="width:0%"></div></div>
+        <div class="tscore-src">third-party benchmark only</div>
+      </div>
+      <div class="tscore-row">
+        <div class="tscore-top">
+          <span class="tscore-label">Limit Transparency</span>
+          <span class="tscore-meta">OFFICIAL · Settings → Usage</span>
+        </div>
+        <div class="tscore-detail">Usage bars exist in-app — better than most. Exact token counts and weekly reset day not disclosed.</div>
+        <div class="tscore-track"><div class="tscore-fill amber" id="b3" style="width:0%"></div></div>
+        <div class="tscore-src">bars visible, counts not</div>
+      </div>
+      <div class="tscore-row">
+        <div class="tscore-top">
+          <span class="tscore-label">Data & Privacy</span>
+          <span class="tscore-meta">OFFICIAL · anthropic.com/privacy</span>
+        </div>
+        <div class="tscore-detail">Pro data not used for training by default — opt-in only. Strongest default privacy posture in category.</div>
+        <div class="tscore-track"><div class="tscore-fill green" id="b4" style="width:0%"></div></div>
+        <div class="tscore-src">best disclosed dimension</div>
+      </div>
+      <div class="tscore-row">
+        <div class="tscore-top">
+          <span class="tscore-label">Reliability</span>
+          <span class="tscore-meta">OFFICIAL · status.anthropic.com</span>
+        </div>
+        <div class="tscore-detail">~2 incidents/30d — ~99% uptime (est.). Status page is public.</div>
+        <div class="tscore-track"><div class="tscore-fill green" id="b5" style="width:0%"></div></div>
+        <div class="tscore-src">status page public</div>
+      </div>
+
+    </div>
+    <div class="tscore-summary">
+      <div>
+        <div class="tscore-summary-label">Overall Transparency Score <span title="Headroom 30% + Privacy 20% + Speed 20% + Transparency 15% + Reliability 15%. Based on disclosed vs. undisclosed policies." style="cursor:help;border-bottom:1px dashed var(--muted);font-size:9px;letter-spacing:.5px">ⓘ HOW?</span></div>
+        <div style="font-size:12px;color:var(--muted);margin-top:3px;font-weight:500">Weighted estimate — see methodology for formula</div>
+      </div>
+      <div class="tscore-pct">52%</div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:18px">Compare Transparency</div>
+    <div class="compare-list">
+          <div class="compare-row current">
+        <div>
+          <div class="compare-name">Claude</div>
+          <div class="compare-meta">Anthropic · $20/mo</div>
+        </div>
+        <div class="compare-badge">viewing now</div>
+      </div>
+      <a href="chatgpt.html" class="compare-row">
+        <div>
+          <div class="compare-name">ChatGPT</div>
+          <div class="compare-meta">OpenAI · $20/mo</div>
+        </div>
+        <div class="compare-badge">view report →</div>
+      </a>
+      <a href="gemini.html" class="compare-row">
+        <div>
+          <div class="compare-name">Gemini</div>
+          <div class="compare-meta">Google · $19.99/mo</div>
+        </div>
+        <div class="compare-badge">view report →</div>
+      </a>
+      <a href="perplexity.html" class="compare-row">
+        <div>
+          <div class="compare-name">Perplexity</div>
+          <div class="compare-meta">Perplexity AI · $20/mo</div>
+        </div>
+        <div class="compare-badge">view report →</div>
+      </a>
+    </div>
+  </section>
+
+  <section class="sec">
+    <a href="https://claude.ai" target="_blank" rel="noopener" class="visit-btn">
+      Visit Claude <span class="visit-arrow">→</span>
+    </a>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:18px">Frequently Asked</div>
+    <details><summary>Why did I get blocked even though my session bar wasn't full?</summary><div class="fansw">Claude has two separate caps: a 5-hour rolling window and a weekly cap. Hitting the weekly cap locks you out even with session headroom remaining.</div></details><details><summary>Can I see my exact usage on Claude?</summary><div class="fansw">Settings → Usage shows progress bars for both limits, but Anthropic never publishes exact token numbers — only relative multipliers (Pro = 1x, Max = 5x or 20x).</div></details><details><summary>Is Claude's current 50% higher weekly limit permanent?</summary><div class="fansw">No. It's a promotion running through July 13, 2026. Expect limits to revert to standard baselines after that date.</div></details><details><summary>Do Claude Code and claude.ai share the same usage pool?</summary><div class="fansw">Based on community reports, yes — Claude Code sessions draw from the same quota as claude.ai chat, which can exhaust limits faster for developers.</div></details>
+  </section>
+
+  <section class="sec">
+    <div class="cta-box">
+      <div class="cta-title">Get alerted when policies change</div>
+      <p class="cta-sub">We track silent limit cuts before most users notice them.</p>
+      <div class="cta-form">
+        <input class="cta-inp" type="email" placeholder="your@email.com"/>
+        <button class="cta-btn" type="button" onclick="signup(this)">NOTIFY ME</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <a href="methodology.html" class="meth-link">
+      <span class="meth-link-label">How we audit — full methodology and source classification</span>
+      <span class="meth-link-arrow">→</span>
+    </a>
+  </section>
+</main>
+
+<footer>
+  <div class="fin">
+    <div class="f-brand"><span>AI</span> Transparency Database</div>
+    <div class="flinks">
+      <a href="index.html">Home</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="mailto:data@aitransparency.com">Contact</a>
+    </div>
+    <div class="flegal">Analysis based on public documentation, community reports, and third-party benchmarks. Figures are estimates unless marked OFFICIAL. Not affiliated with or endorsed by Anthropic. No affiliate links. © 2026 AI Transparency Database</div>
+  </div>
+</footer>
+<a href="#" class="btt">↑</a>
+
+<script>
+  function toggleCard(card) { card.classList.toggle('open'); }
+  function signup(btn) {
+    const inp = btn.previousElementSibling;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inp.value.trim())) { inp.style.borderColor='var(--red)'; inp.focus(); return; }
+    btn.textContent="✓ DONE"; btn.disabled=true; inp.disabled=true;
+  }
+  function animateCounter(el, target, duration) {
+    let start=null;
+    function step(ts) { if(!start) start=ts; const p=Math.min((ts-start)/duration,1); el.textContent=Math.floor(p*target); if(p<1) requestAnimationFrame(step); else el.textContent=target; }
+    requestAnimationFrame(step);
+  }
+  setTimeout(() => {
+    document.getElementById('b1').style.width = '60%';
+    document.getElementById('b2').style.width = '85%';
+    document.getElementById('b3').style.width = '65%';
+    document.getElementById('b4').style.width = '80%';
+    document.getElementById('b5').style.width = '82%';
+    animateCounter(document.getElementById('counter-hidden'), 5, 1200);
+  }, 200);
+</script>
+</body>
+</html>

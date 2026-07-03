@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" style="color-scheme: light only;">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="color-scheme" content="light only"/>
+  <meta name="theme-color" content="#F8F8F5"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>How We Audit — AI Transparency Database</title>
+  <meta name="description" content="Full methodology: how we classify sources, calculate transparency scores, and define Hidden Behaviors."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{color-scheme:light only;scroll-behavior:smooth}
+    :root{--bg:#F8F8F5;--surf:#FFFFFF;--surf2:#F1F1EC;--surf3:#E8E8E2;--border:#D8D8D0;--border-bright:#B8B8AE;--text:#111118;--sub:#3A3A48;--muted:#6B6B78;--acid:#1A6EFF;--acid-dim:rgba(26,110,255,.08);--acid-border:rgba(26,110,255,.22);--red:#C8000A;--amber:#A05500;--green:#0A7A3A;--r:8px;--r-lg:14px}
+    
+    body{background:var(--bg);color:var(--text);font-family:Inter,sans-serif;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+    a{color:var(--acid);text-decoration:none}
+    .nav{position:sticky;top:0;z-index:100;background:rgba(248,248,245,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-in{max-width:800px;margin:0 auto;padding:0 20px;height:54px;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-family:"DM Mono",monospace;font-size:13px;font-weight:500;color:var(--sub);text-decoration:none}
+    .brand span{color:var(--acid)}
+    .page{max-width:800px;margin:0 auto;padding:48px 20px 100px}
+    .hero-eyebrow{font-family:"DM Mono",monospace;font-size:10px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+    h1{font-family:Syne,sans-serif;font-size:clamp(28px,5vw,44px);font-weight:800;line-height:1.05;letter-spacing:-1.5px;margin-bottom:14px}
+    h1 em{font-style:normal;color:var(--acid)}
+    .intro{font-size:15px;color:var(--sub);max-width:560px;line-height:1.65;margin-bottom:40px}
+    .sec{padding:36px 0;border-top:1px solid var(--border)}
+    .stitle{font-family:Syne,sans-serif;font-size:18px;font-weight:700;letter-spacing:-.4px;margin-bottom:18px}
+    .formula-box{background:var(--surf2);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px;font-family:"DM Mono",monospace;font-size:13px;line-height:2;color:var(--sub)}
+    .formula-box strong{color:var(--acid);font-weight:500}
+    .dim-list{display:flex;flex-direction:column;gap:8px}
+    .dim-row{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:16px 20px;display:grid;grid-template-columns:160px 60px 1fr;gap:12px;align-items:start}
+    .dim-name{font-family:Syne,sans-serif;font-size:14px;font-weight:700}
+    .dim-w{font-family:"DM Mono",monospace;font-size:11px;color:var(--muted);padding-top:2px}
+    .dim-desc{font-size:13px;color:var(--sub);line-height:1.55}
+    .src-grid{display:flex;flex-direction:column;gap:8px}
+    .src-row{border-radius:var(--r);padding:14px 16px;border:1px solid}
+    .src-row.off{background:rgba(26,110,255,.06);border-color:rgba(26,110,255,.2)}
+    .src-row.obs{background:rgba(10,122,58,.06);border-color:rgba(10,122,58,.2)}
+    .src-row.est{background:rgba(160,85,0,.06);border-color:rgba(160,85,0,.2)}
+    .src-label{font-family:"DM Mono",monospace;font-size:10px;font-weight:500;letter-spacing:1px;margin-bottom:6px}
+    .src-row.off .src-label{color:var(--acid)}
+    .src-row.obs .src-label{color:var(--green)}
+    .src-row.est .src-label{color:var(--amber)}
+    .src-desc{font-size:13px;color:var(--sub);line-height:1.55}
+    .pledge-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .pledge-list li{font-size:13.5px;color:var(--sub);padding-left:20px;position:relative;line-height:1.6}
+    .pledge-list li::before{content:"✓";position:absolute;left:0;color:var(--green);font-family:"DM Mono",monospace;font-weight:500}
+    footer{border-top:1px solid var(--border);padding:28px 20px}
+    .fin{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+    .f-brand{font-family:"DM Mono",monospace;font-size:12px;color:var(--muted)}
+    .f-brand span{color:var(--acid)}
+    .flinks{display:flex;gap:16px;flex-wrap:wrap}
+    .flinks a{font-family:"DM Mono",monospace;font-size:11px;color:var(--muted)}
+    .flegal{font-size:11px;color:var(--muted);opacity:.7;line-height:1.6}
+    @media(prefers-color-scheme:dark){:root{--bg:#F8F8F5!important;--surf:#FFFFFF!important;--surf2:#F1F1EC!important;--border:#D8D8D0!important;--text:#111118!important;--sub:#3A3A48!important;--muted:#6B6B78!important;--acid:#1A6EFF!important;--red:#C8000A!important;--amber:#A05500!important;--green:#0A7A3A!important}body{background:#F8F8F5!important;color:#111118!important}}
+    @media(max-width:580px){.dim-row{grid-template-columns:1fr auto}}
+  @media (prefers-color-scheme: dark){:root{--bg:#F8F8F5!important;--surf:#FFFFFF!important;--surf2:#F1F1EC!important;--border:#D8D8D0!important;--text:#111118!important;--sub:#3A3A48!important;--muted:#6B6B78!important;--acid:#1A6EFF!important}body{background:#F8F8F5!important;color:#111118!important}}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand"><span>AI</span> Transparency Database</a>
+    <a href="index.html" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">← Back</a>
+  </div>
+</nav>
+<main class="page">
+  <div class="hero-eyebrow">Methodology</div>
+  <h1>How We <em>Audit</em></h1>
+  <p class="intro">Every claim is dated, sourced, and classified. No vendor input, no paid placement. Here is exactly how we measure what pricing pages leave out.</p>
+
+  <section class="sec">
+    <div class="stitle">Transparency Score Formula</div>
+    <div class="formula-box">
+      <strong>Transparency Score</strong> =<br>
+      (Real Headroom × 0.30)<br>
+      + (Response Speed × 0.20)<br>
+      + (Limit Transparency × 0.15)<br>
+      + (Data &amp; Privacy × 0.20)<br>
+      + (Reliability × 0.15)<br><br>
+      <span style="opacity:.5">// each dimension 0–100 · weights sum to 1.00 · displayed as %</span>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle">The Five Dimensions</div>
+    <div class="dim-list">
+      <div class="dim-row"><div class="dim-name">Real Headroom</div><div class="dim-w">30%</div><div class="dim-desc">How much you can use before hitting a wall — stated caps, reset cycles, and whether those caps have been quietly tightened.</div></div>
+      <div class="dim-row"><div class="dim-name">Response Speed</div><div class="dim-w">20%</div><div class="dim-desc">Time-to-first-token from independent latency benchmarks. Never vendor-claimed numbers.</div></div>
+      <div class="dim-row"><div class="dim-name">Limit Transparency</div><div class="dim-w">15%</div><div class="dim-desc">Does the product show a usage meter before you hit the wall, or only after via an error?</div></div>
+      <div class="dim-row"><div class="dim-name">Data &amp; Privacy</div><div class="dim-w">20%</div><div class="dim-desc">Default training data posture, opt-out availability, and how prominently it's communicated.</div></div>
+      <div class="dim-row"><div class="dim-name">Reliability</div><div class="dim-w">15%</div><div class="dim-desc">Incident count and uptime estimate from the official public status page over the last 30 days.</div></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle">Source Classification</div>
+    <div class="src-grid">
+      <div class="src-row off"><div class="src-label">OFFICIAL</div><div class="src-desc">Sourced directly from the company's own published pages — pricing, help centers, privacy policies, status pages, official release notes. Verifiable by anyone at the linked URL.</div></div>
+      <div class="src-row obs"><div class="src-label">OBSERVED (community)</div><div class="src-desc">Independent third-party benchmarks or widely corroborated user reports cited in tech press. Not from the company itself, but independently verifiable.</div></div>
+      <div class="src-row est"><div class="src-label">ESTIMATED (not verified)</div><div class="src-desc">Inferred or community-estimated figures where official data is not published. Always marked with an inline disclaimer. Do not treat as confirmed facts.</div></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle">What "Shrinkflation" Means Here</div>
+    <p style="font-size:13.5px;color:var(--sub);line-height:1.65">The subscription price stays the same, but the actual usage shrinks — through a credit-system switch, a feature-specific cap cut, or a confusing new quota model. Every confirmed event is documented with a date and source.</p>
+  </section>
+
+  <section class="sec">
+    <div class="stitle">Our Pledge</div>
+    <ul class="pledge-list">
+      <li>Every limit, speed, or shrinkflation claim is dated and sourced</li>
+      <li>We update a report within 48 hours of a verified change</li>
+      <li>No affiliate links influence rankings or scores</li>
+      <li>All audits stay free — we will never paywall the data</li>
+      <li>If we cannot verify a claim independently, we label it or leave it out</li>
+    </ul>
+  </section>
+
+  <section class="sec" style="padding-bottom:0">
+    <p style="font-size:13px;color:var(--muted)">Found an error? Email <a href="mailto:data@aitransparency.com">data@aitransparency.com</a> with a source link. Verified corrections go live within 48 hours.</p>
+  </section>
+</main>
+<footer>
+  <div class="fin">
+    <div class="f-brand"><span>AI</span> Transparency Database</div>
+    <div class="flinks"><a href="index.html">Home</a><a href="methodology.html">Methodology</a><a href="mailto:data@aitransparency.com">Contact</a></div>
+    <div class="flegal">© 2026 AI Transparency Database · methodology last updated June 2026</div>
+  </div>
+</footer>
+</body>
+</html>
