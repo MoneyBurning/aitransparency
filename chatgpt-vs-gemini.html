@@ -255,11 +255,26 @@
   <div class="flegal">Independent analysis based on public docs, community reports, and benchmarks. Not affiliated with any service listed. Estimates unless marked OFFICIAL. © 2026 AI Transparency Database</div>
 </div></footer>
 <script>
-  function signup(btn){
-    const inp=btn.previousElementSibling;
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inp.value.trim())){inp.style.borderColor='var(--red)';inp.focus();return;}
-    btn.textContent='✓ DONE';btn.disabled=true;inp.disabled=true;
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzSaizHz7RYJpBPIQqwLTueMktQHjG9isLGMQxaqetT_uGHNiDtjw4tymmEAm9t6r3S/exec";
+async function signup(btn){
+  const form=btn.closest('.cta-form')||btn.parentElement;
+  const inp=form.querySelector('input[type="email"]');
+  if(!inp)return;
+  const email=inp.value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){inp.style.borderColor='var(--red)';inp.focus();return;}
+  btn.textContent='...';btn.disabled=true;
+  let msg=btn.closest('.cta-box').querySelector('.cta-msg');
+  if(!msg){msg=document.createElement('div');msg.className='cta-msg';msg.style.cssText="font-family:'DM Mono',monospace;font-size:11px;margin-top:10px;display:none";btn.closest('.cta-box').appendChild(msg);}
+  try{
+    await fetch(SCRIPT_URL,{method:'POST',body:JSON.stringify({email,source:location.pathname})});
+    btn.textContent='✓ DONE';inp.disabled=true;
+    msg.style.display='block';msg.style.color='var(--green)';msg.textContent="Subscribed! We'll alert you when policies change.";
+  }catch(err){
+    btn.textContent='NOTIFY ME';btn.disabled=false;
+    msg.style.display='block';msg.style.color='var(--red)';msg.textContent='Something went wrong. Please try again.';
   }
+}
 </script>
+
 </body>
 </html>
