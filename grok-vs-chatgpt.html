@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" style="color-scheme: light only;">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="color-scheme" content="light only"/>
+  <meta name="theme-color" content="#F8F8F5"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Grok vs ChatGPT (2026) — Limits, Transparency &amp; Hidden Behaviors</title>
+  <meta name="description" content="Grok vs ChatGPT compared on real usage limits, hidden behaviors, transparency, and privacy. Grok scores 22% vs ChatGPT at 31% on our independent audit."/>
+  <meta name="keywords" content="grok vs chatgpt, grok vs chatgpt 2026, grok or chatgpt which is better"/>
+  <link rel="canonical" href="https://aitransparency.pages.dev/grok-vs-chatgpt.html"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which is more transparent, Grok or ChatGPT?","acceptedAnswer":{"@type":"Answer","text":"Grok scores 22% on our Transparency Index vs 31% for ChatGPT. ChatGPT discloses more of its real limits upfront — but neither is fully transparent."}},{"@type":"Question","name":"Does Grok or ChatGPT have more hidden behaviors?","acceptedAnswer":{"@type":"Answer","text":"Grok has 6 documented hidden behaviors; ChatGPT has 5. ChatGPT wins on this dimension — but check the full individual reports for sourced details."}},{"@type":"Question","name":"Which should I choose between Grok and ChatGPT?","acceptedAnswer":{"@type":"Answer","text":"If transparency matters to you, ChatGPT scores higher (31% vs 22%). Review the head-to-head table above for the dimension most relevant to your workflow."}}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{color-scheme:light only;scroll-behavior:smooth}
+    :root{--bg:#F8F8F5;--surf:#FFFFFF;--surf2:#F1F1EC;--surf3:#E8E8E2;--border:#D8D8D0;--border-bright:#B8B8AE;--text:#111118;--sub:#3A3A48;--muted:#6B6B78;--acid:#1A6EFF;--acid-dim:rgba(26,110,255,.08);--acid-border:rgba(26,110,255,.22);--red:#C8000A;--red-dim:rgba(200,0,10,.07);--red-border:rgba(200,0,10,.22);--amber:#A05500;--amber-dim:rgba(160,85,0,.08);--amber-border:rgba(160,85,0,.22);--green:#0A7A3A;--green-dim:rgba(10,122,58,.07);--green-border:rgba(10,122,58,.22);--r:8px;--r-lg:14px}
+    @media(prefers-color-scheme:dark){:root{--bg:#F8F8F5!important;--surf:#FFFFFF!important;--surf2:#F1F1EC!important;--surf3:#E8E8E2!important;--border:#D8D8D0!important;--border-bright:#B8B8AE!important;--text:#111118!important;--sub:#3A3A48!important;--muted:#6B6B78!important;--acid:#1A6EFF!important;--red:#C8000A!important;--amber:#A05500!important;--green:#0A7A3A!important}body{background:#F8F8F5!important;color:#111118!important}}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+    a{color:var(--acid);text-decoration:none}
+    .nav{position:sticky;top:0;z-index:100;background:rgba(248,248,245,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-in{max-width:860px;margin:0 auto;padding:0 20px;height:54px;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--sub);text-decoration:none;letter-spacing:.5px}
+    .brand span{color:var(--acid)}
+    .nav-tag{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;border:1px solid var(--border);padding:4px 10px;border-radius:99px}
+    .bc{max-width:860px;margin:0 auto;padding:12px 20px;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:8px}
+    .bc a{color:var(--muted)}.bc-sep{color:var(--border-bright)}
+    .page{max-width:860px;margin:0 auto;padding:0 20px 100px}
+    .hero{padding:48px 0 40px}
+    .hero-eyebrow{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+    h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,46px);font-weight:800;line-height:1.05;letter-spacing:-1px;margin-bottom:12px}
+    h1 em{font-style:normal;color:var(--acid)}
+    .hero-sub{font-size:15px;color:var(--sub);max-width:560px;line-height:1.6;margin-bottom:32px}
+    .verdict-banner{display:grid;grid-template-columns:1fr 48px 1fr;gap:12px;align-items:center;margin-bottom:40px}
+    .vc{background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px 20px;box-shadow:0 1px 6px rgba(0,0,0,.06)}
+    .vc-name{font-family:'Playfair Display',serif;font-size:16px;font-weight:800;margin-bottom:4px}
+    .vc-maker{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:10px}
+    .vc-pct{font-family:'Playfair Display',serif;font-size:34px;font-weight:800;letter-spacing:-1px;line-height:1}
+    .vc-pct.red{color:var(--red)}.vc-pct.amber{color:var(--amber)}.vc-pct.green{color:var(--green)}
+    .vc-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+    .vc-hb{font-size:12px;color:var(--sub);margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
+    .vc-winner{border-color:var(--acid-border);background:var(--acid-dim)}
+    .vs-badge{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:var(--muted);text-align:center}
+    .sec{padding:36px 0;border-top:1px solid var(--border)}
+    .stitle{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;letter-spacing:-.3px;margin-bottom:18px}
+    .ssub{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.5}
+    .ctable{width:100%;border-collapse:collapse;background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.05)}
+    .ctable th{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--muted);padding:12px 16px;background:var(--surf2);border-bottom:1px solid var(--border);text-align:left}
+    .ctable th.win{color:var(--acid)}
+    .ctable td{padding:13px 16px;border-bottom:1px solid var(--border);font-size:13px;color:var(--sub);vertical-align:top;line-height:1.5}
+    .ctable td:first-child{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:.8px;white-space:nowrap;width:130px}
+    .ctable tr:last-child td{border-bottom:none}
+    .ctable td strong{color:var(--text);font-weight:600}
+    .win-cell{color:var(--green)!important;font-weight:600!important}
+    .lose-cell{color:var(--red)!important}
+    .hb-compare{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .hbc-head{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;padding:10px 14px;border-radius:var(--r) var(--r) 0 0;border:1px solid;border-bottom:none}
+    .hbc-item{font-size:12px;color:var(--sub);padding:10px 14px;background:var(--surf);border:1px solid var(--border);border-top:none;line-height:1.45}
+    .hbc-item:last-child{border-radius:0 0 var(--r) var(--r)}
+    .win-grid{display:flex;flex-direction:column;gap:8px}
+    .win-row{display:grid;grid-template-columns:160px 1fr 1fr;gap:0;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+    .win-dim{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:.8px;padding:14px 16px;background:var(--surf2);border-right:1px solid var(--border);display:flex;align-items:center}
+    .win-a,.win-b{padding:14px 16px;font-size:13px;line-height:1.4;display:flex;align-items:center}
+    .win-a{border-right:1px solid var(--border)}
+    .winner{color:var(--green);font-weight:600}
+    .loser{color:var(--muted)}
+    details{border-bottom:1px solid var(--border)}
+    details:first-of-type{border-top:1px solid var(--border)}
+    summary{font-family:'Playfair Display',serif;font-size:14px;font-weight:600;padding:16px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text)}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:'+';font-size:18px;color:var(--muted);flex-shrink:0;margin-left:12px;font-family:'DM Mono',monospace}
+    details[open] summary::after{content:'−'}
+    .fansw{font-size:13.5px;color:var(--sub);line-height:1.65;padding-bottom:16px}
+    .related-list{display:flex;flex-direction:column;gap:4px}
+    .related-row{display:flex;align-items:center;justify-content:space-between;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;text-decoration:none;color:inherit;transition:border-color .15s}
+    .related-row:hover{border-color:var(--border-bright)}
+    .related-name{font-family:'Playfair Display',serif;font-size:13px;font-weight:700}
+    .related-arrow{font-family:'DM Mono',monospace;font-size:11px;color:var(--acid)}
+    .cta-box{background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px}
+    .cta-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;margin-bottom:6px;letter-spacing:-.3px}
+    .cta-sub{font-size:13px;color:var(--muted);margin-bottom:18px}
+    .cta-form{display:flex;gap:8px;flex-wrap:wrap}
+    .cta-inp{background:var(--surf2);border:1px solid var(--border);color:var(--text);padding:11px 16px;border-radius:var(--r);font-size:13px;flex:1;min-width:200px;outline:none;font-family:'DM Mono',monospace;transition:border-color .15s}
+    .cta-inp:focus{border-color:var(--acid-border)}
+    .cta-inp::placeholder{color:var(--muted)}
+    .cta-btn{background:var(--acid);color:#fff;border:none;padding:11px 22px;border-radius:var(--r);font-weight:700;font-size:12px;cursor:pointer;font-family:'DM Mono',monospace;letter-spacing:.5px;white-space:nowrap;transition:opacity .15s}
+    .cta-btn:hover{opacity:.88}
+    footer{border-top:1px solid var(--border);padding:28px 20px}
+    .fin{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+    .f-brand{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted)}
+    .f-brand span{color:var(--acid)}
+    .flinks{display:flex;gap:16px;flex-wrap:wrap}
+    .flinks a{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)}
+    .flegal{font-size:11px;color:var(--muted);opacity:.7;line-height:1.6}
+    .btt{position:fixed;bottom:22px;right:22px;background:var(--surf);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;text-decoration:none;font-family:'DM Mono',monospace;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+    .btt:hover{border-color:var(--acid-border);color:var(--acid)}
+    @media(max-width:620px){.verdict-banner{grid-template-columns:1fr;gap:8px}.vs-badge{display:none}.hb-compare{grid-template-columns:1fr}.win-row{grid-template-columns:1fr}.win-dim{border-right:none;border-bottom:1px solid var(--border)}.win-a{border-right:none;border-bottom:1px solid var(--border)}}</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-in">
+  <a href="index.html" class="brand"><span>AI</span> Transparency Database</a>
+  <span class="nav-tag">COMPARE</span>
+</div></nav>
+<div class="bc">
+  <a href="index.html">Home</a><span class="bc-sep">/</span>
+  <span>Grok vs ChatGPT</span>
+</div>
+<main class="page">
+  <section class="hero">
+    <div class="hero-eyebrow">Side-by-side · Verified Jul 2026</div>
+    <h1>Grok vs ChatGPT: <em>What the pricing page won't show you</em></h1>
+    <p class="hero-sub">Real usage limits, hidden behaviors, and transparency scores — sourced from official docs and community reports. Not affiliated with either service.</p>
+    <div class="verdict-banner">
+      <div class="vc ">
+        <div class="vc-name">Grok</div>
+        <div class="vc-maker">xAI · $30/mo SuperGrok</div>
+        <div class="vc-pct red">22%</div>
+        <div class="vc-label">Transparency Score</div>
+        <div class="vc-hb"><strong style="color:var(--red)">6</strong> hidden behaviors · Limits change without notice — support emails contradict</div>
+      </div>
+      <div class="vs-badge">vs</div>
+      <div class="vc vc-winner">
+        <div class="vc-name">ChatGPT</div>
+        <div class="vc-maker">OpenAI · $20/mo</div>
+        <div class="vc-pct red">31%</div>
+        <div class="vc-label">Transparency Score</div>
+        <div class="vc-hb"><strong style="color:var(--red)">5</strong> hidden behaviors · No usage meter — limit discovered only on hit</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle">Head-to-Head</div>
+    <p class="ssub">Key dimensions compared — sourced from official docs, community reports, and third-party benchmarks.</p>
+    <table class="ctable">
+      <thead><tr>
+        <th>Dimension</th>
+        <th class="">Grok</th>
+        <th class="win">ChatGPT</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Price</td><td><strong>$30/mo SuperGrok</strong></td><td><strong>$20/mo</strong></td></tr>
+        <tr><td>Transparency</td>
+          <td class="lose-cell">22%</td>
+          <td class="win-cell">31%</td>
+        </tr>
+        <tr><td>Usage Limits</td><td>No published limits — soft cap ~1,000 prompts/day before throttle</td><td>Silent model downgrade on cap hit · cap tightening Apr 2026</td></tr>
+        <tr><td>Privacy</td><td>X.com platform data relationship to Grok training not clearly disclosed</td><td>Free tier trains on conversations by default — opt-out required</td></tr>
+        <tr><td>Hidden Behaviors</td>
+          <td class="lose-cell">6 documented</td>
+          <td class="win-cell">5 documented</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="sec">
+    <div class="stitle">Hidden Behaviors</div>
+    <p class="ssub">Documented behaviors not disclosed on either pricing page.</p>
+    <div class="hb-compare">
+      <div>
+        <div class="hbc-head" style="background:var(--red-dim);border-color:var(--red-border);color:var(--red)">Grok — 6 documented</div>
+        <div class="hbc-item">⬤ Video caps revised downward silently — April vs May 2026 support emails contradict</div>
+<div class="hbc-item">⬤ Failed and moderated generations count against your daily cap</div>
+<div class="hbc-item">⬤ Fair use policy intentionally vague — throttling by pattern, not just volume</div>
+<div class="hbc-item">⬤ Heavy tier $99 upsell displayed precisely when rate limit hits</div>
+<div class="hbc-item">⬤ Image + video share one combined daily pool — not separate quotas</div>
+<div class="hbc-item">⬤ Voice mode limit undisclosed — ~90 min/month, resets on billing date</div>
+      </div>
+      <div>
+        <div class="hbc-head" style="background:var(--red-dim);border-color:var(--red-border);color:var(--red)">ChatGPT — 5 documented</div>
+        <div class="hbc-item">⬤ No usage meter — you discover the cap only when it blocks you</div>
+<div class="hbc-item">⬤ Reported model downgrade on cap hit — no visual indicator</div>
+<div class="hbc-item">⬤ Burst penalty: rapid messaging can extend wait time significantly</div>
+<div class="hbc-item">⬤ Deep Research reportedly capped at ~10 runs/month on Plus</div>
+<div class="hbc-item">⬤ Free tier trains on conversations by default — opt-out required</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle">Who Wins Each Dimension</div>
+    <div class="win-grid">
+      <div class="win-row">
+        <div class="win-dim">Transparency</div>
+        <div class="win-a loser">22% transparency score</div>
+        <div class="win-b winner">31% transparency score</div>
+      </div>
+      <div class="win-row">
+        <div class="win-dim">Privacy</div>
+        <div class="win-a loser">X.com platform data relationship to Grok training not clearl...</div>
+        <div class="win-b loser">Free tier trains on conversations by default — opt-out requi...</div>
+      </div>
+      <div class="win-row">
+        <div class="win-dim">Hidden Behaviors</div>
+        <div class="win-a loser">6 documented issues</div>
+        <div class="win-b winner">5 documented issues</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle">Frequently Asked</div>
+    <details><summary>Which is more transparent, Grok or ChatGPT?</summary><div class="fansw">Grok scores 22% on our Transparency Index vs 31% for ChatGPT. ChatGPT discloses more of its real limits upfront — but neither is fully transparent.</div></details>
+    <details><summary>Does Grok or ChatGPT have more hidden behaviors?</summary><div class="fansw">Grok has 6 documented hidden behaviors; ChatGPT has 5. ChatGPT wins on this dimension — but check the full individual reports for sourced details.</div></details>
+    <details><summary>Which should I choose between Grok and ChatGPT?</summary><div class="fansw">If transparency matters to you, ChatGPT scores higher (31% vs 22%). Review the head-to-head table above for the dimension most relevant to your workflow.</div></details>
+  </section>
+
+  <section class="sec">
+    <div class="stitle">Related Comparisons</div>
+    <div class="related-list">
+      <a href="grok.html" class="related-row"><span class="related-name">Full Grok Report</span><span class="related-arrow">→</span></a>
+      <a href="chatgpt.html" class="related-row"><span class="related-name">Full ChatGPT Report</span><span class="related-arrow">→</span></a>
+      <a href="index.html" class="related-row"><span class="related-name">All Transparency Reports</span><span class="related-arrow">→</span></a>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="cta-box">
+      <div class="cta-title">Get alerted when policies change</div>
+      <p class="cta-sub">We track silent limit cuts before most users notice them.</p>
+      <div class="cta-form">
+        <input class="cta-inp" type="email" placeholder="your@email.com"/>
+        <button class="cta-btn" type="button" onclick="signup(this)">NOTIFY ME</button>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="fin">
+  <div class="f-brand"><span>AI</span> Transparency Database</div>
+  <div class="flinks"><a href="index.html">Home</a><a href="methodology.html">Methodology</a><a href="mailto:data@aitransparency.com">Contact</a></div>
+  <div class="flegal">Independent analysis based on public docs, community reports, and benchmarks. Not affiliated with any service listed. Estimates unless marked OFFICIAL. © 2026 AI Transparency Database</div>
+</div></footer>
+<a href="#" class="btt">↑</a>
+<script>
+const SCRIPT_URL="https://script.google.com/macros/s/AKfycbzSaizHz7RYJpBPIQqwLTueMktQHjG9isLGMQxaqetT_uGHNiDtjw4tymmEAm9t6r3S/exec";
+async function signup(btn){const form=btn.closest('.cta-form')||btn.parentElement;const inp=form.querySelector('input[type="email"]');if(!inp)return;const email=inp.value.trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){inp.style.borderColor='var(--red)';inp.focus();return;}btn.textContent='...';btn.disabled=true;let msg=btn.closest('.cta-box')&&btn.closest('.cta-box').querySelector('.cta-msg');if(!msg){msg=document.createElement('div');msg.className='cta-msg';msg.style.cssText="font-family:'DM Mono',monospace;font-size:11px;margin-top:10px;display:none";(btn.closest('.cta-box')||btn.parentElement).appendChild(msg);}try{await fetch(SCRIPT_URL,{method:'POST',body:JSON.stringify({email,source:location.pathname})});btn.textContent='✓ DONE';inp.disabled=true;msg.style.display='block';msg.style.color='var(--green)';msg.textContent="Subscribed! We'll alert you when policies change.";}catch(err){btn.textContent='NOTIFY ME';btn.disabled=false;msg.style.display='block';msg.style.color='var(--red)';msg.textContent='Something went wrong. Please try again.';}}
+</script>
+</body>
+</html>
