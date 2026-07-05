@@ -8,7 +8,7 @@
   <title>AI Transparency Database — Read the fine print. We already did.</title>
   <meta name="description" content="Hidden behaviors, real limits, and policy changes the pricing page won't tell you. 6 services audited, 25 hidden behaviors documented."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { color-scheme: light only; scroll-behavior: smooth; }
@@ -48,7 +48,7 @@
     .hero { max-width:860px; margin:0 auto; padding:64px 20px 52px; }
     .hero-eyebrow { font-family:'DM Mono',monospace; font-size:10px; font-weight:500; letter-spacing:1.4px; text-transform:uppercase; color:var(--muted); margin-bottom:18px; display:flex; align-items:center; gap:10px; }
     .eyebrow-dot { width:5px; height:5px; border-radius:50%; background:var(--green); display:inline-block; }
-    h1 { font-family:'Syne',sans-serif; font-size:clamp(36px,6vw,62px); font-weight:800; line-height:1.02; letter-spacing:-2px; margin-bottom:10px; }
+    h1 { font-family:'Playfair Display',serif; font-size:clamp(36px,6vw,62px); font-weight:800; line-height:1.02; letter-spacing:-2px; margin-bottom:10px; }
     .h1-line2 { color:var(--acid); display:block; }
     .hero-sub { font-size:17px; color:var(--sub); max-width:520px; line-height:1.6; margin-bottom:40px; font-weight:400; }
 
@@ -56,7 +56,7 @@
     .hero-metrics { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border-radius:var(--r-lg); overflow:hidden; border:1px solid var(--border); box-shadow:0 2px 16px rgba(0,0,0,.08); max-width:560px; }
     .hm-cell { background:var(--surf); padding:20px 22px; }
     .hm-label { font-family:'DM Mono',monospace; font-size:9px; font-weight:500; letter-spacing:1.4px; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
-    .hm-value { font-family:'Syne',sans-serif; font-size:34px; font-weight:800; line-height:1; letter-spacing:-1px; }
+    .hm-value { font-family:'Playfair Display',serif; font-size:34px; font-weight:800; line-height:1; letter-spacing:-1px; }
     .hm-value.red { color:var(--red); }
     .hm-value.green { color:var(--green); }
     .hm-value.blue { color:var(--acid); }
@@ -66,7 +66,7 @@
     .wrap { max-width:860px; margin:0 auto; padding:0 20px; }
     .sec { padding:48px 0; border-top:1px solid var(--border); }
     .sec-head { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:24px; flex-wrap:wrap; gap:8px; }
-    .stitle { font-family:'Syne',sans-serif; font-size:18px; font-weight:700; letter-spacing:-.4px; }
+    .stitle { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; letter-spacing:-.4px; }
     .sec-meta { font-family:'DM Mono',monospace; font-size:11px; color:var(--muted); }
 
     /* REPORT CARDS GRID */
@@ -74,7 +74,7 @@
     .rcard { background:var(--surf); border:1px solid var(--border); border-radius:var(--r-lg); padding:22px; text-decoration:none; color:inherit; display:flex; flex-direction:column; gap:14px; transition:border-color .15s, box-shadow .15s; box-shadow:0 1px 4px rgba(0,0,0,.05); }
     .rcard:hover { border-color:var(--border-bright); box-shadow:0 4px 16px rgba(0,0,0,.1); }
     .rcard-top { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
-    .rcard-name { font-family:'Syne',sans-serif; font-size:17px; font-weight:800; letter-spacing:-.3px; }
+    .rcard-name { font-family:'Playfair Display',serif; font-size:17px; font-weight:800; letter-spacing:-.3px; }
     .rcard-maker { font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); margin-top:2px; }
     .rcard-badge { font-family:'DM Mono',monospace; font-size:9px; font-weight:500; padding:3px 8px; border-radius:3px; letter-spacing:.8px; white-space:nowrap; flex-shrink:0; }
     .badge-red { background:var(--red-dim); color:var(--red); border:1px solid var(--red-border); }
@@ -83,7 +83,7 @@
 
     /* hidden behavior count pill */
     .rcard-hb { display:flex; align-items:center; gap:8px; }
-    .hb-num { font-family:'Syne',sans-serif; font-size:26px; font-weight:800; letter-spacing:-1px; }
+    .hb-num { font-family:'Playfair Display',serif; font-size:26px; font-weight:800; letter-spacing:-1px; }
     .hb-num.red { color:var(--red); }
     .hb-num.amber { color:var(--amber); }
     .hb-num.green { color:var(--green); }
@@ -100,7 +100,7 @@
     .what-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
     .what-cell { background:var(--surf); border:1px solid var(--border); border-radius:var(--r-lg); padding:20px; }
     .what-icon { font-size:20px; margin-bottom:10px; }
-    .what-title { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; margin-bottom:6px; letter-spacing:-.2px; }
+    .what-title { font-family:'Playfair Display',serif; font-size:14px; font-weight:700; margin-bottom:6px; letter-spacing:-.2px; }
     .what-desc { font-size:12px; color:var(--muted); line-height:1.6; }
 
     /* SOURCE LEGEND */
@@ -113,7 +113,7 @@
 
     /* CTA */
     .cta-box { background:var(--surf); border:1px solid var(--border); border-radius:var(--r-lg); padding:32px; display:grid; grid-template-columns:1fr auto; gap:24px; align-items:center; }
-    .cta-title { font-family:'Syne',sans-serif; font-size:18px; font-weight:800; margin-bottom:5px; letter-spacing:-.3px; }
+    .cta-title { font-family:'Playfair Display',serif; font-size:18px; font-weight:800; margin-bottom:5px; letter-spacing:-.3px; }
     .cta-sub { font-size:13px; color:var(--muted); }
     .cta-form { display:flex; gap:8px; }
     .cta-inp { background:var(--surf2); border:1px solid var(--border); color:var(--text); padding:10px 14px; border-radius:var(--r); font-size:12px; width:210px; outline:none; font-family:'DM Mono',monospace; transition:border-color .15s; }
