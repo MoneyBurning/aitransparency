@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en" style="color-scheme: light only;">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="color-scheme" content="light only"/>
+  <meta name="theme-color" content="#F8F8F5"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>GitHub Copilot Transparency Report — AI Transparency Database</title>
+  <meta name="description" content="Everything the GitHub Copilot pricing page doesn't tell you. Hidden rate limits, token counting bug, Opus model removal, 44-hour weekly blocks, and agentic workflow costs — all documented."/>
+  <meta name="keywords" content="github copilot hidden limits, github copilot rate limit 2026, github copilot opus removed, github copilot pro plus, copilot weekly limit"/>
+  <link rel="canonical" href="https://aitransparency.pages.dev/github-copilot.html"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does GitHub Copilot have hidden rate limits?","acceptedAnswer":{"@type":"Answer","text":"Yes. GitHub does not publish exact rate limits — they vary by account type and change over time. Individual accounts reportedly face 50–80 completions per hour before throttling. These limits are not disclosed on the pricing page."}},{"@type":"Question","name":"Was there a token counting bug in GitHub Copilot?","acceptedAnswer":{"@type":"Answer","text":"Yes. In March 2026, GitHub discovered its rate-limiting system had been undercounting tokens from newer models like Claude Opus 4.6 and GPT-5.4. This caused the system to undercharge users. GitHub responded by tightening limits significantly, with some users reporting 44-hour weekly rate limit blocks."}},{"@type":"Question","name":"Can I still get Claude Opus models in GitHub Copilot Pro?","acceptedAnswer":{"@type":"Answer","text":"No. As of May 2026, Opus-family models were removed from the $10/month Pro tier. Claude Opus 4.7 is now only available in Pro+ ($39/month) — a 290% price increase for Opus access."}},{"@type":"Question","name":"Are new Copilot subscriptions available?","acceptedAnswer":{"@type":"Answer","text":"No. As of late April 2026, GitHub paused new sign-ups for Copilot Pro, Pro+, and Student plans with no announced end date."}}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { color-scheme: light only; scroll-behavior: smooth; }
+    :root {
+      --bg: #F8F8F5; --surf: #FFFFFF; --surf2: #F1F1EC; --surf3: #E8E8E2;
+      --border: #D8D8D0; --border-bright: #B8B8AE;
+      --text: #111118; --sub: #3A3A48; --muted: #6B6B78;
+      --acid: #1A6EFF; --acid-dim: rgba(26,110,255,.08); --acid-border: rgba(26,110,255,.22);
+      --red: #C8000A; --red-dim: rgba(200,0,10,.07); --red-border: rgba(200,0,10,.22);
+      --amber: #A05500; --amber-dim: rgba(160,85,0,.08); --amber-border: rgba(160,85,0,.22);
+      --green: #0A7A3A; --green-dim: rgba(10,122,58,.07); --green-border: rgba(10,122,58,.22);
+      --blue: #1A6EFF; --blue-dim: rgba(26,110,255,.07); --blue-border: rgba(26,110,255,.22);
+      --r: 8px; --r-lg: 14px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#F8F8F5!important;--surf:#FFFFFF!important;--surf2:#F1F1EC!important;--surf3:#E8E8E2!important;--border:#D8D8D0!important;--border-bright:#B8B8AE!important;--text:#111118!important;--sub:#3A3A48!important;--muted:#6B6B78!important;--acid:#1A6EFF!important;--acid-dim:rgba(26,110,255,.08)!important;--acid-border:rgba(26,110,255,.22)!important;--red:#C8000A!important;--red-dim:rgba(200,0,10,.07)!important;--red-border:rgba(200,0,10,.22)!important;--amber:#A05500!important;--amber-dim:rgba(160,85,0,.08)!important;--amber-border:rgba(160,85,0,.22)!important;--green:#0A7A3A!important;--green-dim:rgba(10,122,58,.07)!important;--green-border:rgba(10,122,58,.22)!important;--blue:#1A6EFF!important;--blue-dim:rgba(26,110,255,.07)!important;--blue-border:rgba(26,110,255,.22)!important; }
+      body { background: #F8F8F5!important; color: #111118!important; }
+    }
+    body { background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased; }
+    a { color:var(--acid);text-decoration:none; }
+    .nav { position:sticky;top:0;z-index:100;background:rgba(248,248,245,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border); }
+    .nav-in { max-width:800px;margin:0 auto;padding:0 20px;height:54px;display:flex;align-items:center;justify-content:space-between; }
+    .brand { font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--sub);text-decoration:none;letter-spacing:.5px; }
+    .brand span { color:var(--acid); }
+    .nav-tag { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--muted);letter-spacing:1px;text-transform:uppercase;border:1px solid var(--border);padding:4px 10px;border-radius:99px; }
+    .bc { max-width:800px;margin:0 auto;padding:12px 20px;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:8px; }
+    .bc a { color:var(--muted); }
+    .bc-sep { color:var(--border-bright); }
+    .page { max-width:800px;margin:0 auto;padding:0 20px 100px; }
+    .hero { padding:48px 0 40px; }
+    .hero-eyebrow { display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap; }
+    .tag-cat { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:4px 10px;border-radius:3px; }
+    .tag-verified { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--acid);border:1px solid var(--acid-border);padding:4px 10px;border-radius:3px;background:var(--acid-dim); }
+    .hero-date { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.5px; }
+    h1 { font-family:'Playfair Display',serif;font-size:clamp(30px,5.5vw,50px);font-weight:800;line-height:1.05;letter-spacing:-1.5px;margin-bottom:14px;color:var(--text); }
+    h1 em { font-style:normal;color:var(--acid); }
+    .hero-sub { font-size:16px;color:var(--sub);font-weight:400;line-height:1.6;max-width:560px;margin-bottom:32px; }
+    .hero-metrics { display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08); }
+    .hm-cell { background:var(--surf);padding:20px 18px; }
+    .hm-label { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin-bottom:8px; }
+    .hm-value { font-family:'Playfair Display',serif;font-size:32px;font-weight:800;line-height:1;letter-spacing:-1px; }
+    .hm-value.red { color:var(--red); }
+    .hm-value.amber { color:var(--amber); }
+    .hm-desc { font-size:11px;color:var(--muted);margin-top:5px;line-height:1.4; }
+    .sec { padding:36px 0;border-top:1px solid var(--border); }
+    .sec-header { display:flex;align-items:baseline;gap:12px;margin-bottom:6px; }
+    .stitle { font-family:'Playfair Display',serif;font-size:18px;font-weight:700;letter-spacing:-.4px; }
+    .sec-count { font-family:'DM Mono',monospace;font-size:11px;color:var(--muted); }
+    .ssub { font-size:13px;color:var(--muted);margin-bottom:22px;line-height:1.5; }
+    .hb-list { display:flex;flex-direction:column;gap:2px; }
+    .hb-card { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:border-color .15s;box-shadow:0 1px 4px rgba(0,0,0,.06); }
+    .hb-card:hover { border-color:var(--border-bright); }
+    .hb-card.critical { border-color:rgba(200,0,10,.2); }
+    .hb-card.medium { border-color:rgba(160,85,0,.15); }
+    .hb-card.low { border-color:rgba(26,110,255,.1); }
+    .hb-header { padding:16px 20px 14px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;cursor:pointer; }
+    .hb-left { flex:1; }
+    .hb-meta { display:flex;align-items:center;gap:8px;margin-bottom:7px;flex-wrap:wrap; }
+    .hb-index { font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);font-weight:500; }
+    .impact-pill { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;padding:3px 8px;border-radius:3px; }
+    .impact-pill.critical { background:var(--red-dim);color:var(--red);border:1px solid var(--red-border); }
+    .impact-pill.medium { background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-border); }
+    .impact-pill.low { background:var(--acid-dim);color:var(--acid);border:1px solid var(--acid-border); }
+    .hb-title { font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--text);line-height:1.3;letter-spacing:-.2px; }
+    .hb-chevron { color:var(--muted);font-size:14px;flex-shrink:0;margin-top:2px;transition:transform .2s; }
+    .hb-card.open .hb-chevron { transform:rotate(180deg); }
+    .hb-body { display:none;padding:0 20px 20px;border-top:1px solid var(--border); }
+    .hb-card.open .hb-body { display:block; }
+    .hb-body-inner { padding-top:16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px; }
+    .hb-col-label { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px; }
+    .hb-col-label.official { color:var(--blue); }
+    .hb-col-label.observed { color:var(--green); }
+    .hb-col-label.estimated { color:var(--amber); }
+    .hb-col-content { background:var(--surf2);border-radius:var(--r);padding:12px;font-size:12px;line-height:1.55;color:var(--sub); }
+    .hb-col-content strong { color:var(--text);font-weight:600;display:block;margin-bottom:3px;font-size:12px; }
+    .hb-footer { margin-top:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:12px;border-top:1px solid var(--border); }
+    .hb-verified { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted); }
+    .hb-verified span { color:var(--acid); }
+    .src-badge { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;padding:3px 7px;border-radius:3px;letter-spacing:.5px; }
+    .src-official { background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-border); }
+    .src-observed { background:var(--green-dim);color:var(--green);border:1px solid var(--green-border); }
+    .src-estimated { background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-border); }
+    .rl-box { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07); }
+    .rl-head-bar { background:var(--surf2);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border); }
+    .rl-head-name { font-family:'Playfair Display',serif;font-size:14px;font-weight:700; }
+    .rl-head-price { font-family:'DM Mono',monospace;font-size:12px;color:var(--muted); }
+    .rl-row { display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:start;padding:14px 20px;border-bottom:1px solid var(--border); }
+    .rl-row:last-child { border-bottom:none; }
+    .rl-key { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;padding-top:2px; }
+    .rl-val { font-size:13px;color:var(--text);font-weight:500;line-height:1.5; }
+    .rl-val em { font-style:normal;color:var(--red);font-weight:600; }
+    .rl-alert { background:var(--red-dim);border:1px solid var(--red-border);border-radius:var(--r);padding:12px 14px;margin:0 20px 16px; }
+    .rl-alert-label { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1px;color:var(--red);text-transform:uppercase;margin-bottom:5px; }
+    .rl-alert-text { font-size:12px;color:var(--red);line-height:1.55;font-weight:500; }
+    .tscore-list { display:flex;flex-direction:column;gap:16px; }
+    .tscore-top { display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px;gap:12px; }
+    .tscore-label { font-size:13px;font-weight:600;color:var(--text); }
+    .tscore-meta { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted); }
+    .tscore-detail { font-size:12px;color:var(--muted);margin-bottom:7px;line-height:1.5; }
+    .tscore-track { height:5px;background:var(--surf3);border-radius:99px;overflow:hidden;border:1px solid var(--border); }
+    .tscore-fill { height:100%;border-radius:99px;transition:width 1.2s cubic-bezier(.4,0,.2,1); }
+    .tscore-fill.red { background:var(--red); }
+    .tscore-fill.amber { background:var(--amber); }
+    .tscore-fill.green { background:var(--green); }
+    .tscore-src { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:5px; }
+    .tscore-summary { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px 20px;margin-top:20px;display:flex;align-items:center;justify-content:space-between;gap:16px; }
+    .tscore-summary-label { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase; }
+    .tscore-pct { font-family:'Playfair Display',serif;font-size:36px;font-weight:800;letter-spacing:-1px;color:var(--red); }
+    details { border-bottom:1px solid var(--border); }
+    details:first-of-type { border-top:1px solid var(--border); }
+    summary { font-family:'Playfair Display',serif;font-size:14px;font-weight:600;padding:16px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text); }
+    summary::-webkit-details-marker { display:none; }
+    summary::after { content:'+';font-size:18px;color:var(--muted);flex-shrink:0;margin-left:12px;font-family:'DM Mono',monospace; }
+    details[open] summary::after { content:'−'; }
+    .fansw { font-size:13.5px;color:var(--sub);line-height:1.65;padding-bottom:16px; }
+    .compare-list { display:flex;flex-direction:column;gap:2px; }
+    .compare-row { display:flex;align-items:center;justify-content:space-between;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;text-decoration:none;color:inherit;transition:border-color .15s; }
+    .compare-row:hover { border-color:var(--border-bright); }
+    .compare-row.current { border-color:var(--acid-border);background:var(--acid-dim); }
+    .compare-name { font-family:'Playfair Display',serif;font-weight:700;font-size:14px; }
+    .compare-meta { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:2px; }
+    .compare-badge { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);border:1px solid var(--border);padding:4px 10px;border-radius:3px; }
+    .compare-row.current .compare-badge { color:var(--acid);border-color:var(--acid-border); }
+    .cta-box { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px; }
+    .cta-title { font-family:'Playfair Display',serif;font-size:18px;font-weight:800;margin-bottom:6px;letter-spacing:-.3px; }
+    .cta-sub { font-size:13px;color:var(--muted);margin-bottom:18px; }
+    .cta-form { display:flex;gap:8px;flex-wrap:wrap; }
+    .cta-inp { background:var(--surf2);border:1px solid var(--border);color:var(--text);padding:11px 16px;border-radius:var(--r);font-size:13px;flex:1;min-width:200px;outline:none;font-family:'DM Mono',monospace;transition:border-color .15s; }
+    .cta-inp:focus { border-color:var(--acid-border); }
+    .cta-inp::placeholder { color:var(--muted); }
+    .cta-btn { background:var(--acid);color:#fff;border:none;padding:11px 22px;border-radius:var(--r);font-weight:700;font-size:12px;cursor:pointer;font-family:'DM Mono',monospace;letter-spacing:.5px;white-space:nowrap;transition:opacity .15s; }
+    .cta-btn:hover { opacity:.88; }
+    footer { border-top:1px solid var(--border);padding:28px 20px; }
+    .fin { max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:10px; }
+    .f-brand { font-family:'DM Mono',monospace;font-size:12px;color:var(--muted); }
+    .f-brand span { color:var(--acid); }
+    .flinks { display:flex;gap:16px;flex-wrap:wrap; }
+    .flinks a { font-family:'DM Mono',monospace;font-size:11px;color:var(--muted); }
+    .flegal { font-size:11px;color:var(--muted);line-height:1.6;opacity:.7; }
+    .visit-btn { display:inline-flex;align-items:center;gap:8px;background:var(--surf2);color:var(--text);border:1px solid var(--border);font-family:'DM Mono',monospace;font-weight:500;font-size:12px;padding:11px 20px;border-radius:var(--r);letter-spacing:.5px;transition:border-color .15s; }
+    .visit-btn:hover { border-color:var(--border-bright);color:var(--text); }
+    .visit-arrow { color:var(--acid); }
+    .meth-link { display:flex;align-items:center;justify-content:space-between;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;text-decoration:none;color:var(--sub);transition:border-color .15s; }
+    .meth-link:hover { border-color:var(--border-bright);color:var(--text); }
+    .meth-link-label { font-size:13px;font-weight:500; }
+    .meth-link-arrow { font-family:'DM Mono',monospace;color:var(--acid); }
+    .btt { position:fixed;bottom:22px;right:22px;background:var(--surf);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;text-decoration:none;font-family:'DM Mono',monospace;box-shadow:0 2px 8px rgba(0,0,0,.1); }
+    .btt:hover { border-color:var(--acid-border);color:var(--acid); }
+    @media (max-width:600px) { .hero-metrics { grid-template-columns:1fr 1fr; } .hb-body-inner { grid-template-columns:1fr; } .rl-row { grid-template-columns:1fr;gap:4px; } .hero-metrics .hm-cell:last-child { grid-column:span 2; } }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand"><span>AI</span> Transparency Database</a>
+    <span class="nav-tag">BETA</span>
+  </div>
+</nav>
+<div class="bc">
+  <a href="index.html">Home</a>
+  <span class="bc-sep">/</span>
+  <span>GitHub Copilot</span>
+</div>
+
+<main class="page">
+  <section class="hero">
+    <div class="hero-eyebrow">
+      <span class="tag-cat">AI Coding · Microsoft / GitHub</span>
+      <span class="tag-verified">✓ Verified Jul 2026</span>
+      <span class="hero-date">Last audited: 2026-07-05</span>
+    </div>
+    <h1>GitHub Copilot:<br><em>What the pricing page doesn't tell you</em></h1>
+    <p class="hero-sub">Based on public docs, The Register reporting, GitHub blog announcements, and community reports — not legal advice or official statements.</p>
+    <div class="hero-metrics">
+      <div class="hm-cell">
+        <div class="hm-label">Hidden Behaviors</div>
+        <div class="hm-value red" id="counter-hidden">0</div>
+        <div class="hm-desc">documented &amp; verified</div>
+      </div>
+      <div class="hm-cell">
+        <div class="hm-label">Transparency</div>
+        <div class="hm-value red">27%</div>
+        <div class="hm-desc">of key policies disclosed upfront</div>
+      </div>
+      <div class="hm-cell">
+        <div class="hm-label">Last Verified</div>
+        <div class="hm-value" style="font-size:20px;padding-top:6px;color:var(--acid)">Jul 2026</div>
+        <div class="hm-desc">$10/mo Pro · $39/mo Pro+</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-header">
+      <div class="stitle">Hidden Behaviors</div>
+      <div class="sec-count">6 documented</div>
+    </div>
+    <p class="ssub">Behaviors confirmed through GitHub's official blog, The Register reporting, community discussions, and developer testing — not all disclosed on the pricing page.</p>
+    <div class="hb-list">
+
+      <div class="hb-card critical" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">01</span><span class="impact-pill critical">⬤ Critical Impact</span></div>
+            <div class="hb-title">Token counting bug caused GitHub to silently under-bill — then tighten limits retroactively</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Confirmed by GitHub blog (May 2026)</strong>GitHub's rate-limiting system had a bug that undercounted tokens from newer models like Claude Opus 4.6 and GPT-5.4. These models consumed significantly more infrastructure per request than the system registered.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>44-hour "weekly rate limits" reported</strong>Users report being locked out for 44 hours — what GitHub calls a "weekly rate limit." Previously, limits either didn't exist or weren't visible. The tightening was implemented with minimal user notice.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Limits tightened by GitHub to fix its own pricing model</strong>GitHub's public statement admits the original plan structure was not built to handle agentic workflows — users who built workflows under old limits face reduced access with no grandfather clause.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jul 2026</span> — github.blog + theregister.com</div>
+            <span class="src-badge src-official">OFFICIAL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-card critical" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">02</span><span class="impact-pill critical">⬤ Critical Impact</span></div>
+            <div class="hb-title">Opus models removed from Pro tier — 290% price increase for Opus access</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Announced May 2026 as "model change"</strong>Claude Opus-family models were removed from the $10/month Pro tier. GitHub framed this as a "model change" rather than a service reduction. Claude Opus 4.7 now requires Pro+ ($39/month).</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>290% price jump for Opus workflows</strong>Going from Pro ($10/mo) to Pro+ ($39/mo) is a 290% price increase. Developers who built complex reasoning, long-context, or multi-step coding chains around Opus had workflows break without equivalent alternative on Pro.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Inference cost driven</strong>GitHub explicitly stated that running Opus at scale is expensive and operational costs climbed significantly in early 2026, making restriction to the highest tier predictable from a cost perspective.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jul 2026</span> — github.blog/news-insights/company-news</div>
+            <span class="src-badge src-official">OFFICIAL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-card critical" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">03</span><span class="impact-pill critical">⬤ Critical Impact</span></div>
+            <div class="hb-title">New sign-ups paused — Pro, Pro+, and Student plans closed to new users</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Announced by GitHub (late April 2026)</strong>GitHub paused new sign-ups for Copilot Pro, Pro+, and Student plans. No end date was announced. The plan pages remain visible but non-purchasable.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>No workaround offered</strong>Users who tried to sign up after the pause hit a wall with no timeline. GitHub cited capacity concerns for existing customers as the justification for blocking new sign-ups.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Free trial also suspended due to abuse</strong>GitHub simultaneously suspended all Copilot Pro free trials, citing abuse. This removed the primary evaluation mechanism for new developers considering the product.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jul 2026</span> — techsifted.com + github.blog</div>
+            <span class="src-badge src-official">OFFICIAL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-card critical" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">04</span><span class="impact-pill critical">⬤ Critical Impact</span></div>
+            <div class="hb-title">Rate limits never published — "black box" throttling with no fuel gauge (until May 2026)</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>GitHub admits limits exist but won't quantify them</strong>GitHub's docs confirm rate limits apply but state they "vary by account type and change over time." No exact numbers are published. GitHub's rationale: hard numbers encourage gaming.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>~50–80 completions/hour for individuals (estimated)</strong>Community testing suggests individual Pro accounts face soft limits around 50–80 completions per hour. Users describe limits as "obscenely long" when encountered. Described as similar to "energy systems in mobile games."</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Visibility now added in VS Code — but limits remain opaque</strong>May 2026 update added rate limit counters in VS Code and CLI. However, the actual thresholds remain undisclosed — users can now watch the counter but still don't know the ceiling.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jul 2026</span> — docs.github.com/en/copilot/concepts/usage-limits</div>
+            <span class="src-badge src-official">OFFICIAL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-card medium" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">05</span><span class="impact-pill medium">⬤ Medium Impact</span></div>
+            <div class="hb-title">Agentic workflows consume far more tokens than documented — one session can exceed plan cost</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>GitHub acknowledged in May 2026 blog</strong>GitHub stated it's now common for "a handful of requests to incur costs that exceed the plan price" — acknowledging the original pricing structure wasn't designed for agentic use.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>Fleet mode and subagents drain limits fastest</strong>GitHub's own guidance: tools like /fleet result in higher token consumption and "should be used sparingly." Long-running parallelized sessions are the primary limit-exhausting workflow pattern.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Pro+ offers "more than 5x the limits of Pro"</strong>GitHub states Pro+ provides more than 5x the usage limits of Pro. No absolute numbers given — the multiplier is the only metric disclosed.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jul 2026</span> — github.blog/news-insights (May 2026)</div>
+            <span class="src-badge src-official">OFFICIAL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-card medium" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">06</span><span class="impact-pill medium">⬤ Medium Impact</span></div>
+            <div class="hb-title">Free plan monthly reset bug — quota pushes forward a month instead of resetting</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Known bug affecting free tier users since Oct 2025</strong>GitHub's community forum documents a recurring bug where free plan reset dates push forward by a month instead of actually resetting the quota. Users wait the reset period but limits don't clear.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>Ongoing as of 2026 — no fix announced</strong>Community members report reset dates continuing to push forward with no resolution from GitHub support. Affected users effectively lose their monthly quota for extended periods.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Workaround: use multiple accounts</strong>Community-suggested workaround is using multiple GitHub accounts — which is also against GitHub's terms of service for commercial use. No official fix has been announced.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jul 2026</span> — github.com/orgs/community/discussions/149578</div>
+            <span class="src-badge src-observed">OBSERVED</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:16px">Real Limits — Copilot Pro</div>
+    <div class="rl-box">
+      <div class="rl-head-bar">
+        <div class="rl-head-name">GitHub Copilot Pro</div>
+        <div class="rl-head-price">$10/mo · new sign-ups paused as of Apr 2026</div>
+      </div>
+      <div class="rl-alert">
+        <div class="rl-alert-label">⚠ Shrinkflation Alert</div>
+        <div class="rl-alert-text">Opus models removed from Pro in May 2026. Pro+ required for Claude Opus 4.7 access — a 290% price increase framed as a "model change," not a price increase.</div>
+      </div>
+      <div class="rl-row"><div class="rl-key">Completions</div><div class="rl-val"><em>Unpublished hourly limit</em> — estimated 50–80/hr for individual accounts</div></div>
+      <div class="rl-row"><div class="rl-key">Weekly Limit</div><div class="rl-val"><em>Up to 44-hour blocks</em> when weekly rate limit triggered (post-May 2026)</div></div>
+      <div class="rl-row"><div class="rl-key">Model Access</div><div class="rl-val">Haiku 4.5, GPT-5, GPT-5 mini — <em>Opus removed</em> as of May 2026</div></div>
+      <div class="rl-row"><div class="rl-key">Pro+ Models</div><div class="rl-val">Claude Opus 4.7 ($39/mo) — <em>Opus 4.5 and 4.6 also being removed from Pro+</em></div></div>
+      <div class="rl-row"><div class="rl-key">Agentic Usage</div><div class="rl-val">Single session can exceed plan cost — no cap or warning before limit hit</div></div>
+      <div class="rl-row"><div class="rl-key">New Sign-ups</div><div class="rl-val"><em>Paused since late April 2026</em> — no end date announced</div></div>
+      <div class="rl-row"><div class="rl-key">Free Trial</div><div class="rl-val"><em>Suspended indefinitely</em> — cited abuse as reason</div></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:16px">Transparency Score</div>
+    <div class="tscore-list">
+      <div class="tscore-row">
+        <div class="tscore-top"><span class="tscore-label">Usage Limits</span><span class="tscore-meta">8 / 35 pts</span></div>
+        <div class="tscore-detail">Rate limits are explicitly acknowledged but never quantified. Token counting bug caused retroactive tightening without user notice. Agentic cost amplification not disclosed.</div>
+        <div class="tscore-track"><div class="tscore-fill red" id="b1" style="width:0%"></div></div>
+        <div class="tscore-src">Source: docs.github.com/en/copilot/concepts/usage-limits</div>
+      </div>
+      <div class="tscore-row">
+        <div class="tscore-top"><span class="tscore-label">Privacy & Data</span><span class="tscore-meta">8 / 20 pts</span></div>
+        <div class="tscore-detail">Code snippet data handling is documented in GitHub's privacy statement. Context window data sent with each request is less clearly disclosed.</div>
+        <div class="tscore-track"><div class="tscore-fill amber" id="b2" style="width:0%"></div></div>
+        <div class="tscore-src">Source: github.com privacy statement</div>
+      </div>
+      <div class="tscore-row">
+        <div class="tscore-top"><span class="tscore-label">Throttling & Speed</span><span class="tscore-meta">5 / 20 pts</span></div>
+        <div class="tscore-detail">Throttling was completely opaque until May 2026, when limit counters appeared in VS Code. Exact limits still undisclosed. 44-hour blocks are not explained in pricing documentation.</div>
+        <div class="tscore-track"><div class="tscore-fill red" id="b3" style="width:0%"></div></div>
+        <div class="tscore-src">Source: techsifted.com + theregister.com April 2026</div>
+      </div>
+      <div class="tscore-row">
+        <div class="tscore-top"><span class="tscore-label">Billing Clarity</span><span class="tscore-meta">4 / 15 pts</span></div>
+        <div class="tscore-detail">Opus removal framed as "model change" — not a price increase, despite requiring a 290% plan upgrade. Refund window offered (before May 20, 2026) but poorly communicated to affected users.</div>
+        <div class="tscore-track"><div class="tscore-fill red" id="b4" style="width:0%"></div></div>
+        <div class="tscore-src">Source: github.blog/news-insights/company-news</div>
+      </div>
+      <div class="tscore-row">
+        <div class="tscore-top"><span class="tscore-label">Policy Stability</span><span class="tscore-meta">2 / 10 pts</span></div>
+        <div class="tscore-detail">Multiple simultaneous changes in May 2026: sign-up pause, model removal, limit tightening, trial suspension. Lowest stability score in this database.</div>
+        <div class="tscore-track"><div class="tscore-fill red" id="b5" style="width:0%"></div></div>
+        <div class="tscore-src">Source: github.blog + theregister.com April/May 2026</div>
+      </div>
+    </div>
+    <div class="tscore-summary">
+      <div>
+        <div class="tscore-summary-label">Overall Transparency Score</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">2026's most policy-volatile AI coding tool. Retroactive tightening and opaque limits define this audit period.</div>
+      </div>
+      <div class="tscore-pct">27%</div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:12px">Other Services</div>
+    <div class="compare-list">
+      <div class="compare-row current"><div><div class="compare-name">GitHub Copilot</div><div class="compare-meta">Microsoft · AI Coding · $10–39/mo</div></div><div class="compare-badge">viewing now</div></div>
+      <a href="cursor.html" class="compare-row"><div><div class="compare-name">Cursor</div><div class="compare-meta">Anysphere · AI Coding · $20/mo</div></div><div class="compare-badge">view report →</div></a>
+      <a href="claude.html" class="compare-row"><div><div class="compare-name">Claude</div><div class="compare-meta">Anthropic · AI Chat · $20/mo</div></div><div class="compare-badge">view report →</div></a>
+      <a href="chatgpt.html" class="compare-row"><div><div class="compare-name">ChatGPT</div><div class="compare-meta">OpenAI · AI Chat · $20/mo</div></div><div class="compare-badge">view report →</div></a>
+    </div>
+  </section>
+
+  <section class="sec"><a href="https://github.com/features/copilot" target="_blank" rel="noopener" class="visit-btn">Visit GitHub Copilot <span class="visit-arrow">→</span></a></section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:18px">Frequently Asked</div>
+    <details><summary>What caused the GitHub Copilot rate limit crisis in 2026?</summary><div class="fansw">A token counting bug discovered in March 2026 had been undercounting usage from newer models like Claude Opus 4.6 and GPT-5.4. GitHub responded by significantly tightening usage limits in May 2026, with some users reporting 44-hour "weekly rate limit" blocks.</div></details>
+    <details><summary>Can I still use Claude Opus models in GitHub Copilot?</summary><div class="fansw">Only on Pro+ ($39/month). Opus-family models were removed from the $10/month Pro tier in May 2026. GitHub framed this as a "model change" but for users who relied on Opus, it represents a 290% price increase for equivalent access.</div></details>
+    <details><summary>Can I sign up for GitHub Copilot right now?</summary><div class="fansw">As of the date of this audit, new sign-ups for Copilot Pro, Pro+, and Student plans remain paused. No end date has been announced. Free trials were also suspended.</div></details>
+    <details><summary>How do I know when I'm close to hitting Copilot's rate limits?</summary><div class="fansw">Since May 2026, rate limit counters are visible in VS Code and the Copilot CLI. However, GitHub still does not publish the actual thresholds — you can see the counter but not the ceiling it's counting toward.</div></details>
+  </section>
+
+  <section class="sec">
+    <div class="cta-box">
+      <div class="cta-title">Get alerted when policies change</div>
+      <p class="cta-sub">We track silent limit cuts before most users notice them.</p>
+      <div class="cta-form">
+        <input class="cta-inp" type="email" placeholder="your@email.com"/>
+        <button class="cta-btn" type="button" onclick="signup(this)">NOTIFY ME</button>
+      </div>
+    </div>
+  </section>
+  <section class="sec"><a href="methodology.html" class="meth-link"><span class="meth-link-label">How we audit — full methodology and source classification</span><span class="meth-link-arrow">→</span></a></section>
+</main>
+
+<footer>
+  <div class="fin">
+    <div class="f-brand"><span>AI</span> Transparency Database</div>
+    <div class="flinks"><a href="index.html">Home</a><a href="methodology.html">Methodology</a><a href="mailto:data@aitransparency.com">Contact</a></div>
+    <div class="flegal">Analysis based on public documentation, The Register reporting, GitHub blog announcements, and community reports. Figures are estimates unless marked OFFICIAL. Not affiliated with or endorsed by GitHub or Microsoft. No affiliate links. © 2026 AI Transparency Database</div>
+  </div>
+</footer>
+<a href="#" class="btt">↑</a>
+<script>
+  function toggleCard(card) { card.classList.toggle('open'); }
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzSaizHz7RYJpBPIQqwLTueMktQHjG9isLGMQxaqetT_uGHNiDtjw4tymmEAm9t6r3S/exec";
+  async function signup(btn){const form=btn.closest('.cta-form')||btn.parentElement;const inp=form.querySelector('input[type="email"]');if(!inp)return;const email=inp.value.trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){inp.style.borderColor='var(--red)';inp.focus();return;}btn.textContent='...';btn.disabled=true;let msg=btn.closest('.cta-box')&&btn.closest('.cta-box').querySelector('.cta-msg');if(!msg){msg=document.createElement('div');msg.className='cta-msg';msg.style.cssText="font-family:'DM Mono',monospace;font-size:11px;margin-top:10px;display:none";(btn.closest('.cta-box')||btn.parentElement).appendChild(msg);}try{await fetch(SCRIPT_URL,{method:'POST',body:JSON.stringify({email,source:location.pathname})});btn.textContent='✓ DONE';inp.disabled=true;msg.style.display='block';msg.style.color='var(--green)';msg.textContent="Subscribed! We'll alert you when policies change.";}catch(err){btn.textContent='NOTIFY ME';btn.disabled=false;msg.style.display='block';msg.style.color='var(--red)';msg.textContent='Something went wrong. Please try again.';}}
+  setTimeout(() => {
+    document.getElementById('b1').style.width = '23%';
+    document.getElementById('b2').style.width = '40%';
+    document.getElementById('b3').style.width = '25%';
+    document.getElementById('b4').style.width = '27%';
+    document.getElementById('b5').style.width = '20%';
+    let c=0,el=document.getElementById('counter-hidden'),t=setInterval(()=>{if(c>=6){clearInterval(t);return;}el.textContent=++c;},200);
+  }, 200);
+</script>
+</body>
+</html>
