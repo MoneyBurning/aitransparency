@@ -1,0 +1,47 @@
+# AI Transparency Database
+# https://aitransparency.pages.dev
+# Contact: data@aitransparency.com
+
+## About
+AI Transparency Database is an independent audit project documenting hidden usage limits, undisclosed policy changes, and behaviors that AI subscription services don't disclose on their pricing pages. All audits are free, source-cited, and affiliate-free.
+
+## What We Cover
+We audit major AI subscription services including Claude, ChatGPT, Gemini, Cursor, Perplexity, Canva, Midjourney, Notion AI, GitHub Copilot, and Grok. Each audit documents:
+- Hidden usage limits not disclosed on pricing pages
+- Silent shrinkflation (same price, fewer features)
+- Transparency scores (0-100%) across 5 dimensions
+- Policy change timeline with dated sources
+
+## Key Findings (July 2026)
+- Grok (xAI): 22% transparency — limits change without notice, failed generations count against quota
+- GitHub Copilot: 27% — token counting bug caused retroactive limit tightening, Opus models removed from $10 tier
+- Midjourney: 29% — GPU hours expire with zero rollover, "unlimited" Relax Mode throttled at 500+/day
+- ChatGPT: 31% — no usage meter, silent model downgrade on cap hit
+- Notion AI: 38% — 20 AI responses lifetime (not per month) on Free/Plus
+- Cursor: 41% — overage billing ON by default, 40-60% request reduction since 2025
+- Perplexity: 44% — Deep Research cut from 500+/day to 20/month (~99% reduction)
+- Claude: 52% — dual cap system (5h + weekly), usage bars visible but limits not published
+- Canva: 71% — most transparent service in database
+
+## Pages
+- / — Homepage with all service cards and comparison links
+- /claude.html — Claude transparency report
+- /chatgpt.html — ChatGPT transparency report
+- /gemini.html — Gemini transparency report
+- /cursor.html — Cursor transparency report
+- /perplexity.html — Perplexity transparency report
+- /canva.html — Canva transparency report
+- /midjourney.html — Midjourney transparency report
+- /notion.html — Notion AI transparency report
+- /github-copilot.html — GitHub Copilot transparency report
+- /grok.html — Grok (xAI) transparency report
+- /methodology.html — Full audit methodology and scoring formula
+- /about.html — About this project
+
+## Crawling
+This site welcomes crawling and citation by AI assistants and search engines. All content is freely available. We ask that citations include the source URL and note that figures marked ESTIMATED are community-sourced and not independently verified.
+
+## Source Classification
+- OFFICIAL: Sourced from company's own published documentation
+- OBSERVED: Community reports or third-party benchmarks
+- ESTIMATED: Inferred figures, always labeled as unverified
