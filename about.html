@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" style="color-scheme: light only;">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="color-scheme" content="light only"/>
+  <meta name="theme-color" content="#F8F8F5"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>About — AI Transparency Database</title>
+  <meta name="description" content="AI Transparency Database is an independent audit project documenting hidden limits, policy changes, and undisclosed behaviors across major AI subscription services."/>
+  <link rel="canonical" href="https://aitransparency.pages.dev/about.html"/>
+  <!-- OG -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="AI Transparency Database"/>
+  <meta property="og:url" content="https://aitransparency.pages.dev/about.html"/>
+  <meta property="og:title" content="About — AI Transparency Database"/>
+  <meta property="og:description" content="Independent audit project documenting hidden limits and policy changes across major AI subscription services."/>
+  <meta property="og:image" content="https://aitransparency.pages.dev/og-default.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:site" content="@aitransparencydb"/>
+  <meta name="twitter:title" content="About — AI Transparency Database"/>
+  <meta name="twitter:description" content="Independent audit project documenting hidden limits and policy changes across major AI subscription services."/>
+  <meta name="twitter:image" content="https://aitransparency.pages.dev/og-default.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Mono:ital,wght@0,400;0,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{color-scheme:light only;scroll-behavior:smooth}
+    :root{
+      --bg:#F8F8F5;--surf:#FFFFFF;--surf2:#F1F1EC;--surf3:#E8E8E2;
+      --border:#D8D8D0;--border-bright:#B8B8AE;
+      --text:#111118;--sub:#3A3A48;--muted:#6B6B78;
+      --acid:#1A6EFF;--acid-dim:rgba(26,110,255,.08);--acid-border:rgba(26,110,255,.22);
+      --red:#C8000A;--red-dim:rgba(200,0,10,.07);--red-border:rgba(200,0,10,.22);
+      --green:#0A7A3A;--green-dim:rgba(10,122,58,.07);--green-border:rgba(10,122,58,.22);
+      --amber:#A05500;--amber-dim:rgba(160,85,0,.08);--amber-border:rgba(160,85,0,.22);
+      --r:8px;--r-lg:14px;
+    }
+    @media(prefers-color-scheme:dark){
+      :root{--bg:#F8F8F5!important;--surf:#FFFFFF!important;--surf2:#F1F1EC!important;--surf3:#E8E8E2!important;--border:#D8D8D0!important;--text:#111118!important;--sub:#3A3A48!important;--muted:#6B6B78!important;--acid:#1A6EFF!important}
+      body{background:#F8F8F5!important;color:#111118!important}
+    }
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+    a{color:var(--acid);text-decoration:none}
+    .nav{position:sticky;top:0;z-index:100;background:rgba(248,248,245,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-in{max-width:800px;margin:0 auto;padding:0 20px;height:54px;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--sub);text-decoration:none;letter-spacing:.5px}
+    .brand span{color:var(--acid)}
+    .nav-tag{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;border:1px solid var(--border);padding:4px 10px;border-radius:99px}
+    .bc{max-width:800px;margin:0 auto;padding:12px 20px;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:8px}
+    .bc a{color:var(--muted)}
+    .bc-sep{color:var(--border-bright)}
+    .page{max-width:800px;margin:0 auto;padding:0 20px 100px}
+    .hero{padding:52px 0 44px}
+    .hero-eyebrow{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+    .eyebrow-dot{width:5px;height:5px;border-radius:50%;background:var(--green);display:inline-block}
+    h1{font-family:'Playfair Display',serif;font-size:clamp(32px,5.5vw,52px);font-weight:800;line-height:1.05;letter-spacing:-1.5px;margin-bottom:16px}
+    h1 em{font-style:normal;color:var(--acid)}
+    .hero-sub{font-size:16px;color:var(--sub);line-height:1.65;max-width:580px}
+    .sec{padding:36px 0;border-top:1px solid var(--border)}
+    .stitle{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;letter-spacing:-.4px;margin-bottom:16px}
+    .prose{font-size:14.5px;color:var(--sub);line-height:1.75;max-width:640px}
+    .prose+.prose{margin-top:12px}
+    /* 미션 카드 */
+    .mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+    .mission-card{background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px}
+    .mc-icon{font-size:22px;margin-bottom:10px}
+    .mc-title{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;margin-bottom:6px}
+    .mc-desc{font-size:12px;color:var(--muted);line-height:1.6}
+    /* 서약 */
+    .pledge-list{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+    .pledge-item{display:flex;align-items:flex-start;gap:12px;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px}
+    .pledge-check{font-family:'DM Mono',monospace;font-size:12px;color:var(--green);font-weight:500;flex-shrink:0;margin-top:1px}
+    .pledge-text{font-size:13px;color:var(--sub);line-height:1.55}
+    /* 팀 */
+    .team-card{background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px;display:flex;gap:20px;align-items:flex-start}
+    .team-avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#1A6EFF,#0A7A3A);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:white;flex-shrink:0}
+    .team-name{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;margin-bottom:3px}
+    .team-role{font-family:'DM Mono',monospace;font-size:10px;color:var(--acid);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+    .team-bio{font-size:13px;color:var(--muted);line-height:1.6}
+    /* 스탯 */
+    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.06)}
+    .stat-cell{background:var(--surf);padding:20px 18px}
+    .stat-val{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;letter-spacing:-1px;color:var(--red)}
+    .stat-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px;margin-top:4px}
+    /* 광고 정책 */
+    .ad-box{background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);padding:22px 24px}
+    .ad-box-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;margin-bottom:10px}
+    .ad-row{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--sub);line-height:1.55;padding:8px 0;border-bottom:1px solid var(--border)}
+    .ad-row:last-child{border-bottom:none;padding-bottom:0}
+    .ad-icon{flex-shrink:0;margin-top:1px}
+    /* CTA */
+    .cta-box{background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px}
+    .cta-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;margin-bottom:6px;letter-spacing:-.3px}
+    .cta-sub{font-size:13px;color:var(--muted);margin-bottom:18px}
+    .cta-form{display:flex;gap:8px;flex-wrap:wrap}
+    .cta-inp{background:var(--surf2);border:1px solid var(--border);color:var(--text);padding:11px 16px;border-radius:var(--r);font-size:13px;flex:1;min-width:200px;outline:none;font-family:'DM Mono',monospace;transition:border-color .15s}
+    .cta-inp:focus{border-color:var(--acid-border)}
+    .cta-inp::placeholder{color:var(--muted)}
+    .cta-btn{background:var(--acid);color:#fff;border:none;padding:11px 22px;border-radius:var(--r);font-weight:700;font-size:12px;cursor:pointer;font-family:'DM Mono',monospace;letter-spacing:.5px;white-space:nowrap;transition:opacity .15s}
+    .cta-btn:hover{opacity:.88}
+    .contact-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .contact-link{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);border:1px solid var(--border);padding:8px 14px;border-radius:var(--r);transition:border-color .15s}
+    .contact-link:hover{border-color:var(--acid-border);color:var(--acid)}
+    footer{border-top:1px solid var(--border);padding:28px 20px}
+    .fin{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+    .f-brand{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted)}
+    .f-brand span{color:var(--acid)}
+    .flinks{display:flex;gap:16px;flex-wrap:wrap}
+    .flinks a{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)}
+    .flegal{font-size:11px;color:var(--muted);line-height:1.6;opacity:.7}
+    .btt{position:fixed;bottom:22px;right:22px;background:var(--surf);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;text-decoration:none;font-family:'DM Mono',monospace;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+    .btt:hover{border-color:var(--acid-border);color:var(--acid)}
+    @media(max-width:600px){.mission-grid{grid-template-columns:1fr}.stats-row{grid-template-columns:1fr 1fr}.team-card{flex-direction:column}}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand"><span>AI</span> Transparency Database</a>
+    <span class="nav-tag">ABOUT</span>
+  </div>
+</nav>
+<div class="bc">
+  <a href="index.html">Home</a>
+  <span class="bc-sep">/</span>
+  <span>About</span>
+</div>
+
+<main class="page">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow"><span class="eyebrow-dot"></span> Independent · Non-commercial · No affiliate links</div>
+    <h1>We read the fine print.<br><em>So you don't have to.</em></h1>
+    <p class="hero-sub">AI Transparency Database is an independent audit project that documents the hidden limits, undisclosed policy changes, and behaviors that AI subscription services don't put on their pricing pages.</p>
+  </section>
+
+  <!-- STATS -->
+  <section class="sec" style="padding-top:0;border-top:none">
+    <div class="stats-row">
+      <div class="stat-cell">
+        <div class="stat-val">10</div>
+        <div class="stat-label">Services Audited</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-val">47</div>
+        <div class="stat-label">Hidden Behaviors</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-val">0</div>
+        <div class="stat-label" style="color:var(--green)">Affiliate Links</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-val" style="color:var(--acid);font-size:22px;padding-top:4px">48h</div>
+        <div class="stat-label">Update Turnaround</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="sec">
+    <div class="stitle">Why This Exists</div>
+    <p class="prose">AI subscriptions are getting more expensive and more opaque at the same time. Usage limits get cut silently. Credits get replaced with unquantified "compute quotas." Models get swapped without notice. Price stays the same.</p>
+    <p class="prose">We started this database because we were personally frustrated by hitting invisible walls — and discovering after the fact that the limits we thought we had weren't the limits we actually had.</p>
+    <p class="prose">Every report is sourced from official documentation, independent community testing, and investigative coverage. Nothing is vendor-claimed. Everything is dated.</p>
+    <div class="mission-grid">
+      <div class="mission-card">
+        <div class="mc-icon">🔍</div>
+        <div class="mc-title">Hidden Behaviors</div>
+        <div class="mc-desc">Policies confirmed through docs, benchmarks, and community reports that don't appear on the pricing page.</div>
+      </div>
+      <div class="mission-card">
+        <div class="mc-icon">📉</div>
+        <div class="mc-title">Shrinkflation Tracking</div>
+        <div class="mc-desc">When the price stays the same but what it buys quietly shrinks — every confirmed event is dated and sourced.</div>
+      </div>
+      <div class="mission-card">
+        <div class="mc-icon">📊</div>
+        <div class="mc-title">Transparency Score</div>
+        <div class="mc-desc">How much of each service's real behavior is disclosed upfront — weighted across limits, privacy, speed, and reliability.</div>
+      </div>
+      <div class="mission-card">
+        <div class="mc-icon">⚡</div>
+        <div class="mc-title">48-Hour Updates</div>
+        <div class="mc-desc">We update reports within 48 hours of a verified policy change — not weeks later when everyone already knows.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLEDGE -->
+  <section class="sec">
+    <div class="stitle">Our Editorial Pledge</div>
+    <div class="pledge-list">
+      <div class="pledge-item"><span class="pledge-check">✓</span><span class="pledge-text"><strong>Every claim is dated and sourced.</strong> Official docs, community benchmarks, or investigative coverage — never vendor-provided talking points.</span></div>
+      <div class="pledge-item"><span class="pledge-check">✓</span><span class="pledge-text"><strong>No affiliate links. Ever.</strong> We do not receive commissions from any of the services we audit. Rankings and scores are not for sale.</span></div>
+      <div class="pledge-item"><span class="pledge-check">✓</span><span class="pledge-text"><strong>Estimates are labeled.</strong> When we can't independently verify a figure, we mark it ESTIMATED. We never present guesses as facts.</span></div>
+      <div class="pledge-item"><span class="pledge-check">✓</span><span class="pledge-text"><strong>All audits stay free.</strong> We will never paywall the data. Transparency reporting should be accessible to everyone, not just paid subscribers.</span></div>
+      <div class="pledge-item"><span class="pledge-check">✓</span><span class="pledge-text"><strong>We correct errors publicly.</strong> Found a mistake? Email us with a source. We'll update the report and note the correction with a date.</span></div>
+    </div>
+  </section>
+
+  <!-- AD POLICY -->
+  <section class="sec">
+    <div class="stitle">Advertising &amp; Revenue Policy</div>
+    <p class="prose" style="margin-bottom:16px">This site is supported by display advertising (Google AdSense) and newsletter sponsorships. Our editorial independence is non-negotiable.</p>
+    <div class="ad-box">
+      <div class="ad-box-title">What we will and won't do</div>
+      <div class="ad-row"><span class="ad-icon">✅</span><span>Display contextual ads that don't influence audit scores or content</span></div>
+      <div class="ad-row"><span class="ad-icon">✅</span><span>Accept newsletter sponsorships with full disclosure in every sponsored issue</span></div>
+      <div class="ad-row"><span class="ad-icon">❌</span><span>Accept payment to improve a service's transparency score or ranking</span></div>
+      <div class="ad-row"><span class="ad-icon">❌</span><span>Include affiliate or referral links to any audited service</span></div>
+      <div class="ad-row"><span class="ad-icon">❌</span><span>Remove or soften documented findings at a company's request</span></div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="sec">
+    <div class="stitle">Who We Are</div>
+    <div class="team-card">
+      <div class="team-avatar">AI</div>
+      <div>
+        <div class="team-name">AI Transparency Database</div>
+        <div class="team-role">Independent Research Project · Est. 2026</div>
+        <div class="team-bio">We're an independent research project focused on AI subscription transparency. We have no venture backing, no PR team, and no relationship with the companies we audit. Our only obligation is to the people paying these subscriptions.</div>
+      </div>
+    </div>
+    <p class="prose" style="margin-top:16px">Found an error or have a tip? We take accuracy seriously. Email <a href="mailto:data@aitransparency.com">data@aitransparency.com</a> with a source link and we'll investigate within 48 hours.</p>
+  </section>
+
+  <!-- METHODOLOGY LINK -->
+  <section class="sec">
+    <div class="stitle">How We Score</div>
+    <p class="prose" style="margin-bottom:16px">Every transparency score is calculated using a weighted five-dimension formula across Real Headroom, Response Speed, Limit Transparency, Data &amp; Privacy, and Reliability.</p>
+    <a href="methodology.html" style="display:flex;align-items:center;justify-content:space-between;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;text-decoration:none;color:var(--sub);transition:border-color .15s" onmouseover="this.style.borderColor='var(--border-bright)'" onmouseout="this.style.borderColor='var(--border)'">
+      <span style="font-size:13px;font-weight:500">Read the full methodology — scoring formula, source classification, and audit process</span>
+      <span style="font-family:'DM Mono',monospace;color:var(--acid);font-size:12px">→</span>
+    </a>
+  </section>
+
+  <!-- CTA -->
+  <section class="sec">
+    <div class="cta-box">
+      <div class="cta-title">Get alerted when policies change</div>
+      <p class="cta-sub">We track silent limit cuts before most users notice them. No spam — only verified policy changes.</p>
+      <div class="cta-form">
+        <input class="cta-inp" type="email" placeholder="your@email.com"/>
+        <button class="cta-btn" type="button" onclick="signup(this)">NOTIFY ME</button>
+      </div>
+      <div class="contact-row">
+        <a href="mailto:data@aitransparency.com" class="contact-link">✉ data@aitransparency.com</a>
+        <a href="https://www.threads.net/@aitransparencydb" target="_blank" rel="noopener" class="contact-link">@ Threads</a>
+        <a href="index.html" class="contact-link">← All Reports</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="fin">
+    <div class="f-brand"><span>AI</span> Transparency Database</div>
+    <div class="flinks">
+      <a href="index.html">Home</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="about.html">About</a>
+      <a href="mailto:data@aitransparency.com">Contact</a>
+    </div>
+    <div class="flegal">Independent audit — not affiliated with any of the services listed. No affiliate links. Figures are estimates unless marked OFFICIAL. © 2026 AI Transparency Database</div>
+  </div>
+</footer>
+<a href="#" class="btt">↑</a>
+
+<script>
+const SCRIPT_URL="https://script.google.com/macros/s/AKfycbzSaizHz7RYJpBPIQqwLTueMktQHjG9isLGMQxaqetT_uGHNiDtjw4tymmEAm9t6r3S/exec";
+async function signup(btn){
+  const form=btn.closest('.cta-form')||btn.parentElement;
+  const inp=form.querySelector('input[type="email"]');
+  if(!inp)return;
+  const email=inp.value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){inp.style.borderColor='var(--red)';inp.focus();return;}
+  btn.textContent='...';btn.disabled=true;
+  let msg=btn.closest('.cta-box')&&btn.closest('.cta-box').querySelector('.cta-msg');
+  if(!msg){msg=document.createElement('div');msg.className='cta-msg';msg.style.cssText="font-family:'DM Mono',monospace;font-size:11px;margin-top:10px;display:none";(btn.closest('.cta-box')||btn.parentElement).appendChild(msg);}
+  try{
+    await fetch(SCRIPT_URL,{method:'POST',body:JSON.stringify({email,source:location.pathname})});
+    btn.textContent='✓ DONE';inp.disabled=true;
+    msg.style.display='block';msg.style.color='var(--green)';msg.textContent="Subscribed! We'll alert you when policies change.";
+  }catch(err){
+    btn.textContent='NOTIFY ME';btn.disabled=false;
+    msg.style.display='block';msg.style.color='var(--red)';msg.textContent='Something went wrong. Please try again.';
+  }
+}
+</script>
+</body>
+</html>
