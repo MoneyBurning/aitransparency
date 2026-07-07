@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en" style="color-scheme: light only;">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="color-scheme" content="light only"/>
+  <meta name="theme-color" content="#F8F8F5"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Kling AI Transparency Report — AI Transparency Database</title>
+  <meta name="description" content="Everything the Kling AI pricing page doesn't tell you. Credits expire monthly, failed generations still burn credits, Ultra price jumped 41% in 6 months — all documented."/>
+  <meta name="keywords" content="kling ai hidden limits, kling credits expire, kling ai pricing 2026, kling failed generation credits"/>
+  <link rel="canonical" href="https://aitransparency.pages.dev/kling.html"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do unused Kling AI credits roll over?","acceptedAnswer":{"@type":"Answer","text":"No. All monthly subscription credits expire at the end of each billing month with zero rollover — including on annual plans. Daily free credits expire after 24 hours."}},{"@type":"Question","name":"Do failed Kling AI generations still use credits?","acceptedAnswer":{"@type":"Answer","text":"Yes. Community reports confirm that failed or rejected generations still consume credits. This is not disclosed on the pricing page and significantly inflates the real cost per usable clip."}},{"@type":"Question","name":"How many videos does Kling Standard plan actually produce?","acceptedAnswer":{"@type":"Answer","text":"The Standard plan's 660 credits is marketed as '33 videos per month.' In Professional mode (which produces usable quality), the same 660 credits yields only 9–18 videos after accounting for failed generations."}},{"@type":"Question","name":"Is Kling AI free?","acceptedAnswer":{"@type":"Answer","text":"There is a free tier with 66 daily credits that reset every 24 hours with no rollover. Free outputs are watermarked, capped at 720p, and cannot be used commercially."}}]}</script>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="AI Transparency Database"/>
+  <meta property="og:url" content="https://aitransparency.pages.dev/kling.html"/>
+  <meta property="og:title" content="Kling AI Transparency Report 2026 — Hidden Costs & Credit Traps"/>
+  <meta property="og:description" content="Everything the Kling AI pricing page doesn't tell you. Credits expire monthly, failed generations burn credits, Ultra price jumped 41% — documented."/>
+  <meta property="og:image" content="https://aitransparency.pages.dev/ogdefault.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:site" content="@aitransparencydb"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { color-scheme: light only; scroll-behavior: smooth; }
+    :root {
+      --bg: #F8F8F5; --surf: #FFFFFF; --surf2: #F1F1EC; --surf3: #E8E8E2;
+      --border: #D8D8D0; --border-bright: #B8B8AE;
+      --text: #111118; --sub: #3A3A48; --muted: #6B6B78;
+      --acid: #1A6EFF; --acid-dim: rgba(26,110,255,.08); --acid-border: rgba(26,110,255,.22);
+      --red: #C8000A; --red-dim: rgba(200,0,10,.07); --red-border: rgba(200,0,10,.22);
+      --amber: #A05500; --amber-dim: rgba(160,85,0,.08); --amber-border: rgba(160,85,0,.22);
+      --green: #0A7A3A; --green-dim: rgba(10,122,58,.07); --green-border: rgba(10,122,58,.22);
+      --blue: #1A6EFF; --blue-dim: rgba(26,110,255,.07); --blue-border: rgba(26,110,255,.22);
+      --r: 8px; --r-lg: 14px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#F8F8F5!important;--surf:#FFFFFF!important;--surf2:#F1F1EC!important;--surf3:#E8E8E2!important;--border:#D8D8D0!important;--border-bright:#B8B8AE!important;--text:#111118!important;--sub:#3A3A48!important;--muted:#6B6B78!important;--acid:#1A6EFF!important;--acid-dim:rgba(26,110,255,.08)!important;--acid-border:rgba(26,110,255,.22)!important;--red:#C8000A!important;--red-dim:rgba(200,0,10,.07)!important;--red-border:rgba(200,0,10,.22)!important;--amber:#A05500!important;--amber-dim:rgba(160,85,0,.08)!important;--amber-border:rgba(160,85,0,.22)!important;--green:#0A7A3A!important;--green-dim:rgba(10,122,58,.07)!important;--green-border:rgba(10,122,58,.22)!important;--blue:#1A6EFF!important;--blue-dim:rgba(26,110,255,.07)!important;--blue-border:rgba(26,110,255,.22)!important; }
+      body { background: #F8F8F5!important; color: #111118!important; }
+    }
+    body { background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased; }
+    a { color:var(--acid);text-decoration:none; }
+    .nav { position:sticky;top:0;z-index:100;background:rgba(248,248,245,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border); }
+    .nav-in { max-width:800px;margin:0 auto;padding:0 20px;height:54px;display:flex;align-items:center;justify-content:space-between; }
+    .brand { font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--sub);text-decoration:none;letter-spacing:.5px; }
+    .brand span { color:var(--acid); }
+    .nav-tag { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--muted);letter-spacing:1px;text-transform:uppercase;border:1px solid var(--border);padding:4px 10px;border-radius:99px; }
+    .bc { max-width:800px;margin:0 auto;padding:12px 20px;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:8px; }
+    .bc a { color:var(--muted); }
+    .bc-sep { color:var(--border-bright); }
+    .page { max-width:800px;margin:0 auto;padding:0 20px 100px; }
+    .hero { padding:48px 0 40px; }
+    .hero-eyebrow { display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap; }
+    .tag-cat { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:4px 10px;border-radius:3px; }
+    .tag-verified { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--acid);border:1px solid var(--acid-border);padding:4px 10px;border-radius:3px;background:var(--acid-dim); }
+    .hero-date { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.5px; }
+    h1 { font-family:'Playfair Display',serif;font-size:clamp(30px,5.5vw,50px);font-weight:800;line-height:1.05;letter-spacing:-1.5px;margin-bottom:14px;color:var(--text); }
+    h1 em { font-style:normal;color:var(--acid); }
+    .hero-sub { font-size:16px;color:var(--sub);font-weight:400;line-height:1.6;max-width:560px;margin-bottom:32px; }
+    .hero-metrics { display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08); }
+    .hm-cell { background:var(--surf);padding:20px 18px; }
+    .hm-label { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin-bottom:8px; }
+    .hm-value { font-family:'Playfair Display',serif;font-size:32px;font-weight:800;line-height:1;letter-spacing:-1px; }
+    .hm-value.red { color:var(--red); }
+    .hm-value.amber { color:var(--amber); }
+    .hm-desc { font-size:11px;color:var(--muted);margin-top:5px;line-height:1.4; }
+    .sec { padding:36px 0;border-top:1px solid var(--border); }
+    .sec-header { display:flex;align-items:baseline;gap:12px;margin-bottom:6px; }
+    .stitle { font-family:'Playfair Display',serif;font-size:18px;font-weight:700;letter-spacing:-.4px; }
+    .sec-count { font-family:'DM Mono',monospace;font-size:11px;color:var(--muted); }
+    .ssub { font-size:13px;color:var(--muted);margin-bottom:22px;line-height:1.5; }
+    .hb-list { display:flex;flex-direction:column;gap:2px; }
+    .hb-card { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:border-color .15s;box-shadow:0 1px 4px rgba(0,0,0,.06); }
+    .hb-card:hover { border-color:var(--border-bright); }
+    .hb-card.critical { border-color:rgba(200,0,10,.2); }
+    .hb-card.medium { border-color:rgba(160,85,0,.15); }
+    .hb-card.low { border-color:rgba(26,110,255,.1); }
+    .hb-header { padding:16px 20px 14px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;cursor:pointer; }
+    .hb-left { flex:1; }
+    .hb-meta { display:flex;align-items:center;gap:8px;margin-bottom:7px;flex-wrap:wrap; }
+    .hb-index { font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);font-weight:500; }
+    .impact-pill { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;padding:3px 8px;border-radius:3px; }
+    .impact-pill.critical { background:var(--red-dim);color:var(--red);border:1px solid var(--red-border); }
+    .impact-pill.medium { background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-border); }
+    .impact-pill.low { background:var(--acid-dim);color:var(--acid);border:1px solid var(--acid-border); }
+    .hb-title { font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--text);line-height:1.3;letter-spacing:-.2px; }
+    .hb-chevron { color:var(--muted);font-size:14px;flex-shrink:0;margin-top:2px;transition:transform .2s; }
+    .hb-card.open .hb-chevron { transform:rotate(180deg); }
+    .hb-body { display:none;padding:0 20px 20px;border-top:1px solid var(--border); }
+    .hb-card.open .hb-body { display:block; }
+    .hb-body-inner { padding-top:16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px; }
+    .hb-col-label { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px; }
+    .hb-col-label.official { color:var(--blue); }
+    .hb-col-label.observed { color:var(--green); }
+    .hb-col-label.estimated { color:var(--amber); }
+    .hb-col-content { background:var(--surf2);border-radius:var(--r);padding:12px;font-size:12px;line-height:1.55;color:var(--sub); }
+    .hb-col-content strong { color:var(--text);font-weight:600;display:block;margin-bottom:3px;font-size:12px; }
+    .hb-footer { margin-top:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:12px;border-top:1px solid var(--border); }
+    .hb-verified { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted); }
+    .hb-verified span { color:var(--acid); }
+    .src-badge { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;padding:3px 7px;border-radius:3px;letter-spacing:.5px; }
+    .src-official { background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-border); }
+    .src-observed { background:var(--green-dim);color:var(--green);border:1px solid var(--green-border); }
+    .src-estimated { background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-border); }
+    .rl-box { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07); }
+    .rl-head-bar { background:var(--surf2);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border); }
+    .rl-head-name { font-family:'Playfair Display',serif;font-size:14px;font-weight:700; }
+    .rl-head-price { font-family:'DM Mono',monospace;font-size:12px;color:var(--muted); }
+    .rl-row { display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:start;padding:14px 20px;border-bottom:1px solid var(--border); }
+    .rl-row:last-child { border-bottom:none; }
+    .rl-key { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;padding-top:2px; }
+    .rl-val { font-size:13px;color:var(--text);font-weight:500;line-height:1.5; }
+    .rl-val em { font-style:normal;color:var(--red);font-weight:600; }
+    .rl-alert { background:var(--red-dim);border:1px solid var(--red-border);border-radius:var(--r);padding:12px 14px;margin:0 20px 16px; }
+    .rl-alert-label { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1px;color:var(--red);text-transform:uppercase;margin-bottom:5px; }
+    .rl-alert-text { font-size:12px;color:var(--red);line-height:1.55;font-weight:500; }
+    .timeline { display:flex;flex-direction:column; }
+    .tl-item { display:grid;grid-template-columns:80px 1px 1fr;gap:0 16px;padding:16px 0;align-items:start; }
+    .tl-date { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);font-weight:500;padding-top:3px; }
+    .tl-line-col { display:flex;flex-direction:column;align-items:center; }
+    .tl-dot { width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px; }
+    .tl-connector { flex:1;width:1px;background:var(--border);min-height:24px; }
+    .tl-content { padding-bottom:8px; }
+    .tl-event { font-size:13px;font-weight:500;color:var(--text);line-height:1.5;margin-bottom:4px; }
+    .tl-src-row { display:flex;align-items:center;gap:6px; }
+    .tl-src-note { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted); }
+    .tscore-list { display:flex;flex-direction:column;gap:16px; }
+    .tscore-row { }
+    .tscore-top { display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px;gap:12px; }
+    .tscore-label { font-size:13px;font-weight:600;color:var(--text); }
+    .tscore-meta { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted); }
+    .tscore-detail { font-size:12px;color:var(--muted);margin-bottom:7px;line-height:1.5; }
+    .tscore-track { height:5px;background:var(--surf3);border-radius:99px;overflow:hidden;border:1px solid var(--border); }
+    .tscore-fill { height:100%;border-radius:99px;transition:width 1.2s cubic-bezier(.4,0,.2,1); }
+    .tscore-fill.red { background:var(--red); }
+    .tscore-fill.amber { background:var(--amber); }
+    .tscore-fill.green { background:var(--green); }
+    .tscore-src { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:5px; }
+    .tscore-summary { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px 20px;margin-top:20px;display:flex;align-items:center;justify-content:space-between;gap:16px; }
+    .tscore-summary-label { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase; }
+    .tscore-pct { font-family:'Playfair Display',serif;font-size:36px;font-weight:800;letter-spacing:-1px;color:var(--red); }
+    details { border-bottom:1px solid var(--border); }
+    details:first-of-type { border-top:1px solid var(--border); }
+    summary { font-family:'Playfair Display',serif;font-size:14px;font-weight:600;padding:16px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text); }
+    summary::-webkit-details-marker { display:none; }
+    summary::after { content:'+';font-size:18px;color:var(--muted);flex-shrink:0;margin-left:12px;font-family:'DM Mono',monospace; }
+    details[open] summary::after { content:'−'; }
+    .fansw { font-size:13.5px;color:var(--sub);line-height:1.65;padding-bottom:16px; }
+    .compare-list { display:flex;flex-direction:column;gap:2px; }
+    .compare-row { display:flex;align-items:center;justify-content:space-between;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;text-decoration:none;color:inherit;transition:border-color .15s; }
+    .compare-row:hover { border-color:var(--border-bright); }
+    .compare-row.current { border-color:var(--acid-border);background:var(--acid-dim); }
+    .compare-name { font-family:'Playfair Display',serif;font-weight:700;font-size:14px; }
+    .compare-meta { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:2px; }
+    .compare-badge { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);border:1px solid var(--border);padding:4px 10px;border-radius:3px; }
+    .compare-row.current .compare-badge { color:var(--acid);border-color:var(--acid-border); }
+    .cta-box { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px; }
+    .cta-title { font-family:'Playfair Display',serif;font-size:18px;font-weight:800;margin-bottom:6px;letter-spacing:-.3px; }
+    .cta-sub { font-size:13px;color:var(--muted);margin-bottom:18px; }
+    .cta-form { display:flex;gap:8px;flex-wrap:wrap; }
+    .cta-inp { background:var(--surf2);border:1px solid var(--border);color:var(--text);padding:11px 16px;border-radius:var(--r);font-size:13px;flex:1;min-width:200px;outline:none;font-family:'DM Mono',monospace;transition:border-color .15s; }
+    .cta-inp:focus { border-color:var(--acid-border); }
+    .cta-inp::placeholder { color:var(--muted); }
+    .cta-btn { background:var(--acid);color:#fff;border:none;padding:11px 22px;border-radius:var(--r);font-weight:700;font-size:12px;cursor:pointer;font-family:'DM Mono',monospace;letter-spacing:.5px;white-space:nowrap;transition:opacity .15s; }
+    .cta-btn:hover { opacity:.88; }
+    footer { border-top:1px solid var(--border);padding:28px 20px; }
+    .fin { max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:10px; }
+    .f-brand { font-family:'DM Mono',monospace;font-size:12px;color:var(--muted); }
+    .f-brand span { color:var(--acid); }
+    .flinks { display:flex;gap:16px;flex-wrap:wrap; }
+    .flinks a { font-family:'DM Mono',monospace;font-size:11px;color:var(--muted); }
+    .flegal { font-size:11px;color:var(--muted);line-height:1.6;opacity:.7; }
+    .visit-btn { display:inline-flex;align-items:center;gap:8px;background:var(--surf2);color:var(--text);border:1px solid var(--border);font-family:'DM Mono',monospace;font-weight:500;font-size:12px;padding:11px 20px;border-radius:var(--r);letter-spacing:.5px;transition:border-color .15s; }
+    .visit-btn:hover { border-color:var(--border-bright);color:var(--text); }
+    .visit-arrow { color:var(--acid); }
+    .meth-link { display:flex;align-items:center;justify-content:space-between;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;text-decoration:none;color:var(--sub);transition:border-color .15s; }
+    .meth-link:hover { border-color:var(--border-bright);color:var(--text); }
+    .meth-link-label { font-size:13px;font-weight:500; }
+    .meth-link-arrow { font-family:'DM Mono',monospace;color:var(--acid); }
+    .btt { position:fixed;bottom:22px;right:22px;background:var(--surf);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;text-decoration:none;font-family:'DM Mono',monospace;box-shadow:0 2px 8px rgba(0,0,0,.1); }
+    .btt:hover { border-color:var(--acid-border);color:var(--acid); }
+    @media (max-width:600px) {
+      .hero-metrics { grid-template-columns:1fr 1fr; }
+      .hb-body-inner { grid-template-columns:1fr; }
+      .rl-row { grid-template-columns:1fr;gap:4px; }
+      .tscore-summary { flex-direction:column;align-items:flex-start; }
+      .hero-metrics .hm-cell:last-child { grid-column:span 2; }
+    }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand"><span>AI</span> Transparency Database</a>
+    <span class="nav-tag">BETA</span>
+  </div>
+</nav>
+<div class="bc">
+  <a href="index.html">Home</a>
+  <span class="bc-sep">/</span>
+  <span>Kling AI</span>
+</div>
+
+<main class="page">
+  <section class="hero">
+    <div class="hero-eyebrow">
+      <span class="tag-cat">AI Video · Kuaishou</span>
+      <span class="tag-verified">✓ Verified Jul 2026</span>
+      <span class="hero-date">Last audited: 2026-07-06</span>
+    </div>
+    <h1>Kling AI:<br><em>What the pricing page doesn't tell you</em></h1>
+    <p class="hero-sub">Based on public docs, community reports, and third-party benchmarks — not legal advice or official statements.</p>
+    <div class="hero-metrics">
+      <div class="hm-cell">
+        <div class="hm-label">Hidden Behaviors</div>
+        <div class="hm-value red" id="counter-hidden">0</div>
+        <div class="hm-desc">documented &amp; verified</div>
+      </div>
+      <div class="hm-cell">
+        <div class="hm-label">Transparency</div>
+        <div class="hm-value red">22%</div>
+        <div class="hm-desc">of key policies disclosed upfront</div>
+      </div>
+      <div class="hm-cell">
+        <div class="hm-label">Last Verified</div>
+        <div class="hm-value acid" style="font-size:20px;padding-top:6px">Jul 2026</div>
+        <div class="hm-desc">$10/mo · Standard (annual)</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-header">
+      <div class="stitle">Hidden Behaviors</div>
+      <div class="sec-count">5 documented</div>
+    </div>
+    <p class="ssub">Behaviors confirmed through user reports, Trustpilot reviews, and official docs — none disclosed on the pricing page.</p>
+    <div class="hb-list">
+
+      <div class="hb-card critical" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">01</span><span class="impact-pill critical">⬤ Critical Impact</span></div>
+            <div class="hb-title">Failed generations still burn credits — not disclosed anywhere</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Not disclosed on pricing page</strong>Kling's pricing page lists credits per plan with no mention that failed or rejected generations consume credits regardless of output quality.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>Credits consumed on failure</strong>Multiple Trustpilot and Reddit reports confirm credits are charged for stuck generations, prompt rejections, and low-quality outputs requiring a retry.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Real cost: $50+/min of finished video</strong>One community estimate puts the effective cost at $50+ per minute of polished video once failed iterations are factored in — vs. the headline $10/month figure.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jul 2026</span> — Trustpilot + community reports</div>
+            <span class="src-badge src-observed">OBSERVED</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-card critical" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">02</span><span class="impact-pill critical">⬤ Critical Impact</span></div>
+            <div class="hb-title">Credits expire monthly — including on annual plans</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Not on pricing page</strong>Kling's plan comparison table shows credit amounts per month but does not disclose the no-rollover policy upfront.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>Unused credits forfeited monthly</strong>Users on annual plans report unused credits disappearing at month end — even though they paid annually upfront. Free daily credits expire after just 24 hours.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Annual plan trap</strong>Paying 12 months upfront while credits reset monthly means inconsistent months waste money proportionally — with no recourse.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jul 2026</span> — community + Trustpilot</div>
+            <span class="src-badge src-observed">OBSERVED</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-card critical" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">03</span><span class="impact-pill critical">⬤ Critical Impact</span></div>
+            <div class="hb-title">Standard plan yields 9–18 usable videos, not the marketed 33</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Marketing claims 33 videos/month</strong>Kling markets Standard's 660 credits as "33 standard videos per month" — calculated using Standard Mode (10 credits per 5-second clip).</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>Reality: 9–18 in Professional Mode</strong>Professional Mode (needed for usable 1080p quality) costs 35 credits per 5-second clip. 660 credits yields only 9–18 videos after accounting for failed generations.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>50–70% fewer clips than advertised</strong>Most creators need Professional Mode for client work. The marketing figure of 33 videos is based on Standard Mode which produces noticeably lower quality output.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jul 2026</span> — aitoolanalysis.com + official docs</div>
+            <span class="src-badge src-observed">OBSERVED</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-card medium" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">04</span><span class="impact-pill medium">⬤ Medium Impact</span></div>
+            <div class="hb-title">Native audio doubles credit cost — 5× more expensive than basic video</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Documented in credit guide</strong>Kling's official credit guide states native audio generation doubles the rate: 10 credits/sec (with audio) vs 5 credits/sec (video only) in Professional Mode.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>Not shown on pricing page</strong>The pricing plan comparison table does not surface the audio credit multiplier. Users discover it after purchase when generating with Kling 2.6's native audio feature.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Standard plan = 6 audio videos/month</strong>A 10-second clip with native audio costs ~100 credits. Standard's 660 credits buys roughly 6 audio-enabled videos before accounting for any failed iterations.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jul 2026</span> — Kling VIDEO 3.0 credit guide</div>
+            <span class="src-badge src-official">OFFICIAL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-card medium" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">05</span><span class="impact-pill medium">⬤ Medium Impact</span></div>
+            <div class="hb-title">Ultra plan price jumped 41% in 6 months — no annual billing option</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Not disclosed proactively</strong>Kling has not published a public pricing history or committed to price stability at any tier.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>$128 → $180 in 6 months</strong>Ultra plan launched at $128/month in August 2025 and rose to $180/month by January 2026 — a 41% increase. No annual billing option exists for Ultra, preventing price lock-in.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Further hikes likely</strong>If the trajectory continues, Ultra could exceed $250/month by end of 2026. The absence of an annual plan means heavy users have no protection against future increases.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jan 2026</span> — eesel.ai pricing analysis</div>
+            <span class="src-badge src-observed">OBSERVED</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:18px">Real Limits</div>
+    <div class="rl-box">
+      <div class="rl-head-bar">
+        <div class="rl-head-name">Kling AI Standard</div>
+        <div class="rl-head-price">~$10/mo (annual) · AI Video</div>
+      </div>
+      <div class="rl-rows">
+        <div class="rl-row"><div class="rl-key">Credits</div><div class="rl-val">660/month · <em>no rollover, expire monthly even on annual plans</em></div></div>
+        <div class="rl-row"><div class="rl-key">Marketed Output</div><div class="rl-val">33 videos/month (Standard Mode) · <em>Reality: 9–18 in Professional Mode</em></div></div>
+        <div class="rl-row"><div class="rl-key">Max Clip Length</div><div class="rl-val">Up to 2 minutes — strongest in class (vs Runway 16s, Sora 20s)</div></div>
+        <div class="rl-row"><div class="rl-key">Native Audio</div><div class="rl-val">Available (Kling 2.6+) · <em>doubles credit cost to 10 credits/sec</em></div></div>
+        <div class="rl-row"><div class="rl-key">Free Tier</div><div class="rl-val">66 credits/day · expire after 24h · watermarked · 720p · no commercial use</div></div>
+        <div class="rl-row"><div class="rl-key">Cancellation</div><div class="rl-val"><em>Multiple reports of cancellation friction</em> — no cancel button found; refund requests denied (Trustpilot 1.3/5)</div></div>
+      </div>
+      <div class="rl-alert">
+        <div class="rl-alert-label">⚠ The real cost trap</div>
+        <div class="rl-alert-text">Failed generations burn credits. Native audio doubles the rate. Professional Mode is 3.5× more expensive than Standard Mode. The $10/month headline price assumes perfect first-attempt Standard Mode outputs — which almost never happen in real workflows.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-header"><div class="stitle">Policy History</div></div>
+    <p class="ssub">Confirmed pricing changes — documented with source type and dates.</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">Jun 2024</div>
+        <div class="tl-line-col"><div class="tl-dot" style="background:var(--green)"></div><div class='tl-connector'></div></div>
+        <div class="tl-content">
+          <div class="tl-event">Kling AI launches globally by Kuaishou — text-to-video and image-to-video, free tier with 166 daily credits</div>
+          <div class="tl-src-row"><span class="src-badge src-official">OFFICIAL</span><span class="tl-src-note">kling.ai</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Aug 2025</div>
+        <div class="tl-line-col"><div class="tl-dot" style="background:var(--amber)"></div><div class='tl-connector'></div></div>
+        <div class="tl-content">
+          <div class="tl-event">Ultra plan launched at $128/month — free tier credits reduced from 166 to 66 per day</div>
+          <div class="tl-src-row"><span class="src-badge src-observed">OBSERVED</span><span class="tl-src-note">community reports + eesel.ai analysis</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Jan 2026</div>
+        <div class="tl-line-col"><div class="tl-dot" style="background:var(--red)"></div><div class='tl-connector'></div></div>
+        <div class="tl-content">
+          <div class="tl-event">Ultra plan price raised from $128 to $180/month — 41% increase in 6 months, no annual option added</div>
+          <div class="tl-src-row"><span class="src-badge src-observed">OBSERVED</span><span class="tl-src-note">eesel.ai pricing analysis</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Apr 2026</div>
+        <div class="tl-line-col"><div class="tl-dot" style="background:var(--green)"></div></div>
+        <div class="tl-content">
+          <div class="tl-event">Native 4K video support launched; Kling 3.0 released with cinematic motion physics and priority queue for Ultra subscribers</div>
+          <div class="tl-src-row"><span class="src-badge src-official">OFFICIAL</span><span class="tl-src-note">kling.ai announcements</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:12px">Transparency Score</div>
+    <div class="tscore-list">
+      <div class="tscore-row">
+        <div class="tscore-top"><span class="tscore-label">Failed Generation Credit Burn</span><span class="tscore-meta">NOT disclosed</span></div>
+        <div class="tscore-detail">Credits charged for failed or rejected outputs — never disclosed on pricing page or in FAQs.</div>
+        <div class="tscore-track"><div class="tscore-fill red" id="b1" style="width:0%"></div></div>
+        <div class="tscore-src">source: Trustpilot + community</div>
+      </div>
+      <div class="tscore-row">
+        <div class="tscore-top"><span class="tscore-label">Credit Expiry Policy</span><span class="tscore-meta">NOT on pricing page</span></div>
+        <div class="tscore-detail">Monthly expiry (including on annual plans) disclosed only in fine print, not in the main plan comparison table.</div>
+        <div class="tscore-track"><div class="tscore-fill red" id="b2" style="width:0%"></div></div>
+        <div class="tscore-src">source: community reports</div>
+      </div>
+      <div class="tscore-row">
+        <div class="tscore-top"><span class="tscore-label">Audio Credit Multiplier</span><span class="tscore-meta">official doc only</span></div>
+        <div class="tscore-detail">Native audio doubles credit consumption rate — disclosed in the official credit guide but not on the pricing page where decisions are made.</div>
+        <div class="tscore-track"><div class="tscore-fill amber" id="b3" style="width:0%"></div></div>
+        <div class="tscore-src">source: Kling VIDEO 3.0 user guide</div>
+      </div>
+      <div class="tscore-row">
+        <div class="tscore-top"><span class="tscore-label">Video Duration (Up to 2 min)</span><span class="tscore-meta">clearly disclosed</span></div>
+        <div class="tscore-detail">Kling's 2-minute max clip length is a genuine advantage vs competitors and is shown in feature tables — one of the few transparent strengths.</div>
+        <div class="tscore-track"><div class="tscore-fill green" id="b4" style="width:0%"></div></div>
+        <div class="tscore-src">source: kling.ai product page</div>
+      </div>
+      <div class="tscore-row">
+        <div class="tscore-top"><span class="tscore-label">Cancellation &amp; Refund Policy</span><span class="tscore-meta">NOT disclosed upfront</span></div>
+        <div class="tscore-detail">Trustpilot (1.3/5) documents widespread cancellation friction and denied refunds. No clear cancellation flow described on pricing or FAQ pages.</div>
+        <div class="tscore-track"><div class="tscore-fill red" id="b5" style="width:0%"></div></div>
+        <div class="tscore-src">source: Trustpilot 318 reviews</div>
+      </div>
+    </div>
+    <div class="tscore-summary">
+      <div>
+        <div class="tscore-summary-label">Overall Transparency Score</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">Lowest among video AI tools audited. Billing practices drive the most complaints.</div>
+      </div>
+      <div class="tscore-pct">22%</div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:12px">Other Services</div>
+    <div class="compare-list">
+      <div class="compare-row current">
+        <div><div class="compare-name">Kling AI</div><div class="compare-meta">Kuaishou · Video Gen · ~$10/mo</div></div>
+        <div class="compare-badge">viewing now</div>
+      </div>
+      <a href="runway.html" class="compare-row"><div><div class="compare-name">Runway</div><div class="compare-meta">Runway AI · Video Gen · $12/mo</div></div><div class="compare-badge">view report →</div></a>
+      <a href="midjourney.html" class="compare-row"><div><div class="compare-name">Midjourney</div><div class="compare-meta">Midjourney · Image Gen · $30/mo</div></div><div class="compare-badge">view report →</div></a>
+      <a href="claude.html" class="compare-row"><div><div class="compare-name">Claude</div><div class="compare-meta">Anthropic · AI Chat · $20/mo</div></div><div class="compare-badge">view report →</div></a>
+    </div>
+  </section>
+
+  <section class="sec">
+    <a href="https://kling.ai" target="_blank" rel="noopener" class="visit-btn">Visit Kling AI <span class="visit-arrow">→</span></a>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:18px">Frequently Asked</div>
+    <details><summary>Do Kling AI credits roll over each month?</summary><div class="fansw">No. All monthly credits expire at the end of each billing month with zero rollover — even on annual plans. Free daily credits expire after just 24 hours. Inconsistent months on an annual plan result in significant wasted spend with no recourse.</div></details>
+    <details><summary>Do failed Kling generations still consume credits?</summary><div class="fansw">Yes, based on community reports. Credits are consumed when a generation fails, gets stuck, or produces output that requires a retry. This is not disclosed on the pricing page and significantly inflates the true cost per usable clip — one community estimate puts it at $50+ per minute of polished finished video.</div></details>
+    <details><summary>How many videos does the Standard plan actually produce?</summary><div class="fansw">Kling markets 660 credits as "33 videos/month" — calculated in Standard Mode (10 credits per 5-second clip). In Professional Mode (1080p, usable quality), the same 660 credits yields 9–18 videos at best, before accounting for failed iterations. Plan around Professional Mode numbers, not the marketing figure.</div></details>
+    <details><summary>Is Kling AI free?</summary><div class="fansw">There is a free tier with 66 daily credits that reset every 24 hours. Free outputs are watermarked, capped at 720p, and cannot be used commercially. Queue times are longer on the free tier. It is suitable for testing prompts but not for any production workflow.</div></details>
+  </section>
+
+  <section class="sec">
+    <div class="cta-box">
+      <div class="cta-title">Get alerted when policies change</div>
+      <p class="cta-sub">We track silent limit cuts before most users notice them.</p>
+      <div class="cta-form">
+        <input class="cta-inp" type="email" placeholder="your@email.com"/>
+        <button class="cta-btn" type="button" onclick="signup(this)">NOTIFY ME</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <a href="methodology.html" class="meth-link">
+      <span class="meth-link-label">How we audit — full methodology and source classification</span>
+      <span class="meth-link-arrow">→</span>
+    </a>
+  </section>
+</main>
+
+<footer>
+  <div class="fin">
+    <div class="f-brand"><span>AI</span> Transparency Database</div>
+    <div class="flinks"><a href="index.html">Home</a><a href="methodology.html">Methodology</a><a href="mailto:data@aitransparency.com">Contact</a></div>
+    <div class="flegal">Analysis based on public documentation, community reports, and third-party benchmarks. Figures are estimates unless marked OFFICIAL. Not affiliated with or endorsed by Kuaishou Technology. No affiliate links. © 2026 AI Transparency Database</div>
+  </div>
+</footer>
+<a href="#" class="btt">↑</a>
+
+<script>
+  function toggleCard(card) { card.classList.toggle('open'); }
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzSaizHz7RYJpBPIQqwLTueMktQHjG9isLGMQxaqetT_uGHNiDtjw4tymmEAm9t6r3S/exec";
+  async function signup(btn){
+    const form=btn.closest('.cta-form')||btn.parentElement;
+    const inp=form.querySelector('input[type="email"]');
+    if(!inp)return;
+    const email=inp.value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){inp.style.borderColor='var(--red)';inp.focus();return;}
+    btn.textContent='...';btn.disabled=true;
+    let msg=btn.closest('.cta-box')&&btn.closest('.cta-box').querySelector('.cta-msg');
+    if(!msg){msg=document.createElement('div');msg.className='cta-msg';msg.style.cssText="font-family:'DM Mono',monospace;font-size:11px;margin-top:10px;display:none";(btn.closest('.cta-box')||btn.parentElement).appendChild(msg);}
+    try{await fetch(SCRIPT_URL,{method:'POST',body:JSON.stringify({email,source:location.pathname})});btn.textContent='✓ DONE';inp.disabled=true;msg.style.display='block';msg.style.color='var(--green)';msg.textContent="Subscribed! We'll alert you when policies change.";}
+    catch(err){btn.textContent='NOTIFY ME';btn.disabled=false;msg.style.display='block';msg.style.color='var(--red)';msg.textContent='Something went wrong. Please try again.';}
+  }
+  setTimeout(() => {
+    document.getElementById('b1').style.width = '10%';
+    document.getElementById('b2').style.width = '12%';
+    document.getElementById('b3').style.width = '35%';
+    document.getElementById('b4').style.width = '75%';
+    document.getElementById('b5').style.width = '8%';
+    let c=0,el=document.getElementById('counter-hidden'),t=setInterval(()=>{if(c>=5){clearInterval(t);return;}el.textContent=++c;},220);
+  }, 200);
+</script>
+</body>
+</html>
