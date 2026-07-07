@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en" style="color-scheme: light only;">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="color-scheme" content="light only"/>
+  <meta name="theme-color" content="#F8F8F5"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Sora Transparency Report — AI Transparency Database</title>
+  <meta name="description" content="Everything OpenAI didn't tell you about Sora. Consumer app shut down April 2026, API sunsets September 2026, free tier killed Jan 2026 — the full shutdown story documented."/>
+  <meta name="keywords" content="sora openai shutdown 2026, sora app discontinued, sora pricing hidden, sora api sunset"/>
+  <link rel="canonical" href="https://aitransparency.pages.dev/sora.html"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Sora still available in 2026?","acceptedAnswer":{"@type":"Answer","text":"The Sora consumer app (web + iOS) was discontinued on April 26, 2026. The Sora 2 API remains live but is scheduled to sunset on September 24, 2026. New integrations should consider alternatives."}},{"@type":"Question","name":"Why did OpenAI shut down Sora?","acceptedAnswer":{"@type":"Answer","text":"Primarily due to unsustainable economics — estimated $15 million per day in inference costs against approximately $2.1 million in total lifetime revenue, combined with a 66% drop in downloads from peak and GPU resource reallocation ahead of OpenAI's planned IPO."}},{"@type":"Question","name":"Can free users still access Sora?","acceptedAnswer":{"@type":"Answer","text":"No. Free tier access was discontinued on January 10, 2026. Only ChatGPT Plus ($20/mo) and Pro ($200/mo) subscribers could access Sora after that date — until the consumer app shut down entirely on April 26, 2026."}}]}</script>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="AI Transparency Database"/>
+  <meta property="og:url" content="https://aitransparency.pages.dev/sora.html"/>
+  <meta property="og:title" content="Sora Transparency Report 2026 — Shutdown, Hidden Costs & What Happened"/>
+  <meta property="og:description" content="The Sora consumer app shut down April 2026. API sunsets September 2026. $15M/day costs vs $2.1M lifetime revenue — the full story documented."/>
+  <meta property="og:image" content="https://aitransparency.pages.dev/ogdefault.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:site" content="@aitransparencydb"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { color-scheme: light only; scroll-behavior: smooth; }
+    :root {
+      --bg: #F8F8F5; --surf: #FFFFFF; --surf2: #F1F1EC; --surf3: #E8E8E2;
+      --border: #D8D8D0; --border-bright: #B8B8AE;
+      --text: #111118; --sub: #3A3A48; --muted: #6B6B78;
+      --acid: #1A6EFF; --acid-dim: rgba(26,110,255,.08); --acid-border: rgba(26,110,255,.22);
+      --red: #C8000A; --red-dim: rgba(200,0,10,.07); --red-border: rgba(200,0,10,.22);
+      --amber: #A05500; --amber-dim: rgba(160,85,0,.08); --amber-border: rgba(160,85,0,.22);
+      --green: #0A7A3A; --green-dim: rgba(10,122,58,.07); --green-border: rgba(10,122,58,.22);
+      --blue: #1A6EFF; --blue-dim: rgba(26,110,255,.07); --blue-border: rgba(26,110,255,.22);
+      --r: 8px; --r-lg: 14px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#F8F8F5!important;--surf:#FFFFFF!important;--surf2:#F1F1EC!important;--surf3:#E8E8E2!important;--border:#D8D8D0!important;--border-bright:#B8B8AE!important;--text:#111118!important;--sub:#3A3A48!important;--muted:#6B6B78!important;--acid:#1A6EFF!important;--acid-dim:rgba(26,110,255,.08)!important;--acid-border:rgba(26,110,255,.22)!important;--red:#C8000A!important;--red-dim:rgba(200,0,10,.07)!important;--red-border:rgba(200,0,10,.22)!important;--amber:#A05500!important;--amber-dim:rgba(160,85,0,.08)!important;--amber-border:rgba(160,85,0,.22)!important;--green:#0A7A3A!important;--green-dim:rgba(10,122,58,.07)!important;--green-border:rgba(10,122,58,.22)!important;--blue:#1A6EFF!important;--blue-dim:rgba(26,110,255,.07)!important;--blue-border:rgba(26,110,255,.22)!important; }
+      body { background: #F8F8F5!important; color: #111118!important; }
+    }
+    body { background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased; }
+    a { color:var(--acid);text-decoration:none; }
+    .nav { position:sticky;top:0;z-index:100;background:rgba(248,248,245,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border); }
+    .nav-in { max-width:800px;margin:0 auto;padding:0 20px;height:54px;display:flex;align-items:center;justify-content:space-between; }
+    .brand { font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--sub);text-decoration:none;letter-spacing:.5px; }
+    .brand span { color:var(--acid); }
+    .nav-tag { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--muted);letter-spacing:1px;text-transform:uppercase;border:1px solid var(--border);padding:4px 10px;border-radius:99px; }
+    .bc { max-width:800px;margin:0 auto;padding:12px 20px;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:8px; }
+    .bc a { color:var(--muted); }
+    .bc-sep { color:var(--border-bright); }
+    .page { max-width:800px;margin:0 auto;padding:0 20px 100px; }
+    .hero { padding:48px 0 40px; }
+    .hero-eyebrow { display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap; }
+    .tag-cat { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:4px 10px;border-radius:3px; }
+    .tag-shutdown { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--red);border:1px solid var(--red-border);padding:4px 10px;border-radius:3px;background:var(--red-dim); }
+    .hero-date { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.5px; }
+    h1 { font-family:'Playfair Display',serif;font-size:clamp(30px,5.5vw,50px);font-weight:800;line-height:1.05;letter-spacing:-1.5px;margin-bottom:14px;color:var(--text); }
+    h1 em { font-style:normal;color:var(--red); }
+    .hero-sub { font-size:16px;color:var(--sub);font-weight:400;line-height:1.6;max-width:560px;margin-bottom:32px; }
+    .hero-metrics { display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08); }
+    .hm-cell { background:var(--surf);padding:20px 18px; }
+    .hm-label { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin-bottom:8px; }
+    .hm-value { font-family:'Playfair Display',serif;font-size:32px;font-weight:800;line-height:1;letter-spacing:-1px; }
+    .hm-value.red { color:var(--red); }
+    .hm-value.amber { color:var(--amber); }
+    .hm-desc { font-size:11px;color:var(--muted);margin-top:5px;line-height:1.4; }
+    .sec { padding:36px 0;border-top:1px solid var(--border); }
+    .sec-header { display:flex;align-items:baseline;gap:12px;margin-bottom:6px; }
+    .stitle { font-family:'Playfair Display',serif;font-size:18px;font-weight:700;letter-spacing:-.4px; }
+    .sec-count { font-family:'DM Mono',monospace;font-size:11px;color:var(--muted); }
+    .ssub { font-size:13px;color:var(--muted);margin-bottom:22px;line-height:1.5; }
+    .hb-list { display:flex;flex-direction:column;gap:2px; }
+    .hb-card { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:border-color .15s;box-shadow:0 1px 4px rgba(0,0,0,.06); }
+    .hb-card:hover { border-color:var(--border-bright); }
+    .hb-card.critical { border-color:rgba(200,0,10,.2); }
+    .hb-card.medium { border-color:rgba(160,85,0,.15); }
+    .hb-card.low { border-color:rgba(26,110,255,.1); }
+    .hb-header { padding:16px 20px 14px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;cursor:pointer; }
+    .hb-left { flex:1; }
+    .hb-meta { display:flex;align-items:center;gap:8px;margin-bottom:7px;flex-wrap:wrap; }
+    .hb-index { font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);font-weight:500; }
+    .impact-pill { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;padding:3px 8px;border-radius:3px; }
+    .impact-pill.critical { background:var(--red-dim);color:var(--red);border:1px solid var(--red-border); }
+    .impact-pill.medium { background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-border); }
+    .impact-pill.low { background:var(--acid-dim);color:var(--acid);border:1px solid var(--acid-border); }
+    .hb-title { font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--text);line-height:1.3;letter-spacing:-.2px; }
+    .hb-chevron { color:var(--muted);font-size:14px;flex-shrink:0;margin-top:2px;transition:transform .2s; }
+    .hb-card.open .hb-chevron { transform:rotate(180deg); }
+    .hb-body { display:none;padding:0 20px 20px;border-top:1px solid var(--border); }
+    .hb-card.open .hb-body { display:block; }
+    .hb-body-inner { padding-top:16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px; }
+    .hb-col-label { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px; }
+    .hb-col-label.official { color:var(--blue); }
+    .hb-col-label.observed { color:var(--green); }
+    .hb-col-label.estimated { color:var(--amber); }
+    .hb-col-content { background:var(--surf2);border-radius:var(--r);padding:12px;font-size:12px;line-height:1.55;color:var(--sub); }
+    .hb-col-content strong { color:var(--text);font-weight:600;display:block;margin-bottom:3px;font-size:12px; }
+    .hb-footer { margin-top:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:12px;border-top:1px solid var(--border); }
+    .hb-verified { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted); }
+    .hb-verified span { color:var(--acid); }
+    .src-badge { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;padding:3px 7px;border-radius:3px;letter-spacing:.5px; }
+    .src-official { background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-border); }
+    .src-observed { background:var(--green-dim);color:var(--green);border:1px solid var(--green-border); }
+    .src-estimated { background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-border); }
+    .rl-box { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07); }
+    .rl-head-bar { background:var(--surf2);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border); }
+    .rl-head-name { font-family:'Playfair Display',serif;font-size:14px;font-weight:700; }
+    .rl-head-price { font-family:'DM Mono',monospace;font-size:12px;color:var(--muted); }
+    .rl-row { display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:start;padding:14px 20px;border-bottom:1px solid var(--border); }
+    .rl-row:last-child { border-bottom:none; }
+    .rl-key { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;padding-top:2px; }
+    .rl-val { font-size:13px;color:var(--text);font-weight:500;line-height:1.5; }
+    .rl-val em { font-style:normal;color:var(--red);font-weight:600; }
+    .rl-alert { background:var(--red-dim);border:1px solid var(--red-border);border-radius:var(--r);padding:12px 14px;margin:0 20px 16px; }
+    .rl-alert-label { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1px;color:var(--red);text-transform:uppercase;margin-bottom:5px; }
+    .rl-alert-text { font-size:12px;color:var(--red);line-height:1.55;font-weight:500; }
+    .timeline { display:flex;flex-direction:column; }
+    .tl-item { display:grid;grid-template-columns:90px 1px 1fr;gap:0 16px;padding:16px 0;align-items:start; }
+    .tl-date { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);font-weight:500;padding-top:3px; }
+    .tl-line-col { display:flex;flex-direction:column;align-items:center; }
+    .tl-dot { width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px; }
+    .tl-connector { flex:1;width:1px;background:var(--border);min-height:24px; }
+    .tl-content { padding-bottom:8px; }
+    .tl-event { font-size:13px;font-weight:500;color:var(--text);line-height:1.5;margin-bottom:4px; }
+    .tl-src-row { display:flex;align-items:center;gap:6px; }
+    .tl-src-note { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted); }
+    details { border-bottom:1px solid var(--border); }
+    details:first-of-type { border-top:1px solid var(--border); }
+    summary { font-family:'Playfair Display',serif;font-size:14px;font-weight:600;padding:16px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text); }
+    summary::-webkit-details-marker { display:none; }
+    summary::after { content:'+';font-size:18px;color:var(--muted);flex-shrink:0;margin-left:12px;font-family:'DM Mono',monospace; }
+    details[open] summary::after { content:'−'; }
+    .fansw { font-size:13.5px;color:var(--sub);line-height:1.65;padding-bottom:16px; }
+    .compare-list { display:flex;flex-direction:column;gap:2px; }
+    .compare-row { display:flex;align-items:center;justify-content:space-between;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;text-decoration:none;color:inherit;transition:border-color .15s; }
+    .compare-row:hover { border-color:var(--border-bright); }
+    .compare-row.current { border-color:var(--red-border);background:var(--red-dim); }
+    .compare-name { font-family:'Playfair Display',serif;font-weight:700;font-size:14px; }
+    .compare-meta { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:2px; }
+    .compare-badge { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);border:1px solid var(--border);padding:4px 10px;border-radius:3px; }
+    .compare-row.current .compare-badge { color:var(--red);border-color:var(--red-border); }
+    .cta-box { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px; }
+    .cta-title { font-family:'Playfair Display',serif;font-size:18px;font-weight:800;margin-bottom:6px;letter-spacing:-.3px; }
+    .cta-sub { font-size:13px;color:var(--muted);margin-bottom:18px; }
+    .cta-form { display:flex;gap:8px;flex-wrap:wrap; }
+    .cta-inp { background:var(--surf2);border:1px solid var(--border);color:var(--text);padding:11px 16px;border-radius:var(--r);font-size:13px;flex:1;min-width:200px;outline:none;font-family:'DM Mono',monospace;transition:border-color .15s; }
+    .cta-inp:focus { border-color:var(--acid-border); }
+    .cta-inp::placeholder { color:var(--muted); }
+    .cta-btn { background:var(--acid);color:#fff;border:none;padding:11px 22px;border-radius:var(--r);font-weight:700;font-size:12px;cursor:pointer;font-family:'DM Mono',monospace;letter-spacing:.5px;white-space:nowrap;transition:opacity .15s; }
+    .cta-btn:hover { opacity:.88; }
+    footer { border-top:1px solid var(--border);padding:28px 20px; }
+    .fin { max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:10px; }
+    .f-brand { font-family:'DM Mono',monospace;font-size:12px;color:var(--muted); }
+    .f-brand span { color:var(--acid); }
+    .flinks { display:flex;gap:16px;flex-wrap:wrap; }
+    .flinks a { font-family:'DM Mono',monospace;font-size:11px;color:var(--muted); }
+    .flegal { font-size:11px;color:var(--muted);line-height:1.6;opacity:.7; }
+    .meth-link { display:flex;align-items:center;justify-content:space-between;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;text-decoration:none;color:var(--sub);transition:border-color .15s; }
+    .meth-link:hover { border-color:var(--border-bright);color:var(--text); }
+    .meth-link-label { font-size:13px;font-weight:500; }
+    .meth-link-arrow { font-family:'DM Mono',monospace;color:var(--acid); }
+    .btt { position:fixed;bottom:22px;right:22px;background:var(--surf);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;text-decoration:none;font-family:'DM Mono',monospace;box-shadow:0 2px 8px rgba(0,0,0,.1); }
+    .btt:hover { border-color:var(--red-border);color:var(--red); }
+    @media (max-width:600px) {
+      .hero-metrics { grid-template-columns:1fr 1fr; }
+      .hb-body-inner { grid-template-columns:1fr; }
+      .rl-row { grid-template-columns:1fr;gap:4px; }
+      .hero-metrics .hm-cell:last-child { grid-column:span 2; }
+    }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand"><span>AI</span> Transparency Database</a>
+    <span class="nav-tag">BETA</span>
+  </div>
+</nav>
+<div class="bc">
+  <a href="index.html">Home</a>
+  <span class="bc-sep">/</span>
+  <span>Sora</span>
+</div>
+
+<main class="page">
+  <section class="hero">
+    <div class="hero-eyebrow">
+      <span class="tag-cat">AI Video · OpenAI</span>
+      <span class="tag-shutdown">⚠ App Discontinued Apr 2026</span>
+      <span class="hero-date">Last audited: 2026-07-06</span>
+    </div>
+    <h1>Sora:<br><em>The $15M/day product OpenAI shut down</em></h1>
+    <p class="hero-sub">Consumer app discontinued April 26, 2026. API sunsets September 24, 2026. Based on public docs, financial analysis, and community reports.</p>
+    <div class="hero-metrics">
+      <div class="hm-cell">
+        <div class="hm-label">Daily Inference Cost</div>
+        <div class="hm-value red">$15M</div>
+        <div class="hm-desc">estimated peak daily cost (Cantor Fitzgerald)</div>
+      </div>
+      <div class="hm-cell">
+        <div class="hm-label">Total Lifetime Revenue</div>
+        <div class="hm-value red">$2.1M</div>
+        <div class="hm-desc">vs $15M/day costs — math was never viable</div>
+      </div>
+      <div class="hm-cell">
+        <div class="hm-label">Status</div>
+        <div class="hm-value red" style="font-size:18px;padding-top:6px">SHUT DOWN</div>
+        <div class="hm-desc">App: Apr 26 · API: Sep 24, 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-header">
+      <div class="stitle">What OpenAI Didn't Tell You</div>
+      <div class="sec-count">5 documented</div>
+    </div>
+    <p class="ssub">Hidden behaviors and policy changes that users discovered the hard way — before and during the shutdown.</p>
+    <div class="hb-list">
+
+      <div class="hb-card critical" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">01</span><span class="impact-pill critical">⬤ Critical Impact</span></div>
+            <div class="hb-title">Consumer app shut down with no advance notice to subscribers</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Announced on shutdown day</strong>OpenAI announced the Sora consumer app (web + iOS) discontinuation on April 26, 2026 — the same day it shut down. No multi-week advance warning was given to paying subscribers.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>No pro-rated refunds reported</strong>Community reports indicate Plus and Pro subscribers who had recently renewed received no automatic pro-rated refunds for lost Sora access.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Disney deal collapse concurrent</strong>The $1 billion Disney licensing partnership — signed Dec 2025 to feature 200+ characters — collapsed simultaneously with the shutdown.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Apr 2026</span> — community + Medium analysis</div>
+            <span class="src-badge src-observed">OBSERVED</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-card critical" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">02</span><span class="impact-pill critical">⬤ Critical Impact</span></div>
+            <div class="hb-title">Free tier killed January 10, 2026 — "server load" error was a deliberate lock</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Policy change on Jan 10, 2026</strong>Free tier access was discontinued. Users on sora.com saw "We're under heavy load" — this was not a server error but an intentional restriction on free accounts.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>Misleading error message</strong>The "heavy load" message implied a temporary outage, not a permanent policy change. Many free users spent hours troubleshooting what was actually a deliberate access block.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Cost-driven, not demand-driven</strong>The timing aligns with OpenAI's attempt to limit $15M/day inference costs — restricting free users was the first lever pulled before ultimately shutting down entirely.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jan 2026</span> — apiyi.com + community</div>
+            <span class="src-badge src-official">OFFICIAL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-card critical" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">03</span><span class="impact-pill critical">⬤ Critical Impact</span></div>
+            <div class="hb-title">API sunsets September 24, 2026 — active integrations will break</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Sunset date confirmed</strong>OpenAI announced the Sora 2 API will stop accepting requests on September 24, 2026. Both sora-2 and sora-2-pro model identifiers will be decommissioned.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>No committed successor</strong>OpenAI has not publicly committed to a successor API. Developers with production Sora integrations have no guaranteed migration path within the OpenAI ecosystem.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Best alternative: Veo 3.1</strong>Google Veo 3.1 on Vertex AI is the most actively developed mainstream alternative, with $0.03–$0.40/sec pricing and enterprise SLA guarantees Sora never offered.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>May 2026</span> — costgoat.com + OpenAI docs</div>
+            <span class="src-badge src-official">OFFICIAL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-card medium" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">04</span><span class="impact-pill medium">⬤ Medium Impact</span></div>
+            <div class="hb-title">Failed generations charged at full rate — $8.75 for a failed 25s Pro clip</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Documented in API pricing guide</strong>OpenAI's API charges per second of attempted generation. A failed 25-second Sora 2 Pro 1080p batch costs $8.75 — the same as a successful one.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>Content moderation still billed</strong>If content moderation flags your output, you still pay. If generation times out, you still pay. This was a consistent community complaint throughout Sora's lifetime.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>True cost 2–3× headline rate</strong>With typical iteration and rejection rates, real production cost per usable clip was estimated at 2–3× the per-second rate shown on the pricing page.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jan 2026</span> — aifreeapi.com + OpenAI pricing</div>
+            <span class="src-badge src-official">OFFICIAL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-card medium" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">05</span><span class="impact-pill medium">⬤ Medium Impact</span></div>
+            <div class="hb-title">API Tier 1 accounts cannot access Sora — $10 minimum top-up required</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Documented in rate-limit docs</strong>Sora API access requires Tier 2 status, reached only by topping up at least $10 of API credit. New accounts default to Tier 1 and cannot access Sora models.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>Not shown on Sora pricing page</strong>The Sora pricing page listed per-second API costs but did not surface the Tier 2 account requirement — leading developers to attempt API calls that failed on first try.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Moot post-sunset</strong>With the API sunsetting September 24, 2026, this is now a historical note — but illustrates the systemic pattern of undisclosed access barriers throughout Sora's lifecycle.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>May 2026</span> — cometapi.com + OpenAI docs</div>
+            <span class="src-badge src-official">OFFICIAL</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:18px">What It Cost (While It Lasted)</div>
+    <div class="rl-box">
+      <div class="rl-head-bar">
+        <div class="rl-head-name">Sora 2 API (Final Pricing)</div>
+        <div class="rl-head-price">Sunsets Sep 24, 2026</div>
+      </div>
+      <div class="rl-rows">
+        <div class="rl-row"><div class="rl-key">Sora 2 Standard</div><div class="rl-val">$0.10/sec · 720p · 4s, 8s, or 12s clips only — no custom durations</div></div>
+        <div class="rl-row"><div class="rl-key">Sora 2 Pro</div><div class="rl-val">$0.50/sec · 1080p · 10s, 15s, or 25s clips · <em>5× more expensive than Standard</em></div></div>
+        <div class="rl-row"><div class="rl-key">Batch (50% off)</div><div class="rl-val">$0.05/sec Standard · $0.25/sec Pro · up to 24-hour delivery SLA</div></div>
+        <div class="rl-row"><div class="rl-key">Consumer App</div><div class="rl-val"><em>Discontinued April 26, 2026</em> — Plus: 1,000 credits/mo · Pro: 10,000 credits/mo + unlimited relaxed</div></div>
+        <div class="rl-row"><div class="rl-key">Failed Generations</div><div class="rl-val"><em>Charged at full rate</em> — content moderation flags, timeouts, and poor outputs all billed</div></div>
+      </div>
+      <div class="rl-alert">
+        <div class="rl-alert-label">⚠ API sunset warning</div>
+        <div class="rl-alert-text">The Sora 2 API stops accepting requests September 24, 2026. Do not build new integrations on Sora. Migrate existing pipelines to Google Veo 3.1 (Vertex AI) or Runway Gen-4.5 before this date.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-header"><div class="stitle">Shutdown Timeline</div></div>
+    <p class="ssub">The full chronology — from launch to shutdown.</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">Dec 2024</div>
+        <div class="tl-line-col"><div class="tl-dot" style="background:var(--green)"></div><div class='tl-connector'></div></div>
+        <div class="tl-content">
+          <div class="tl-event">Sora consumer app launches publicly — invite-only iOS app, free tier available with limited daily generations</div>
+          <div class="tl-src-row"><span class="src-badge src-official">OFFICIAL</span><span class="tl-src-note">openai.com</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Jan 7, 2026</div>
+        <div class="tl-line-col"><div class="tl-dot" style="background:var(--amber)"></div><div class='tl-connector'></div></div>
+        <div class="tl-content">
+          <div class="tl-event">Phone number verification silently added — no advance notice; users locked out until verified</div>
+          <div class="tl-src-row"><span class="src-badge src-observed">OBSERVED</span><span class="tl-src-note">community reports</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Jan 10, 2026</div>
+        <div class="tl-line-col"><div class="tl-dot" style="background:var(--red)"></div><div class='tl-connector'></div></div>
+        <div class="tl-content">
+          <div class="tl-event">Free tier access terminated — "heavy load" error displayed, which was a deliberate restriction, not a server issue</div>
+          <div class="tl-src-row"><span class="src-badge src-official">OFFICIAL</span><span class="tl-src-note">apiyi.com documentation</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Dec 2025</div>
+        <div class="tl-line-col"><div class="tl-dot" style="background:var(--blue)"></div><div class='tl-connector'></div></div>
+        <div class="tl-content">
+          <div class="tl-event">Disney $1B licensing deal signed — 200+ Marvel, Pixar, Star Wars characters to be available in Sora</div>
+          <div class="tl-src-row"><span class="src-badge src-official">OFFICIAL</span><span class="tl-src-note">OpenAI press release</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Apr 26, 2026</div>
+        <div class="tl-line-col"><div class="tl-dot" style="background:var(--red)"></div><div class='tl-connector'></div></div>
+        <div class="tl-content">
+          <div class="tl-event">Consumer app shut down same-day — Disney deal collapsed simultaneously; $15M/day costs vs $2.1M lifetime revenue cited as primary cause</div>
+          <div class="tl-src-row"><span class="src-badge src-observed">OBSERVED</span><span class="tl-src-note">Medium analysis + community</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Sep 24, 2026</div>
+        <div class="tl-line-col"><div class="tl-dot" style="background:var(--red)"></div></div>
+        <div class="tl-content">
+          <div class="tl-event">Sora 2 API sunset — all API endpoints decommissioned; no committed successor within OpenAI ecosystem</div>
+          <div class="tl-src-row"><span class="src-badge src-official">OFFICIAL</span><span class="tl-src-note">costgoat.com + OpenAI — upcoming</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:12px">Recommended Alternatives</div>
+    <div class="compare-list">
+      <div class="compare-row current">
+        <div><div class="compare-name">Sora</div><div class="compare-meta">OpenAI · App shut down · API sunsets Sep 2026</div></div>
+        <div class="compare-badge">⚠ discontinued</div>
+      </div>
+      <a href="runway.html" class="compare-row"><div><div class="compare-name">Runway</div><div class="compare-meta">Runway AI · Video Gen · $12/mo · Gen-4.5</div></div><div class="compare-badge">view report →</div></a>
+      <a href="kling.html" class="compare-row"><div><div class="compare-name">Kling AI</div><div class="compare-meta">Kuaishou · Video Gen · ~$10/mo · 2-min clips</div></div><div class="compare-badge">view report →</div></a>
+      <a href="pika.html" class="compare-row"><div><div class="compare-name">Pika</div><div class="compare-meta">Pika Labs · Video Gen · $8/mo · fast social clips</div></div><div class="compare-badge">view report →</div></a>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:18px">Frequently Asked</div>
+    <details><summary>Is Sora still available in 2026?</summary><div class="fansw">The Sora consumer app (web + iOS) was discontinued on April 26, 2026. The Sora 2 API remains live until September 24, 2026, after which all endpoints will be decommissioned. Do not build new integrations on Sora. For video generation, consider Runway Gen-4.5, Kling 3.0, or Google Veo 3.1.</div></details>
+    <details><summary>Why did OpenAI shut down Sora?</summary><div class="fansw">Primarily unsustainable economics. Cantor Fitzgerald estimated peak inference costs at approximately $15 million per day, against $2.1 million in total lifetime revenue. Additional factors included a 66% drop in app downloads from peak, deepfake and copyright moderation challenges, and the need to redirect GPU resources ahead of OpenAI's planned IPO.</div></details>
+    <details><summary>What happened to the Disney deal?</summary><div class="fansw">Disney's $1 billion investment and three-year character licensing deal — signed December 2025 to allow Sora to generate content featuring 200+ Disney, Marvel, Pixar, and Star Wars characters — collapsed simultaneously with the April 2026 shutdown. Disney's planned Disney+ integration of Sora-generated content was never launched.</div></details>
+    <details><summary>What's the best alternative to Sora?</summary><div class="fansw">For cinematic quality: Runway Gen-4.5 ($12–76/mo). For longest clips and motion physics: Kling AI (~$10/mo, up to 2 minutes). For fast social content: Pika ($8/mo). For enterprise with audio: Google Veo 3.1 (Vertex AI, $0.03–$0.40/sec). Each has its own hidden limit traps — see their individual transparency reports on this site.</div></details>
+  </section>
+
+  <section class="sec">
+    <div class="cta-box">
+      <div class="cta-title">Get alerted when AI tools change policies</div>
+      <p class="cta-sub">We track shutdowns, silent limit cuts, and pricing changes before most users notice.</p>
+      <div class="cta-form">
+        <input class="cta-inp" type="email" placeholder="your@email.com"/>
+        <button class="cta-btn" type="button" onclick="signup(this)">NOTIFY ME</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <a href="methodology.html" class="meth-link">
+      <span class="meth-link-label">How we audit — full methodology and source classification</span>
+      <span class="meth-link-arrow">→</span>
+    </a>
+  </section>
+</main>
+
+<footer>
+  <div class="fin">
+    <div class="f-brand"><span>AI</span> Transparency Database</div>
+    <div class="flinks"><a href="index.html">Home</a><a href="methodology.html">Methodology</a><a href="mailto:data@aitransparency.com">Contact</a></div>
+    <div class="flegal">Analysis based on public documentation, community reports, and third-party benchmarks. Figures are estimates unless marked OFFICIAL. Not affiliated with or endorsed by OpenAI. No affiliate links. © 2026 AI Transparency Database</div>
+  </div>
+</footer>
+<a href="#" class="btt">↑</a>
+<script>
+  function toggleCard(card) { card.classList.toggle('open'); }
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzSaizHz7RYJpBPIQqwLTueMktQHjG9isLGMQxaqetT_uGHNiDtjw4tymmEAm9t6r3S/exec";
+  async function signup(btn){
+    const form=btn.closest('.cta-form')||btn.parentElement;
+    const inp=form.querySelector('input[type="email"]');
+    if(!inp)return;
+    const email=inp.value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){inp.style.borderColor='var(--red)';inp.focus();return;}
+    btn.textContent='...';btn.disabled=true;
+    let msg=btn.closest('.cta-box')&&btn.closest('.cta-box').querySelector('.cta-msg');
+    if(!msg){msg=document.createElement('div');msg.className='cta-msg';msg.style.cssText="font-family:'DM Mono',monospace;font-size:11px;margin-top:10px;display:none";(btn.closest('.cta-box')||btn.parentElement).appendChild(msg);}
+    try{await fetch(SCRIPT_URL,{method:'POST',body:JSON.stringify({email,source:location.pathname})});btn.textContent='✓ DONE';inp.disabled=true;msg.style.display='block';msg.style.color='var(--green)';msg.textContent="Subscribed! We'll alert you when policies change.";}
+    catch(err){btn.textContent='NOTIFY ME';btn.disabled=false;msg.style.display='block';msg.style.color='var(--red)';msg.textContent='Something went wrong. Please try again.';}
+  }
+</script>
+</body>
+</html>
