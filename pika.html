@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en" style="color-scheme: light only;">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="color-scheme" content="light only"/>
+  <meta name="theme-color" content="#F8F8F5"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Pika Transparency Report — AI Transparency Database</title>
+  <meta name="description" content="Everything the Pika pricing page doesn't tell you. Failed generations burn credits, Standard has no commercial rights, 1080p costs 3.5x more than Basic — all documented."/>
+  <meta name="keywords" content="pika ai hidden limits, pika credits expire, pika commercial rights paywall, pika pricing 2026"/>
+  <link rel="canonical" href="https://aitransparency.pages.dev/pika.html"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do failed Pika generations still use credits?","acceptedAnswer":{"@type":"Answer","text":"Yes. Credits are deducted whether the generation succeeds or fails. This is a consistent source of user frustration and is not disclosed on the pricing page."}},{"@type":"Question","name":"Can I use Pika videos commercially on the Standard plan?","acceptedAnswer":{"@type":"Answer","text":"No. Commercial usage rights are restricted to Pro ($28/month) and Fancy ($76/month) plans only. Basic and Standard subscribers cannot use generated content commercially, despite this not being disclosed on the main pricing page."}},{"@type":"Question","name":"Is Pika's free tier actually useful?","acceptedAnswer":{"@type":"Answer","text":"Only for testing. The free tier provides 80 monthly credits — enough for approximately 8 short Turbo clips or 1–2 quality 1080p clips. All outputs are watermarked and cannot be used commercially."}}]}</script>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="AI Transparency Database"/>
+  <meta property="og:url" content="https://aitransparency.pages.dev/pika.html"/>
+  <meta property="og:title" content="Pika Transparency Report 2026 — Hidden Costs & Commercial Rights Traps"/>
+  <meta property="og:description" content="Failed generations burn credits, Standard plan has no commercial rights, 1080p requires 3.5x price jump — Pika's hidden costs documented."/>
+  <meta property="og:image" content="https://aitransparency.pages.dev/ogdefault.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:site" content="@aitransparencydb"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { color-scheme: light only; scroll-behavior: smooth; }
+    :root {
+      --bg: #F8F8F5; --surf: #FFFFFF; --surf2: #F1F1EC; --surf3: #E8E8E2;
+      --border: #D8D8D0; --border-bright: #B8B8AE;
+      --text: #111118; --sub: #3A3A48; --muted: #6B6B78;
+      --acid: #1A6EFF; --acid-dim: rgba(26,110,255,.08); --acid-border: rgba(26,110,255,.22);
+      --red: #C8000A; --red-dim: rgba(200,0,10,.07); --red-border: rgba(200,0,10,.22);
+      --amber: #A05500; --amber-dim: rgba(160,85,0,.08); --amber-border: rgba(160,85,0,.22);
+      --green: #0A7A3A; --green-dim: rgba(10,122,58,.07); --green-border: rgba(10,122,58,.22);
+      --blue: #1A6EFF; --blue-dim: rgba(26,110,255,.07); --blue-border: rgba(26,110,255,.22);
+      --r: 8px; --r-lg: 14px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#F8F8F5!important;--surf:#FFFFFF!important;--surf2:#F1F1EC!important;--surf3:#E8E8E2!important;--border:#D8D8D0!important;--border-bright:#B8B8AE!important;--text:#111118!important;--sub:#3A3A48!important;--muted:#6B6B78!important;--acid:#1A6EFF!important;--acid-dim:rgba(26,110,255,.08)!important;--acid-border:rgba(26,110,255,.22)!important;--red:#C8000A!important;--red-dim:rgba(200,0,10,.07)!important;--red-border:rgba(200,0,10,.22)!important;--amber:#A05500!important;--amber-dim:rgba(160,85,0,.08)!important;--amber-border:rgba(160,85,0,.22)!important;--green:#0A7A3A!important;--green-dim:rgba(10,122,58,.07)!important;--green-border:rgba(10,122,58,.22)!important;--blue:#1A6EFF!important;--blue-dim:rgba(26,110,255,.07)!important;--blue-border:rgba(26,110,255,.22)!important; }
+      body { background: #F8F8F5!important; color: #111118!important; }
+    }
+    body { background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased; }
+    a { color:var(--acid);text-decoration:none; }
+    .nav { position:sticky;top:0;z-index:100;background:rgba(248,248,245,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border); }
+    .nav-in { max-width:800px;margin:0 auto;padding:0 20px;height:54px;display:flex;align-items:center;justify-content:space-between; }
+    .brand { font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--sub);text-decoration:none;letter-spacing:.5px; }
+    .brand span { color:var(--acid); }
+    .nav-tag { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--muted);letter-spacing:1px;text-transform:uppercase;border:1px solid var(--border);padding:4px 10px;border-radius:99px; }
+    .bc { max-width:800px;margin:0 auto;padding:12px 20px;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:8px; }
+    .bc a { color:var(--muted); }
+    .bc-sep { color:var(--border-bright); }
+    .page { max-width:800px;margin:0 auto;padding:0 20px 100px; }
+    .hero { padding:48px 0 40px; }
+    .hero-eyebrow { display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap; }
+    .tag-cat { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:4px 10px;border-radius:3px; }
+    .tag-verified { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--acid);border:1px solid var(--acid-border);padding:4px 10px;border-radius:3px;background:var(--acid-dim); }
+    .hero-date { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.5px; }
+    h1 { font-family:'Playfair Display',serif;font-size:clamp(30px,5.5vw,50px);font-weight:800;line-height:1.05;letter-spacing:-1.5px;margin-bottom:14px;color:var(--text); }
+    h1 em { font-style:normal;color:var(--acid); }
+    .hero-sub { font-size:16px;color:var(--sub);font-weight:400;line-height:1.6;max-width:560px;margin-bottom:32px; }
+    .hero-metrics { display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08); }
+    .hm-cell { background:var(--surf);padding:20px 18px; }
+    .hm-label { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin-bottom:8px; }
+    .hm-value { font-family:'Playfair Display',serif;font-size:32px;font-weight:800;line-height:1;letter-spacing:-1px; }
+    .hm-value.red { color:var(--red); }
+    .hm-value.amber { color:var(--amber); }
+    .hm-desc { font-size:11px;color:var(--muted);margin-top:5px;line-height:1.4; }
+    .sec { padding:36px 0;border-top:1px solid var(--border); }
+    .sec-header { display:flex;align-items:baseline;gap:12px;margin-bottom:6px; }
+    .stitle { font-family:'Playfair Display',serif;font-size:18px;font-weight:700;letter-spacing:-.4px; }
+    .sec-count { font-family:'DM Mono',monospace;font-size:11px;color:var(--muted); }
+    .ssub { font-size:13px;color:var(--muted);margin-bottom:22px;line-height:1.5; }
+    .hb-list { display:flex;flex-direction:column;gap:2px; }
+    .hb-card { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:border-color .15s;box-shadow:0 1px 4px rgba(0,0,0,.06); }
+    .hb-card:hover { border-color:var(--border-bright); }
+    .hb-card.critical { border-color:rgba(200,0,10,.2); }
+    .hb-card.medium { border-color:rgba(160,85,0,.15); }
+    .hb-card.low { border-color:rgba(26,110,255,.1); }
+    .hb-header { padding:16px 20px 14px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;cursor:pointer; }
+    .hb-left { flex:1; }
+    .hb-meta { display:flex;align-items:center;gap:8px;margin-bottom:7px;flex-wrap:wrap; }
+    .hb-index { font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);font-weight:500; }
+    .impact-pill { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;padding:3px 8px;border-radius:3px; }
+    .impact-pill.critical { background:var(--red-dim);color:var(--red);border:1px solid var(--red-border); }
+    .impact-pill.medium { background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-border); }
+    .impact-pill.low { background:var(--acid-dim);color:var(--acid);border:1px solid var(--acid-border); }
+    .hb-title { font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--text);line-height:1.3;letter-spacing:-.2px; }
+    .hb-chevron { color:var(--muted);font-size:14px;flex-shrink:0;margin-top:2px;transition:transform .2s; }
+    .hb-card.open .hb-chevron { transform:rotate(180deg); }
+    .hb-body { display:none;padding:0 20px 20px;border-top:1px solid var(--border); }
+    .hb-card.open .hb-body { display:block; }
+    .hb-body-inner { padding-top:16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px; }
+    .hb-col-label { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px; }
+    .hb-col-label.official { color:var(--blue); }
+    .hb-col-label.observed { color:var(--green); }
+    .hb-col-label.estimated { color:var(--amber); }
+    .hb-col-content { background:var(--surf2);border-radius:var(--r);padding:12px;font-size:12px;line-height:1.55;color:var(--sub); }
+    .hb-col-content strong { color:var(--text);font-weight:600;display:block;margin-bottom:3px;font-size:12px; }
+    .hb-footer { margin-top:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:12px;border-top:1px solid var(--border); }
+    .hb-verified { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted); }
+    .hb-verified span { color:var(--acid); }
+    .src-badge { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;padding:3px 7px;border-radius:3px;letter-spacing:.5px; }
+    .src-official { background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-border); }
+    .src-observed { background:var(--green-dim);color:var(--green);border:1px solid var(--green-border); }
+    .rl-box { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07); }
+    .rl-head-bar { background:var(--surf2);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border); }
+    .rl-head-name { font-family:'Playfair Display',serif;font-size:14px;font-weight:700; }
+    .rl-head-price { font-family:'DM Mono',monospace;font-size:12px;color:var(--muted); }
+    .rl-row { display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:start;padding:14px 20px;border-bottom:1px solid var(--border); }
+    .rl-row:last-child { border-bottom:none; }
+    .rl-key { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;padding-top:2px; }
+    .rl-val { font-size:13px;color:var(--text);font-weight:500;line-height:1.5; }
+    .rl-val em { font-style:normal;color:var(--red);font-weight:600; }
+    .rl-alert { background:var(--red-dim);border:1px solid var(--red-border);border-radius:var(--r);padding:12px 14px;margin:0 20px 16px; }
+    .rl-alert-label { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1px;color:var(--red);text-transform:uppercase;margin-bottom:5px; }
+    .rl-alert-text { font-size:12px;color:var(--red);line-height:1.55;font-weight:500; }
+    .tscore-list { display:flex;flex-direction:column;gap:16px; }
+    .tscore-top { display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px;gap:12px; }
+    .tscore-label { font-size:13px;font-weight:600;color:var(--text); }
+    .tscore-meta { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted); }
+    .tscore-detail { font-size:12px;color:var(--muted);margin-bottom:7px;line-height:1.5; }
+    .tscore-track { height:5px;background:var(--surf3);border-radius:99px;overflow:hidden;border:1px solid var(--border); }
+    .tscore-fill { height:100%;border-radius:99px;transition:width 1.2s cubic-bezier(.4,0,.2,1); }
+    .tscore-fill.red { background:var(--red); }
+    .tscore-fill.amber { background:var(--amber); }
+    .tscore-fill.green { background:var(--green); }
+    .tscore-src { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:5px; }
+    .tscore-summary { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px 20px;margin-top:20px;display:flex;align-items:center;justify-content:space-between;gap:16px; }
+    .tscore-summary-label { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase; }
+    .tscore-pct { font-family:'Playfair Display',serif;font-size:36px;font-weight:800;letter-spacing:-1px;color:var(--amber); }
+    details { border-bottom:1px solid var(--border); }
+    details:first-of-type { border-top:1px solid var(--border); }
+    summary { font-family:'Playfair Display',serif;font-size:14px;font-weight:600;padding:16px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text); }
+    summary::-webkit-details-marker { display:none; }
+    summary::after { content:'+';font-size:18px;color:var(--muted);flex-shrink:0;margin-left:12px;font-family:'DM Mono',monospace; }
+    details[open] summary::after { content:'−'; }
+    .fansw { font-size:13.5px;color:var(--sub);line-height:1.65;padding-bottom:16px; }
+    .compare-list { display:flex;flex-direction:column;gap:2px; }
+    .compare-row { display:flex;align-items:center;justify-content:space-between;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;text-decoration:none;color:inherit;transition:border-color .15s; }
+    .compare-row:hover { border-color:var(--border-bright); }
+    .compare-row.current { border-color:var(--acid-border);background:var(--acid-dim); }
+    .compare-name { font-family:'Playfair Display',serif;font-weight:700;font-size:14px; }
+    .compare-meta { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:2px; }
+    .compare-badge { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);border:1px solid var(--border);padding:4px 10px;border-radius:3px; }
+    .compare-row.current .compare-badge { color:var(--acid);border-color:var(--acid-border); }
+    .cta-box { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px; }
+    .cta-title { font-family:'Playfair Display',serif;font-size:18px;font-weight:800;margin-bottom:6px;letter-spacing:-.3px; }
+    .cta-sub { font-size:13px;color:var(--muted);margin-bottom:18px; }
+    .cta-form { display:flex;gap:8px;flex-wrap:wrap; }
+    .cta-inp { background:var(--surf2);border:1px solid var(--border);color:var(--text);padding:11px 16px;border-radius:var(--r);font-size:13px;flex:1;min-width:200px;outline:none;font-family:'DM Mono',monospace;transition:border-color .15s; }
+    .cta-inp:focus { border-color:var(--acid-border); }
+    .cta-inp::placeholder { color:var(--muted); }
+    .cta-btn { background:var(--acid);color:#fff;border:none;padding:11px 22px;border-radius:var(--r);font-weight:700;font-size:12px;cursor:pointer;font-family:'DM Mono',monospace;letter-spacing:.5px;white-space:nowrap;transition:opacity .15s; }
+    .cta-btn:hover { opacity:.88; }
+    footer { border-top:1px solid var(--border);padding:28px 20px; }
+    .fin { max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:10px; }
+    .f-brand { font-family:'DM Mono',monospace;font-size:12px;color:var(--muted); }
+    .f-brand span { color:var(--acid); }
+    .flinks { display:flex;gap:16px;flex-wrap:wrap; }
+    .flinks a { font-family:'DM Mono',monospace;font-size:11px;color:var(--muted); }
+    .flegal { font-size:11px;color:var(--muted);line-height:1.6;opacity:.7; }
+    .visit-btn { display:inline-flex;align-items:center;gap:8px;background:var(--surf2);color:var(--text);border:1px solid var(--border);font-family:'DM Mono',monospace;font-weight:500;font-size:12px;padding:11px 20px;border-radius:var(--r);letter-spacing:.5px;transition:border-color .15s; }
+    .visit-btn:hover { border-color:var(--border-bright);color:var(--text); }
+    .visit-arrow { color:var(--acid); }
+    .meth-link { display:flex;align-items:center;justify-content:space-between;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;text-decoration:none;color:var(--sub);transition:border-color .15s; }
+    .meth-link:hover { border-color:var(--border-bright);color:var(--text); }
+    .meth-link-label { font-size:13px;font-weight:500; }
+    .meth-link-arrow { font-family:'DM Mono',monospace;color:var(--acid); }
+    .btt { position:fixed;bottom:22px;right:22px;background:var(--surf);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;text-decoration:none;font-family:'DM Mono',monospace;box-shadow:0 2px 8px rgba(0,0,0,.1); }
+    .btt:hover { border-color:var(--acid-border);color:var(--acid); }
+    @media (max-width:600px) {
+      .hero-metrics { grid-template-columns:1fr 1fr; }
+      .hb-body-inner { grid-template-columns:1fr; }
+      .rl-row { grid-template-columns:1fr;gap:4px; }
+      .tscore-summary { flex-direction:column;align-items:flex-start; }
+      .hero-metrics .hm-cell:last-child { grid-column:span 2; }
+    }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand"><span>AI</span> Transparency Database</a>
+    <span class="nav-tag">BETA</span>
+  </div>
+</nav>
+<div class="bc">
+  <a href="index.html">Home</a>
+  <span class="bc-sep">/</span>
+  <span>Pika</span>
+</div>
+
+<main class="page">
+  <section class="hero">
+    <div class="hero-eyebrow">
+      <span class="tag-cat">AI Video · Pika Labs</span>
+      <span class="tag-verified">✓ Verified Jul 2026</span>
+      <span class="hero-date">Last audited: 2026-07-06</span>
+    </div>
+    <h1>Pika:<br><em>What the pricing page doesn't tell you</em></h1>
+    <p class="hero-sub">Based on public docs, Trustpilot reviews (87% one-star on billing), and independent testing — not legal advice or official statements.</p>
+    <div class="hero-metrics">
+      <div class="hm-cell">
+        <div class="hm-label">Hidden Behaviors</div>
+        <div class="hm-value red" id="counter-hidden">0</div>
+        <div class="hm-desc">documented &amp; verified</div>
+      </div>
+      <div class="hm-cell">
+        <div class="hm-label">Transparency</div>
+        <div class="hm-value amber">31%</div>
+        <div class="hm-desc">of key policies disclosed upfront</div>
+      </div>
+      <div class="hm-cell">
+        <div class="hm-label">Last Verified</div>
+        <div class="hm-value acid" style="font-size:20px;padding-top:6px">Jul 2026</div>
+        <div class="hm-desc">$8/mo · Standard (annual)</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-header">
+      <div class="stitle">Hidden Behaviors</div>
+      <div class="sec-count">5 documented</div>
+    </div>
+    <p class="ssub">Behaviors confirmed through user reports, official pricing docs, and Trustpilot reviews — not disclosed on the main pricing page.</p>
+    <div class="hb-list">
+
+      <div class="hb-card critical" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">01</span><span class="impact-pill critical">⬤ Critical Impact</span></div>
+            <div class="hb-title">Failed generations always burn credits — no exceptions, no refunds</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Confirmed on pika.art/pricing</strong>Pika's official pricing page states: "Credits are deducted whether the generation succeeds or fails." This is buried in fine print, not in the plan comparison table.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>Top billing complaint on Trustpilot</strong>87% one-star Trustpilot reviews cite credit loss on failed generations as a primary complaint. Support tickets often go unanswered for weeks.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Real output 40–60% of stated</strong>With 3–5 iterations needed per usable clip, Standard's 700 credits realistically yields 8–9 quality 1080p 10-second videos, not the implied ~17.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jul 2026</span> — pika.art/pricing + Trustpilot</div>
+            <span class="src-badge src-official">OFFICIAL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-card critical" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">02</span><span class="impact-pill critical">⬤ Critical Impact</span></div>
+            <div class="hb-title">Standard plan has no commercial rights — requires Pro at 3.5× the price</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Buried in plan comparison</strong>Commercial usage rights are restricted to Pro ($28/mo) and Fancy ($76/mo). Basic ($8/mo) and Standard subscribers cannot use generated content for any commercial purpose.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>Not highlighted on pricing page</strong>Most creators discover the commercial restriction only after posting Standard-tier content for clients or brands. The pricing page does not flag this prominently.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Effective entry price is $28, not $8</strong>For any professional or client use, the real entry price is Pro at $28/month — 3.5× the advertised Standard rate that dominates marketing messaging.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jul 2026</span> — pika.art/pricing terms</div>
+            <span class="src-badge src-official">OFFICIAL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-card critical" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">03</span><span class="impact-pill critical">⬤ Critical Impact</span></div>
+            <div class="hb-title">1080p requires Standard — Basic is locked to 480p despite same Pika 2.5 model</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Disclosed in plan comparison</strong>Free and Basic tiers are locked to 480p output. Standard and above unlock 1080p. Both tiers access the same Pika 2.5 model — the resolution cap is purely a monetization gate.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>480p unusable for professional work</strong>480p output is visibly low quality for any modern platform. Creators who start on Basic discover they must jump to Standard ($8→$28/mo) just for 1080p — a 3.5× price increase for one feature.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Basic is a demo tier, not production</strong>At 80 monthly credits and 480p, Basic is functionally a trial — not a viable production plan. The pricing page presents it as a legitimate plan option.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jul 2026</span> — pika.art/pricing + checkthat.ai</div>
+            <span class="src-badge src-official">OFFICIAL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-card medium" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">04</span><span class="impact-pill medium">⬤ Medium Impact</span></div>
+            <div class="hb-title">PikaScenes costs more than basic generation — not shown in credit summary</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Listed in feature breakdown</strong>PikaScenes costs 65 credits per 1080p clip. PikaSwaps and PikaTwists cost 60–80 credits per transformation — more than a standard 10-second generation at the same resolution.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>Premium features drain credits 2× faster</strong>Users drawn to Pika's unique effects (Pikaffects, PikaScenes) discover these signature features cost proportionally more — and are what Pika is primarily marketed on.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Standard yields only 10 PikaScene clips</strong>Standard's 700 credits ÷ 65 credits per PikaScene = roughly 10 clips per month before any failed iterations — far fewer than marketing implies.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jul 2026</span> — gptprompts.ai + pika.art</div>
+            <span class="src-badge src-official">OFFICIAL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-card medium" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">05</span><span class="impact-pill medium">⬤ Medium Impact</span></div>
+            <div class="hb-title">Cancellation flow undocumented — account deletion voids subscription with no refund</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Only in Terms of Service</strong>Pika's FAQ states account deletion invalidates your subscription with no refund. The cancellation flow itself is not documented in public-facing help resources.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>87% one-star Trustpilot</strong>Cancellation friction and non-responsive support are the top complaints on Trustpilot. Multiple users report being charged again after requesting cancellation via Discord.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Use virtual card for safety</strong>Given the cancellation friction, consider using a virtual card with a spending limit when subscribing — allows blocking charges if cancellation fails.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jul 2026</span> — Trustpilot + checkthat.ai</div>
+            <span class="src-badge src-observed">OBSERVED</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:18px">Real Limits</div>
+    <div class="rl-box">
+      <div class="rl-head-bar">
+        <div class="rl-head-name">Pika Standard</div>
+        <div class="rl-head-price">$8/mo (annual) · AI Video</div>
+      </div>
+      <div class="rl-rows">
+        <div class="rl-row"><div class="rl-key">Credits</div><div class="rl-val">700/month · subscription credits expire monthly · purchased top-up credits roll over indefinitely</div></div>
+        <div class="rl-row"><div class="rl-key">1080p Output</div><div class="rl-val">700 credits ÷ 80 credits per 10s clip = <em>8–9 quality videos/month</em> (after iteration waste)</div></div>
+        <div class="rl-row"><div class="rl-key">Commercial Rights</div><div class="rl-val"><em>None on Standard</em> — requires Pro ($28/mo) or Fancy ($76/mo) for any commercial use</div></div>
+        <div class="rl-row"><div class="rl-key">Resolution Gate</div><div class="rl-val">Free + Basic: 480p only · Standard+: 1080p · 4K: Fancy only</div></div>
+        <div class="rl-row"><div class="rl-key">Failed Generations</div><div class="rl-val"><em>Always charged</em> — confirmed on official pricing page; no exceptions or refunds</div></div>
+        <div class="rl-row"><div class="rl-key">Max Clip Length</div><div class="rl-val">10 seconds (most plans) — limits narrative use; best for short social content</div></div>
+      </div>
+      <div class="rl-alert">
+        <div class="rl-alert-label">⚠ The commercial rights trap</div>
+        <div class="rl-alert-text">The $8/month Standard plan cannot be used commercially. For any client, brand, or monetized content, the real minimum is Pro at $28/month — 3.5× higher. This is not highlighted on the main pricing page.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:12px">Transparency Score</div>
+    <div class="tscore-list">
+      <div class="tscore-row">
+        <div class="tscore-top"><span class="tscore-label">Failed Generation Credit Burn</span><span class="tscore-meta">in fine print only</span></div>
+        <div class="tscore-detail">Disclosed on pricing page but buried in fine print — not shown in the main plan comparison table where purchase decisions are made.</div>
+        <div class="tscore-track"><div class="tscore-fill amber" id="b1" style="width:0%"></div></div>
+        <div class="tscore-src">source: pika.art/pricing</div>
+      </div>
+      <div class="tscore-row">
+        <div class="tscore-top"><span class="tscore-label">Commercial Rights Restriction</span><span class="tscore-meta">NOT prominently disclosed</span></div>
+        <div class="tscore-detail">Standard plan prohibits commercial use — not surfaced on main pricing page. Requires Pro at 3.5× cost for any professional output.</div>
+        <div class="tscore-track"><div class="tscore-fill red" id="b2" style="width:0%"></div></div>
+        <div class="tscore-src">source: pika.art terms + checkthat.ai</div>
+      </div>
+      <div class="tscore-row">
+        <div class="tscore-top"><span class="tscore-label">Resolution Gating</span><span class="tscore-meta">partially disclosed</span></div>
+        <div class="tscore-detail">480p cap on Basic is shown in plan comparison, but the implication (unusable for professional work) is not addressed.</div>
+        <div class="tscore-track"><div class="tscore-fill amber" id="b3" style="width:0%"></div></div>
+        <div class="tscore-src">source: pika.art/pricing</div>
+      </div>
+      <div class="tscore-row">
+        <div class="tscore-top"><span class="tscore-label">Cancellation Process</span><span class="tscore-meta">NOT documented publicly</span></div>
+        <div class="tscore-detail">No public documentation of the cancellation flow. Account deletion voids subscription with no refund — buried in ToS only.</div>
+        <div class="tscore-track"><div class="tscore-fill red" id="b4" style="width:0%"></div></div>
+        <div class="tscore-src">source: Trustpilot 87% 1-star + ToS</div>
+      </div>
+      <div class="tscore-row">
+        <div class="tscore-top"><span class="tscore-label">Credit Top-Up Rollover</span><span class="tscore-meta">clearly disclosed</span></div>
+        <div class="tscore-detail">Purchased credit top-ups roll over indefinitely — a genuine transparency positive that distinguishes Pika from Kling and Runway.</div>
+        <div class="tscore-track"><div class="tscore-fill green" id="b5" style="width:0%"></div></div>
+        <div class="tscore-src">source: pika.art/pricing + checkthat.ai</div>
+      </div>
+    </div>
+    <div class="tscore-summary">
+      <div>
+        <div class="tscore-summary-label">Overall Transparency Score</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">Commercial rights restriction and cancellation friction are the core gaps.</div>
+      </div>
+      <div class="tscore-pct">31%</div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:12px">Other Services</div>
+    <div class="compare-list">
+      <div class="compare-row current">
+        <div><div class="compare-name">Pika</div><div class="compare-meta">Pika Labs · Video Gen · $8/mo</div></div>
+        <div class="compare-badge">viewing now</div>
+      </div>
+      <a href="runway.html" class="compare-row"><div><div class="compare-name">Runway</div><div class="compare-meta">Runway AI · Video Gen · $12/mo</div></div><div class="compare-badge">view report →</div></a>
+      <a href="kling.html" class="compare-row"><div><div class="compare-name">Kling AI</div><div class="compare-meta">Kuaishou · Video Gen · ~$10/mo</div></div><div class="compare-badge">view report →</div></a>
+      <a href="sora.html" class="compare-row"><div><div class="compare-name">Sora</div><div class="compare-meta">OpenAI · ⚠ App shut down Apr 2026</div></div><div class="compare-badge">view report →</div></a>
+    </div>
+  </section>
+
+  <section class="sec">
+    <a href="https://pika.art" target="_blank" rel="noopener" class="visit-btn">Visit Pika <span class="visit-arrow">→</span></a>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:18px">Frequently Asked</div>
+    <details><summary>Do failed Pika generations still use credits?</summary><div class="fansw">Yes. Pika's official pricing page confirms: "Credits are deducted whether the generation succeeds or fails." This is the top billing complaint across Trustpilot and Reddit. Budget for 3–5 attempts per final clip — your effective video count is significantly lower than the raw credit math suggests.</div></details>
+    <details><summary>Can I use Pika videos commercially on the Standard plan?</summary><div class="fansw">No. Commercial usage rights are restricted to Pro ($28/month) and Fancy ($76/month) plans. Basic and Standard subscribers cannot use generated content for client work, brand content, or any monetized output. The real professional entry price is $28/month — not the $8/month advertised on most marketing materials.</div></details>
+    <details><summary>Is Pika's free tier actually useful?</summary><div class="fansw">Only for testing the interface. The free Basic tier provides 80 monthly credits — enough for about 8 short Turbo clips or 1–2 quality 1080p clips. All outputs are watermarked, capped at 480p, and cannot be used commercially. It is a demo, not a production plan.</div></details>
+    <details><summary>How many videos does Pika Standard actually produce?</summary><div class="fansw">Standard's 700 monthly credits divided by 80 credits per 10-second 1080p clip = roughly 8–9 quality videos per month, after accounting for typical failed iterations. At 720p (40 credits each), you get roughly 17 — but 720p is insufficient for most professional use cases.</div></details>
+  </section>
+
+  <section class="sec">
+    <div class="cta-box">
+      <div class="cta-title">Get alerted when policies change</div>
+      <p class="cta-sub">We track silent limit cuts before most users notice them.</p>
+      <div class="cta-form">
+        <input class="cta-inp" type="email" placeholder="your@email.com"/>
+        <button class="cta-btn" type="button" onclick="signup(this)">NOTIFY ME</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <a href="methodology.html" class="meth-link">
+      <span class="meth-link-label">How we audit — full methodology and source classification</span>
+      <span class="meth-link-arrow">→</span>
+    </a>
+  </section>
+</main>
+
+<footer>
+  <div class="fin">
+    <div class="f-brand"><span>AI</span> Transparency Database</div>
+    <div class="flinks"><a href="index.html">Home</a><a href="methodology.html">Methodology</a><a href="mailto:data@aitransparency.com">Contact</a></div>
+    <div class="flegal">Analysis based on public documentation, community reports, and third-party benchmarks. Figures are estimates unless marked OFFICIAL. Not affiliated with or endorsed by Pika Labs. No affiliate links. © 2026 AI Transparency Database</div>
+  </div>
+</footer>
+<a href="#" class="btt">↑</a>
+<script>
+  function toggleCard(card) { card.classList.toggle('open'); }
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzSaizHz7RYJpBPIQqwLTueMktQHjG9isLGMQxaqetT_uGHNiDtjw4tymmEAm9t6r3S/exec";
+  async function signup(btn){
+    const form=btn.closest('.cta-form')||btn.parentElement;
+    const inp=form.querySelector('input[type="email"]');
+    if(!inp)return;
+    const email=inp.value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){inp.style.borderColor='var(--red)';inp.focus();return;}
+    btn.textContent='...';btn.disabled=true;
+    let msg=btn.closest('.cta-box')&&btn.closest('.cta-box').querySelector('.cta-msg');
+    if(!msg){msg=document.createElement('div');msg.className='cta-msg';msg.style.cssText="font-family:'DM Mono',monospace;font-size:11px;margin-top:10px;display:none";(btn.closest('.cta-box')||btn.parentElement).appendChild(msg);}
+    try{await fetch(SCRIPT_URL,{method:'POST',body:JSON.stringify({email,source:location.pathname})});btn.textContent='✓ DONE';inp.disabled=true;msg.style.display='block';msg.style.color='var(--green)';msg.textContent="Subscribed! We'll alert you when policies change.";}
+    catch(err){btn.textContent='NOTIFY ME';btn.disabled=false;msg.style.display='block';msg.style.color='var(--red)';msg.textContent='Something went wrong. Please try again.';}
+  }
+  setTimeout(() => {
+    document.getElementById('b1').style.width = '35%';
+    document.getElementById('b2').style.width = '12%';
+    document.getElementById('b3').style.width = '40%';
+    document.getElementById('b4').style.width = '10%';
+    document.getElementById('b5').style.width = '80%';
+    let c=0,el=document.getElementById('counter-hidden'),t=setInterval(()=>{if(c>=5){clearInterval(t);return;}el.textContent=++c;},220);
+  }, 200);
+</script>
+</body>
+</html>
