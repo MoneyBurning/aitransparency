@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" style="color-scheme: light only;">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="color-scheme" content="light only"/>
+  <meta name="theme-color" content="#F8F8F5"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Runway vs Pika (2026) — Limits, Transparency & Hidden Costs</title>
+  <meta name="description" content="Runway vs Pika compared on real credit costs, hidden behaviors, commercial rights, transparency score. Sourced from official docs and community reports."/>
+  <meta name="keywords" content="runway vs pika, runway vs pika 2026, ai video generator comparison"/>
+  <link rel="canonical" href="https://aitransparency.pages.dev/runway-vs-pika.html"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Runway or Pika cheaper?","acceptedAnswer":{"@type":"Answer","text":"Pika starts cheaper at $8/month vs Runway's $12/month. However, Pika's Standard plan has no commercial rights — professional use requires Pro at $28/month. For comparable commercial-use tiers, Runway ($12) is actually cheaper than Pika Pro ($28)."}},{"@type":"Question","name":"Which is better for social media content?","acceptedAnswer":{"@type":"Answer","text":"Pika wins for fast social media clips. It generates videos faster than Runway, has unique branded effects (Pikaffects), and the $8/month entry is lower. Runway wins on cinematic quality but its 16-second cap and higher credit cost per clip make it less suited for high-volume short-form content."}},{"@type":"Question","name":"Do failed generations cost credits on Runway and Pika?","acceptedAnswer":{"@type":"Answer","text":"Pika explicitly confirms on its pricing page that credits are deducted whether the generation succeeds or fails. Runway does not explicitly charge per failed generation in the same way, making Runway safer for iterative workflows."}}]}</script>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://aitransparency.pages.dev/runway-vs-pika.html"/>
+  <meta property="og:title" content="Runway vs Pika (2026) — Hidden Costs & Commercial Rights Trap"/>
+  <meta property="og:description" content="Pika's $8/mo has no commercial rights. Runway's 625 credits = 25s of video. Full comparison sourced from docs and community reports."/>
+  <meta property="og:image" content="https://aitransparency.pages.dev/ogdefault.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{color-scheme:light only;scroll-behavior:smooth}
+    :root{--bg:#F8F8F5;--surf:#FFFFFF;--surf2:#F1F1EC;--surf3:#E8E8E2;--border:#D8D8D0;--border-bright:#B8B8AE;--text:#111118;--sub:#3A3A48;--muted:#6B6B78;--acid:#1A6EFF;--acid-dim:rgba(26,110,255,.08);--acid-border:rgba(26,110,255,.22);--red:#C8000A;--red-dim:rgba(200,0,10,.07);--red-border:rgba(200,0,10,.22);--amber:#A05500;--amber-dim:rgba(160,85,0,.08);--amber-border:rgba(160,85,0,.22);--green:#0A7A3A;--green-dim:rgba(10,122,58,.07);--green-border:rgba(10,122,58,.22);--r:8px;--r-lg:14px}
+    @media(prefers-color-scheme:dark){:root{--bg:#F8F8F5!important;--surf:#FFFFFF!important;--surf2:#F1F1EC!important;--surf3:#E8E8E2!important;--border:#D8D8D0!important;--border-bright:#B8B8AE!important;--text:#111118!important;--sub:#3A3A48!important;--muted:#6B6B78!important;--acid:#1A6EFF!important;--red:#C8000A!important;--amber:#A05500!important;--green:#0A7A3A!important}body{background:#F8F8F5!important;color:#111118!important}}
+    body{background:var(--bg);color:var(--text);font-family:Inter,sans-serif;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+    a{color:var(--acid);text-decoration:none}
+    .nav{position:sticky;top:0;z-index:100;background:rgba(248,248,245,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .nav-in{max-width:860px;margin:0 auto;padding:0 20px;height:54px;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--sub);text-decoration:none;letter-spacing:.5px}
+    .brand span{color:var(--acid)}
+    .nav-tag{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;border:1px solid var(--border);padding:4px 10px;border-radius:99px}
+    .bc{max-width:860px;margin:0 auto;padding:12px 20px;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:8px}
+    .bc a{color:var(--muted)}.bc-sep{color:var(--border-bright)}
+    .page{max-width:860px;margin:0 auto;padding:0 20px 100px}
+    .hero{padding:48px 0 40px}
+    .hero-eyebrow{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+    h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,46px);font-weight:800;line-height:1.05;letter-spacing:-1.5px;margin-bottom:12px}
+    h1 em{font-style:normal;color:var(--acid)}
+    .hero-sub{font-size:15px;color:var(--sub);max-width:560px;line-height:1.6;margin-bottom:32px}
+    .verdict-banner{display:grid;grid-template-columns:1fr 48px 1fr;gap:12px;align-items:center;margin-bottom:40px}
+    .vc{background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px 20px;box-shadow:0 1px 6px rgba(0,0,0,.06)}
+    .vc-name{font-family:'Playfair Display',serif;font-size:16px;font-weight:800;margin-bottom:4px}
+    .vc-maker{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:10px}
+    .vc-pct{font-family:'Playfair Display',serif;font-size:34px;font-weight:800;letter-spacing:-1px;line-height:1}
+    .vc-pct.red{color:var(--red)}.vc-pct.amber{color:var(--amber)}.vc-pct.green{color:var(--green)}
+    .vc-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+    .vc-hb{font-size:12px;color:var(--sub);margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
+    .vc-winner{border-color:var(--acid-border);background:var(--acid-dim)}
+    .vs-badge{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:var(--muted);text-align:center}
+    .sec{padding:36px 0;border-top:1px solid var(--border)}
+    .stitle{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;letter-spacing:-.4px;margin-bottom:18px}
+    .ssub{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.5}
+    .ctable{width:100%;border-collapse:collapse;background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.05)}
+    .ctable th{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--muted);padding:12px 16px;background:var(--surf2);border-bottom:1px solid var(--border);text-align:left}
+    .ctable th.win{color:var(--acid)}
+    .ctable td{padding:13px 16px;border-bottom:1px solid var(--border);font-size:13px;color:var(--sub);vertical-align:top;line-height:1.5}
+    .ctable td:first-child{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:.8px;white-space:nowrap;width:130px}
+    .ctable tr:last-child td{border-bottom:none}
+    .ctable td strong{color:var(--text);font-weight:600}
+    .win-cell{color:var(--green)!important;font-weight:600!important}
+    .lose-cell{color:var(--red)!important}
+    .hb-compare{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .hb-item{padding:10px 14px;background:var(--surf);border:1px solid var(--border);border-top:none;font-size:12px;color:var(--sub);line-height:1.45}
+    .hb-item:last-child{border-radius:0 0 var(--r) var(--r)}
+    .win-grid{display:flex;flex-direction:column;gap:8px}
+    .win-row{display:grid;grid-template-columns:160px 1fr 1fr;gap:0;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+    .win-dim{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);padding:12px 14px;background:var(--surf2);border-right:1px solid var(--border);text-transform:uppercase;letter-spacing:.8px;display:flex;align-items:center}
+    .win-a,.win-b{padding:12px 14px;font-size:12px;color:var(--sub);line-height:1.4;border-right:1px solid var(--border)}
+    .win-b{border-right:none}
+    .win-a.winner,.win-b.winner{background:var(--green-dim);color:var(--green);font-weight:600}
+    .win-a.loser,.win-b.loser{color:var(--muted)}
+    details{border-bottom:1px solid var(--border)}
+    details:first-of-type{border-top:1px solid var(--border)}
+    summary{font-family:'Playfair Display',serif;font-size:14px;font-weight:600;padding:16px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text)}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:'+';font-size:18px;color:var(--muted);margin-left:12px;font-family:'DM Mono',monospace}
+    details[open] summary::after{content:'−'}
+    .fansw{font-size:13.5px;color:var(--sub);line-height:1.65;padding-bottom:16px}
+    .related-list{display:flex;flex-direction:column;gap:6px}
+    .related-row{display:flex;align-items:center;justify-content:space-between;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:12px 16px;text-decoration:none;color:inherit;transition:border-color .15s}
+    .related-row:hover{border-color:var(--border-bright)}
+    .related-name{font-family:'Playfair Display',serif;font-weight:700;font-size:13px}
+    .related-arrow{font-family:'DM Mono',monospace;font-size:11px;color:var(--acid)}
+    .cta-box{background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px}
+    .cta-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;margin-bottom:5px;letter-spacing:-.3px}
+    .cta-sub{font-size:13px;color:var(--muted);margin-bottom:18px}
+    .cta-form{display:flex;gap:8px;flex-wrap:wrap}
+    .cta-inp{background:var(--surf2);border:1px solid var(--border);color:var(--text);padding:11px 16px;border-radius:var(--r);font-size:13px;flex:1;min-width:200px;outline:none;font-family:'DM Mono',monospace;transition:border-color .15s}
+    .cta-inp:focus{border-color:var(--acid-border)}
+    .cta-inp::placeholder{color:var(--muted)}
+    .cta-btn{background:var(--acid);color:#fff;border:none;padding:11px 22px;border-radius:var(--r);font-weight:700;font-size:12px;cursor:pointer;font-family:'DM Mono',monospace;letter-spacing:.5px;white-space:nowrap;transition:opacity .15s}
+    .cta-btn:hover{opacity:.88}
+    footer{border-top:1px solid var(--border);padding:28px 20px}
+    .fin{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+    .f-brand{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted)}
+    .f-brand span{color:var(--acid)}
+    .flinks{display:flex;gap:16px;flex-wrap:wrap}
+    .flinks a{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)}
+    .flegal{font-size:11px;color:var(--muted);opacity:.7;line-height:1.6}
+    @media(max-width:620px){.verdict-banner{grid-template-columns:1fr;gap:8px}.vs-badge{display:none}.hb-compare{grid-template-columns:1fr}.win-row{grid-template-columns:1fr}.win-dim{border-right:none;border-bottom:1px solid var(--border)}.win-a{border-right:none;border-bottom:1px solid var(--border)}}
+  </style>
+</head>
+<body>
+<nav class="nav"><div class="nav-in">
+  <a href="index.html" class="brand"><span>AI</span> Transparency Database</a>
+  <span class="nav-tag">COMPARE</span>
+</div></nav>
+<div class="bc"><a href="index.html">Home</a><span class="bc-sep">/</span><span>Runway vs Pika</span></div>
+<main class="page">
+  <section class="hero">
+    <div class="hero-eyebrow">Side-by-side · Verified Jul 2026</div>
+    <h1>Runway vs Pika: <em>The commercial rights trap</em></h1>
+    <p class="hero-sub">Pika looks cheaper at $8/month — until you need commercial rights. Runway looks pricier at $12 — until you compare what each plan actually allows. Here's the real math.</p>
+    <div class="verdict-banner">
+      <div class="vc vc-winner">
+        <div class="vc-name">Runway</div>
+        <div class="vc-maker">Runway AI · $12/mo (Standard, annual)</div>
+        <div class="vc-pct amber">34%</div>
+        <div class="vc-label">Transparency Score</div>
+        <div class="vc-hb"><strong style="color:var(--red)">5</strong> hidden behaviors · Credits expire, Explore Mode throttles silently</div>
+      </div>
+      <div class="vs-badge">vs</div>
+      <div class="vc">
+        <div class="vc-name">Pika</div>
+        <div class="vc-maker">Pika Labs · $8/mo (Standard, annual)</div>
+        <div class="vc-pct amber">31%</div>
+        <div class="vc-label">Transparency Score</div>
+        <div class="vc-hb"><strong style="color:var(--red)">5</strong> hidden behaviors · Standard has NO commercial rights — Pro required at $28</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle">Head-to-Head</div>
+    <p class="ssub">Key dimensions compared — sourced from official docs and community reports.</p>
+    <table class="ctable">
+      <thead><tr>
+        <th>Dimension</th>
+        <th class="win">Runway</th>
+        <th>Pika</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Entry Price</td><td><strong>$12/mo</strong> (annual) · commercial use included</td><td><strong>$8/mo</strong> Standard — <span style="color:var(--red)">no commercial use</span></td></tr>
+        <tr><td>Commercial Rights</td><td class="win-cell">Included from Standard plan</td><td class="lose-cell">Requires Pro ($28/mo) — 3.5× price jump</td></tr>
+        <tr><td>Failed Gen Cost</td><td class="win-cell">Not explicitly charged per fail</td><td class="lose-cell">Always charged — confirmed on pricing page</td></tr>
+        <tr><td>Credit Rollover</td><td class="lose-cell">No rollover — expires monthly</td><td>Subscr. credits expire · top-up credits roll over</td></tr>
+        <tr><td>Max Clip Length</td><td>16 seconds</td><td>10 seconds</td></tr>
+        <tr><td>Resolution</td><td class="win-cell">1080p+ on Standard · 4K on paid</td><td class="lose-cell">480p on Free/Basic · 1080p from Standard</td></tr>
+        <tr><td>Generation Speed</td><td>Moderate (30–90s typical)</td><td class="win-cell">Fast — under 2 min, best for social clips</td></tr>
+        <tr><td>Unique Effects</td><td class="win-cell">Gen-4.5 cinematic, Aleph editor, Act-Two</td><td class="win-cell">Pikaffects, PikaScenes, Pikatwists, Pikaframes</td></tr>
+        <tr><td>Transparency</td><td class="win-cell">34% — slightly higher</td><td class="lose-cell">31% — commercial rights trap undisclosed</td></tr>
+        <tr><td>Support / Billing</td><td class="win-cell">Standard support channels</td><td class="lose-cell">Trustpilot 87% 1-star — billing complaints</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="sec">
+    <div class="stitle">Hidden Behaviors</div>
+    <p class="ssub">Documented behaviors not disclosed on either pricing page.</p>
+    <div class="hb-compare">
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:13px;font-weight:700;padding:10px 14px;border-radius:var(--r) var(--r) 0 0;border:1px solid var(--amber-border);border-bottom:none;background:var(--amber-dim);color:var(--amber)">Runway — 5 documented</div>
+        <div class="hb-item">⬤ Credits expire monthly — no rollover on any plan</div>
+        <div class="hb-item">⬤ "Unlimited" Explore Mode throttled 5–20 min at peak</div>
+        <div class="hb-item">⬤ 625 credits = ~25s of Gen-4.5 video total</div>
+        <div class="hb-item">⬤ Veo 3/3.1 excluded from Explore Mode</div>
+        <div class="hb-item">⬤ Unlimited auto-switches to Max Sep 1, 2026 — no in-app warning</div>
+      </div>
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:13px;font-weight:700;padding:10px 14px;border-radius:var(--r) var(--r) 0 0;border:1px solid var(--amber-border);border-bottom:none;background:var(--amber-dim);color:var(--amber)">Pika — 5 documented</div>
+        <div class="hb-item">⬤ Failed gens always charged — confirmed on pricing page</div>
+        <div class="hb-item">⬤ Standard plan has NO commercial rights — Pro required at 3.5×</div>
+        <div class="hb-item">⬤ Basic locked to 480p despite same Pika 2.5 model</div>
+        <div class="hb-item">⬤ PikaScenes costs 65 credits — more than a standard clip</div>
+        <div class="hb-item">⬤ Cancellation undocumented — account deletion voids sub, no refund</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle">Who Wins Each Dimension</div>
+    <div class="win-grid">
+      <div class="win-row"><div class="win-dim">Commercial Use</div><div class="win-a winner">Included from $12/mo Standard</div><div class="win-b loser">Requires $28/mo Pro — 3.5× jump</div></div>
+      <div class="win-row"><div class="win-dim">True Entry Price</div><div class="win-a winner">$12/mo — all-in for commercial</div><div class="win-b loser">$28/mo effective for professional use</div></div>
+      <div class="win-row"><div class="win-dim">Failed Gen Cost</div><div class="win-a winner">Not explicitly charged per fail</div><div class="win-b loser">Always charged — official policy</div></div>
+      <div class="win-row"><div class="win-dim">Cinematic Quality</div><div class="win-a winner">Gen-4.5 #1 on AI benchmark</div><div class="win-b loser">Good for social, weak for narrative</div></div>
+      <div class="win-row"><div class="win-dim">Social Clips Speed</div><div class="win-a loser">Moderate 30–90s generation</div><div class="win-b winner">Fastest — under 2 min per clip</div></div>
+      <div class="win-row"><div class="win-dim">Credit Rollover</div><div class="win-a loser">No rollover on subscr. credits</div><div class="win-b winner">Top-up credits roll over indefinitely</div></div>
+      <div class="win-row"><div class="win-dim">Billing Safety</div><div class="win-a winner">Standard support, no mass complaints</div><div class="win-b loser">87% 1-star Trustpilot on billing</div></div>
+      <div class="win-row"><div class="win-dim">Unique Features</div><div class="win-a winner">Professional editing: Aleph, Act-Two</div><div class="win-b winner">Creative effects: Pikaffects, Pikatwists</div></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle">The Verdict</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div style="background:var(--acid-dim);border:1px solid var(--acid-border);border-radius:var(--r-lg);padding:20px">
+        <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:800;color:var(--acid);margin-bottom:10px">Choose Runway if…</div>
+        <div style="font-size:13px;color:var(--sub);line-height:1.7">✓ You need commercial rights from day one<br>✓ Cinematic quality for client work<br>✓ Professional editing tools (Aleph, Act-Two)<br>✓ You want 4K broadcast-quality output<br>✓ Billing transparency matters</div>
+      </div>
+      <div style="background:var(--green-dim);border:1px solid var(--green-border);border-radius:var(--r-lg);padding:20px">
+        <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:800;color:var(--green);margin-bottom:10px">Choose Pika if…</div>
+        <div style="font-size:13px;color:var(--sub);line-height:1.7">✓ Personal / non-commercial content only<br>✓ Fast social media clips (TikTok, Reels)<br>✓ Pikaffects signature effects are the goal<br>✓ Top-up credit rollover suits variable workflow<br>✓ Budget is the absolute priority</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle">Frequently Asked</div>
+    <details><summary>Is Runway or Pika cheaper for professional use?</summary><div class="fansw">Runway is actually cheaper for professional/commercial use. Pika's $8/month Standard plan prohibits commercial use — you need Pro at $28/month. Runway's $12/month Standard includes commercial rights. So for any client work, Runway saves $16/month vs Pika Pro.</div></details>
+    <details><summary>Which is better for social media content?</summary><div class="fansw">Pika wins for fast social media clips. It generates videos faster, has unique branded effects (Pikaffects), and a lower entry price. Runway wins on cinematic quality but its 16-second cap and credit cost per clip make it less suited for high-volume short-form content.</div></details>
+    <details><summary>Do failed generations cost credits on both?</summary><div class="fansw">Pika explicitly states on its pricing page that credits are deducted whether the generation succeeds or fails. Runway does not explicitly charge per failed generation in the same way, making Runway the safer option for iterative workflows where prompts often need adjustment.</div></details>
+  </section>
+
+  <section class="sec">
+    <div class="stitle">Read Full Reports</div>
+    <div class="related-list">
+      <a href="runway.html" class="related-row"><span class="related-name">Full Runway Report</span><span class="related-arrow">→</span></a>
+      <a href="pika.html" class="related-row"><span class="related-name">Full Pika Report</span><span class="related-arrow">→</span></a>
+      <a href="runway-vs-kling.html" class="related-row"><span class="related-name">Runway vs Kling AI</span><span class="related-arrow">→</span></a>
+      <a href="kling-vs-pika.html" class="related-row"><span class="related-name">Kling AI vs Pika</span><span class="related-arrow">→</span></a>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="cta-box">
+      <div class="cta-title">Get alerted when policies change</div>
+      <p class="cta-sub">We track silent limit cuts before most users notice them.</p>
+      <div class="cta-form"><input class="cta-inp" type="email" placeholder="your@email.com"/><button class="cta-btn" type="button" onclick="signup(this)">NOTIFY ME</button></div>
+    </div>
+  </section>
+</main>
+<footer><div class="fin">
+  <div class="f-brand"><span>AI</span> Transparency Database</div>
+  <div class="flinks"><a href="index.html">Home</a><a href="methodology.html">Methodology</a><a href="mailto:data@aitransparency.com">Contact</a></div>
+  <div class="flegal">Independent analysis. Not affiliated with Runway AI or Pika Labs. Estimates unless marked OFFICIAL. © 2026 AI Transparency Database</div>
+</div></footer>
+<script>
+const SCRIPT_URL="https://script.google.com/macros/s/AKfycbzSaizHz7RYJpBPIQqwLTueMktQHjG9isLGMQxaqetT_uGHNiDtjw4tymmEAm9t6r3S/exec";
+async function signup(btn){const form=btn.closest('.cta-form')||btn.parentElement;const inp=form.querySelector('input[type="email"]');if(!inp)return;const email=inp.value.trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){inp.style.borderColor='var(--red)';inp.focus();return;}btn.textContent='...';btn.disabled=true;let msg=btn.closest('.cta-box').querySelector('.cta-msg');if(!msg){msg=document.createElement('div');msg.className='cta-msg';msg.style.cssText="font-family:'DM Mono',monospace;font-size:11px;margin-top:10px;display:none";btn.closest('.cta-box').appendChild(msg);}try{await fetch(SCRIPT_URL,{method:'POST',body:JSON.stringify({email,source:location.pathname})});btn.textContent='✓ DONE';inp.disabled=true;msg.style.display='block';msg.style.color='var(--green)';msg.textContent="Subscribed! We'll alert you when policies change.";}catch(err){btn.textContent='NOTIFY ME';btn.disabled=false;msg.style.display='block';msg.style.color='var(--red)';msg.textContent='Something went wrong. Please try again.';}}
+</script>
+</body>
+</html>
