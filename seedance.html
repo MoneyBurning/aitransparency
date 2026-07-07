@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en" style="color-scheme: light only;">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="color-scheme" content="light only"/>
+  <meta name="theme-color" content="#F8F8F5"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Seedance Transparency Report — AI Transparency Database</title>
+  <meta name="description" content="Everything the Seedance pricing page doesn't tell you. Monthly credits expire, international access restricted after deepfake controversy, Dreamina costs 2× Jimeng for same model — documented."/>
+  <meta name="keywords" content="seedance 2.0 pricing 2026, dreamina hidden limits, seedance credits expire, bytedance AI video"/>
+  <link rel="canonical" href="https://aitransparency.pages.dev/seedance.html"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do Seedance credits roll over?","acceptedAnswer":{"@type":"Answer","text":"Monthly subscription credits do not roll over. Only yearly plan credits (valid 12 months) and one-time credit packs (never expire) carry forward. This is not disclosed upfront on Dreamina's pricing page."}},{"@type":"Question","name":"Why is Seedance restricted internationally?","acceptedAnswer":{"@type":"Answer","text":"ByteDance restricted international access in mid-February 2026 after deepfake videos of Tom Cruise, Brad Pitt, and Disney characters went viral. Disney issued a cease-and-desist and the MPA demanded stricter controls. Dreamina's international rollout shifted to invite-only Creative Partner Program."}},{"@type":"Question","name":"Is Seedance 2.0 free?","acceptedAnswer":{"@type":"Answer","text":"The Dreamina free tier gives approximately 225 shared daily credits across all tools — enough for 1–2 short video clips per day. All free outputs are watermarked and cannot be used commercially. Free access is also region-dependent and may vary by account."}}]}</script>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="AI Transparency Database"/>
+  <meta property="og:url" content="https://aitransparency.pages.dev/seedance.html"/>
+  <meta property="og:title" content="Seedance Transparency Report 2026 — Hidden Costs, Access Limits & ByteDance Controversy"/>
+  <meta property="og:description" content="Monthly credits expire, international access restricted after deepfake scandal, Dreamina costs 2× more than Jimeng for the same model — all documented."/>
+  <meta property="og:image" content="https://aitransparency.pages.dev/ogdefault.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:site" content="@aitransparencydb"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { color-scheme: light only; scroll-behavior: smooth; }
+    :root {
+      --bg: #F8F8F5; --surf: #FFFFFF; --surf2: #F1F1EC; --surf3: #E8E8E2;
+      --border: #D8D8D0; --border-bright: #B8B8AE;
+      --text: #111118; --sub: #3A3A48; --muted: #6B6B78;
+      --acid: #1A6EFF; --acid-dim: rgba(26,110,255,.08); --acid-border: rgba(26,110,255,.22);
+      --red: #C8000A; --red-dim: rgba(200,0,10,.07); --red-border: rgba(200,0,10,.22);
+      --amber: #A05500; --amber-dim: rgba(160,85,0,.08); --amber-border: rgba(160,85,0,.22);
+      --green: #0A7A3A; --green-dim: rgba(10,122,58,.07); --green-border: rgba(10,122,58,.22);
+      --blue: #1A6EFF; --blue-dim: rgba(26,110,255,.07); --blue-border: rgba(26,110,255,.22);
+      --r: 8px; --r-lg: 14px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#F8F8F5!important;--surf:#FFFFFF!important;--surf2:#F1F1EC!important;--surf3:#E8E8E2!important;--border:#D8D8D0!important;--border-bright:#B8B8AE!important;--text:#111118!important;--sub:#3A3A48!important;--muted:#6B6B78!important;--acid:#1A6EFF!important;--acid-dim:rgba(26,110,255,.08)!important;--acid-border:rgba(26,110,255,.22)!important;--red:#C8000A!important;--red-dim:rgba(200,0,10,.07)!important;--red-border:rgba(200,0,10,.22)!important;--amber:#A05500!important;--amber-dim:rgba(160,85,0,.08)!important;--amber-border:rgba(160,85,0,.22)!important;--green:#0A7A3A!important;--green-dim:rgba(10,122,58,.07)!important;--green-border:rgba(10,122,58,.22)!important;--blue:#1A6EFF!important;--blue-dim:rgba(26,110,255,.07)!important;--blue-border:rgba(26,110,255,.22)!important; }
+      body { background: #F8F8F5!important; color: #111118!important; }
+    }
+    body { background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased; }
+    a { color:var(--acid);text-decoration:none; }
+    .nav { position:sticky;top:0;z-index:100;background:rgba(248,248,245,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border); }
+    .nav-in { max-width:800px;margin:0 auto;padding:0 20px;height:54px;display:flex;align-items:center;justify-content:space-between; }
+    .brand { font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--sub);text-decoration:none;letter-spacing:.5px; }
+    .brand span { color:var(--acid); }
+    .nav-tag { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--muted);letter-spacing:1px;text-transform:uppercase;border:1px solid var(--border);padding:4px 10px;border-radius:99px; }
+    .bc { max-width:800px;margin:0 auto;padding:12px 20px;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:8px; }
+    .bc a { color:var(--muted); }
+    .bc-sep { color:var(--border-bright); }
+    .page { max-width:800px;margin:0 auto;padding:0 20px 100px; }
+    .hero { padding:48px 0 40px; }
+    .hero-eyebrow { display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap; }
+    .tag-cat { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:4px 10px;border-radius:3px; }
+    .tag-verified { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--acid);border:1px solid var(--acid-border);padding:4px 10px;border-radius:3px;background:var(--acid-dim); }
+    .hero-date { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.5px; }
+    h1 { font-family:'Playfair Display',serif;font-size:clamp(30px,5.5vw,50px);font-weight:800;line-height:1.05;letter-spacing:-1.5px;margin-bottom:14px;color:var(--text); }
+    h1 em { font-style:normal;color:var(--acid); }
+    .hero-sub { font-size:16px;color:var(--sub);font-weight:400;line-height:1.6;max-width:560px;margin-bottom:32px; }
+    .hero-metrics { display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.08); }
+    .hm-cell { background:var(--surf);padding:20px 18px; }
+    .hm-label { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin-bottom:8px; }
+    .hm-value { font-family:'Playfair Display',serif;font-size:32px;font-weight:800;line-height:1;letter-spacing:-1px; }
+    .hm-value.red { color:var(--red); }
+    .hm-value.amber { color:var(--amber); }
+    .hm-desc { font-size:11px;color:var(--muted);margin-top:5px;line-height:1.4; }
+    .sec { padding:36px 0;border-top:1px solid var(--border); }
+    .sec-header { display:flex;align-items:baseline;gap:12px;margin-bottom:6px; }
+    .stitle { font-family:'Playfair Display',serif;font-size:18px;font-weight:700;letter-spacing:-.4px; }
+    .sec-count { font-family:'DM Mono',monospace;font-size:11px;color:var(--muted); }
+    .ssub { font-size:13px;color:var(--muted);margin-bottom:22px;line-height:1.5; }
+    .hb-list { display:flex;flex-direction:column;gap:2px; }
+    .hb-card { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:border-color .15s;box-shadow:0 1px 4px rgba(0,0,0,.06); }
+    .hb-card:hover { border-color:var(--border-bright); }
+    .hb-card.critical { border-color:rgba(200,0,10,.2); }
+    .hb-card.medium { border-color:rgba(160,85,0,.15); }
+    .hb-card.low { border-color:rgba(26,110,255,.1); }
+    .hb-header { padding:16px 20px 14px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;cursor:pointer; }
+    .hb-left { flex:1; }
+    .hb-meta { display:flex;align-items:center;gap:8px;margin-bottom:7px;flex-wrap:wrap; }
+    .hb-index { font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);font-weight:500; }
+    .impact-pill { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;padding:3px 8px;border-radius:3px; }
+    .impact-pill.critical { background:var(--red-dim);color:var(--red);border:1px solid var(--red-border); }
+    .impact-pill.medium { background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-border); }
+    .impact-pill.low { background:var(--acid-dim);color:var(--acid);border:1px solid var(--acid-border); }
+    .hb-title { font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--text);line-height:1.3;letter-spacing:-.2px; }
+    .hb-chevron { color:var(--muted);font-size:14px;flex-shrink:0;margin-top:2px;transition:transform .2s; }
+    .hb-card.open .hb-chevron { transform:rotate(180deg); }
+    .hb-body { display:none;padding:0 20px 20px;border-top:1px solid var(--border); }
+    .hb-card.open .hb-body { display:block; }
+    .hb-body-inner { padding-top:16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px; }
+    .hb-col-label { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px; }
+    .hb-col-label.official { color:var(--blue); }
+    .hb-col-label.observed { color:var(--green); }
+    .hb-col-label.estimated { color:var(--amber); }
+    .hb-col-content { background:var(--surf2);border-radius:var(--r);padding:12px;font-size:12px;line-height:1.55;color:var(--sub); }
+    .hb-col-content strong { color:var(--text);font-weight:600;display:block;margin-bottom:3px;font-size:12px; }
+    .hb-footer { margin-top:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:12px;border-top:1px solid var(--border); }
+    .hb-verified { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted); }
+    .hb-verified span { color:var(--acid); }
+    .src-badge { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;padding:3px 7px;border-radius:3px;letter-spacing:.5px; }
+    .src-official { background:var(--blue-dim);color:var(--blue);border:1px solid var(--blue-border); }
+    .src-observed { background:var(--green-dim);color:var(--green);border:1px solid var(--green-border); }
+    .src-estimated { background:var(--amber-dim);color:var(--amber);border:1px solid var(--amber-border); }
+    .rl-box { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07); }
+    .rl-head-bar { background:var(--surf2);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border); }
+    .rl-head-name { font-family:'Playfair Display',serif;font-size:14px;font-weight:700; }
+    .rl-head-price { font-family:'DM Mono',monospace;font-size:12px;color:var(--muted); }
+    .rl-row { display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:start;padding:14px 20px;border-bottom:1px solid var(--border); }
+    .rl-row:last-child { border-bottom:none; }
+    .rl-key { font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;padding-top:2px; }
+    .rl-val { font-size:13px;color:var(--text);font-weight:500;line-height:1.5; }
+    .rl-val em { font-style:normal;color:var(--red);font-weight:600; }
+    .rl-alert { background:var(--red-dim);border:1px solid var(--red-border);border-radius:var(--r);padding:12px 14px;margin:0 20px 16px; }
+    .rl-alert-label { font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1px;color:var(--red);text-transform:uppercase;margin-bottom:5px; }
+    .rl-alert-text { font-size:12px;color:var(--red);line-height:1.55;font-weight:500; }
+    .timeline { display:flex;flex-direction:column; }
+    .tl-item { display:grid;grid-template-columns:90px 1px 1fr;gap:0 16px;padding:16px 0;align-items:start; }
+    .tl-date { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);font-weight:500;padding-top:3px; }
+    .tl-line-col { display:flex;flex-direction:column;align-items:center; }
+    .tl-dot { width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px; }
+    .tl-connector { flex:1;width:1px;background:var(--border);min-height:24px; }
+    .tl-content { padding-bottom:8px; }
+    .tl-event { font-size:13px;font-weight:500;color:var(--text);line-height:1.5;margin-bottom:4px; }
+    .tl-src-row { display:flex;align-items:center;gap:6px; }
+    .tl-src-note { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted); }
+    .tscore-list { display:flex;flex-direction:column;gap:16px; }
+    .tscore-top { display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px;gap:12px; }
+    .tscore-label { font-size:13px;font-weight:600;color:var(--text); }
+    .tscore-meta { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted); }
+    .tscore-detail { font-size:12px;color:var(--muted);margin-bottom:7px;line-height:1.5; }
+    .tscore-track { height:5px;background:var(--surf3);border-radius:99px;overflow:hidden;border:1px solid var(--border); }
+    .tscore-fill { height:100%;border-radius:99px;transition:width 1.2s cubic-bezier(.4,0,.2,1); }
+    .tscore-fill.red { background:var(--red); }
+    .tscore-fill.amber { background:var(--amber); }
+    .tscore-fill.green { background:var(--green); }
+    .tscore-src { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:5px; }
+    .tscore-summary { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px 20px;margin-top:20px;display:flex;align-items:center;justify-content:space-between;gap:16px; }
+    .tscore-summary-label { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase; }
+    .tscore-pct { font-family:'Playfair Display',serif;font-size:36px;font-weight:800;letter-spacing:-1px;color:var(--amber); }
+    details { border-bottom:1px solid var(--border); }
+    details:first-of-type { border-top:1px solid var(--border); }
+    summary { font-family:'Playfair Display',serif;font-size:14px;font-weight:600;padding:16px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text); }
+    summary::-webkit-details-marker { display:none; }
+    summary::after { content:'+';font-size:18px;color:var(--muted);flex-shrink:0;margin-left:12px;font-family:'DM Mono',monospace; }
+    details[open] summary::after { content:'−'; }
+    .fansw { font-size:13.5px;color:var(--sub);line-height:1.65;padding-bottom:16px; }
+    .compare-list { display:flex;flex-direction:column;gap:2px; }
+    .compare-row { display:flex;align-items:center;justify-content:space-between;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;text-decoration:none;color:inherit;transition:border-color .15s; }
+    .compare-row:hover { border-color:var(--border-bright); }
+    .compare-row.current { border-color:var(--acid-border);background:var(--acid-dim); }
+    .compare-name { font-family:'Playfair Display',serif;font-weight:700;font-size:14px; }
+    .compare-meta { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-top:2px; }
+    .compare-badge { font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);border:1px solid var(--border);padding:4px 10px;border-radius:3px; }
+    .compare-row.current .compare-badge { color:var(--acid);border-color:var(--acid-border); }
+    .cta-box { background:var(--surf);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px; }
+    .cta-title { font-family:'Playfair Display',serif;font-size:18px;font-weight:800;margin-bottom:6px;letter-spacing:-.3px; }
+    .cta-sub { font-size:13px;color:var(--muted);margin-bottom:18px; }
+    .cta-form { display:flex;gap:8px;flex-wrap:wrap; }
+    .cta-inp { background:var(--surf2);border:1px solid var(--border);color:var(--text);padding:11px 16px;border-radius:var(--r);font-size:13px;flex:1;min-width:200px;outline:none;font-family:'DM Mono',monospace;transition:border-color .15s; }
+    .cta-inp:focus { border-color:var(--acid-border); }
+    .cta-inp::placeholder { color:var(--muted); }
+    .cta-btn { background:var(--acid);color:#fff;border:none;padding:11px 22px;border-radius:var(--r);font-weight:700;font-size:12px;cursor:pointer;font-family:'DM Mono',monospace;letter-spacing:.5px;white-space:nowrap;transition:opacity .15s; }
+    .cta-btn:hover { opacity:.88; }
+    footer { border-top:1px solid var(--border);padding:28px 20px; }
+    .fin { max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:10px; }
+    .f-brand { font-family:'DM Mono',monospace;font-size:12px;color:var(--muted); }
+    .f-brand span { color:var(--acid); }
+    .flinks { display:flex;gap:16px;flex-wrap:wrap; }
+    .flinks a { font-family:'DM Mono',monospace;font-size:11px;color:var(--muted); }
+    .flegal { font-size:11px;color:var(--muted);line-height:1.6;opacity:.7; }
+    .visit-btn { display:inline-flex;align-items:center;gap:8px;background:var(--surf2);color:var(--text);border:1px solid var(--border);font-family:'DM Mono',monospace;font-weight:500;font-size:12px;padding:11px 20px;border-radius:var(--r);letter-spacing:.5px;transition:border-color .15s; }
+    .visit-btn:hover { border-color:var(--border-bright);color:var(--text); }
+    .visit-arrow { color:var(--acid); }
+    .meth-link { display:flex;align-items:center;justify-content:space-between;background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;text-decoration:none;color:var(--sub);transition:border-color .15s; }
+    .meth-link:hover { border-color:var(--border-bright);color:var(--text); }
+    .meth-link-label { font-size:13px;font-weight:500; }
+    .meth-link-arrow { font-family:'DM Mono',monospace;color:var(--acid); }
+    .btt { position:fixed;bottom:22px;right:22px;background:var(--surf);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;text-decoration:none;font-family:'DM Mono',monospace;box-shadow:0 2px 8px rgba(0,0,0,.1); }
+    .btt:hover { border-color:var(--acid-border);color:var(--acid); }
+    @media (max-width:600px) {
+      .hero-metrics { grid-template-columns:1fr 1fr; }
+      .hb-body-inner { grid-template-columns:1fr; }
+      .rl-row { grid-template-columns:1fr;gap:4px; }
+      .tscore-summary { flex-direction:column;align-items:flex-start; }
+      .hero-metrics .hm-cell:last-child { grid-column:span 2; }
+    }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand"><span>AI</span> Transparency Database</a>
+    <span class="nav-tag">BETA</span>
+  </div>
+</nav>
+<div class="bc">
+  <a href="index.html">Home</a>
+  <span class="bc-sep">/</span>
+  <span>Seedance</span>
+</div>
+
+<main class="page">
+  <section class="hero">
+    <div class="hero-eyebrow">
+      <span class="tag-cat">AI Video · ByteDance</span>
+      <span class="tag-verified">✓ Verified Jul 2026</span>
+      <span class="hero-date">Last audited: 2026-07-06</span>
+    </div>
+    <h1>Seedance:<br><em>What the pricing page doesn't tell you</em></h1>
+    <p class="hero-sub">ByteDance's flagship AI video model — accessed via Dreamina internationally. Based on public docs, community testing, and pricing analysis across 5 platforms.</p>
+    <div class="hero-metrics">
+      <div class="hm-cell">
+        <div class="hm-label">Hidden Behaviors</div>
+        <div class="hm-value red" id="counter-hidden">0</div>
+        <div class="hm-desc">documented &amp; verified</div>
+      </div>
+      <div class="hm-cell">
+        <div class="hm-label">Transparency</div>
+        <div class="hm-value amber">38%</div>
+        <div class="hm-desc">of key policies disclosed upfront</div>
+      </div>
+      <div class="hm-cell">
+        <div class="hm-label">Last Verified</div>
+        <div class="hm-value acid" style="font-size:20px;padding-top:6px">Jul 2026</div>
+        <div class="hm-desc">Dreamina · ~$18/mo Standard</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-header">
+      <div class="stitle">Hidden Behaviors</div>
+      <div class="sec-count">5 documented</div>
+    </div>
+    <p class="ssub">Behaviors confirmed through pricing analysis, community testing, and official platform docs — not disclosed on Dreamina's main pricing page.</p>
+    <div class="hb-list">
+
+      <div class="hb-card critical" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">01</span><span class="impact-pill critical">⬤ Critical Impact</span></div>
+            <div class="hb-title">Monthly subscription credits expire — yearly plans and credit packs are the only rollover option</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Not on Dreamina pricing page</strong>Monthly subscription credits expire at cycle end with no rollover. Only yearly plan credits (12-month validity) and one-time credit packs (never expire) carry forward — not disclosed in the plan comparison table.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>Inconsistent monthly workflows penalized</strong>Creators with variable output months (one big project, then quiet) silently lose credits. The only protection is buying yearly upfront or one-time packs — neither is the default checkout option.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Annual plan saves ~50% + rollover</strong>Dreamina Standard annual works out to roughly 2× more cost-efficient than monthly once rollover value is included. But it also locks you in before Seedance 2.5 pricing changes.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jul 2026</span> — cutout.pro analysis</div>
+            <span class="src-badge src-observed">OBSERVED</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-card critical" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">02</span><span class="impact-pill critical">⬤ Critical Impact</span></div>
+            <div class="hb-title">International access restricted Feb 2026 after deepfake scandal — Dreamina now invite-only</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Not communicated to users</strong>ByteDance restricted international Dreamina access in mid-February 2026 with no advance notice. Dreamina's international Seedance 2.0 access shifted to invite-only Creative Partner Program — no public waitlist.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>Triggered by celebrity deepfakes</strong>Viral deepfake videos of Tom Cruise and Brad Pitt generated with Seedance 2.0 prompted Disney's legal team to issue a cease-and-desist to ByteDance. The MPA demanded stricter access controls days later.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Access fragmented across 5+ platforms</strong>Users outside China must route through Runway, CapCut, third-party resellers, or BytePlus API — each with different pricing, features, and content restrictions.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Feb 2026</span> — tryonr.com + community</div>
+            <span class="src-badge src-observed">OBSERVED</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-card critical" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">03</span><span class="impact-pill critical">⬤ Critical Impact</span></div>
+            <div class="hb-title">Dreamina costs 2× more than Jimeng for the identical Seedance model</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Different platform, same model</strong>Dreamina (international) and Jimeng (China) both run the identical Seedance 2.0 model. Dreamina Standard runs ~$18/month; Jimeng Standard runs ~$9.60/month (69 RMB) — a 2× premium purely for English-language access.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>Per-clip cost also higher on Dreamina</strong>115 credits per 5-second clip on Dreamina vs ~70 credits on Jimeng. The same video generation costs ~65% more credits on the international platform with no quality difference.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>International users pay a language tax</strong>The Dreamina premium exists solely to cover localization and regional infrastructure. ByteDance has not publicly justified the pricing gap.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Apr 2026</span> — stevenvideo.com analysis</div>
+            <span class="src-badge src-observed">OBSERVED</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-card medium" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">04</span><span class="impact-pill medium">⬤ Medium Impact</span></div>
+            <div class="hb-title">Free tier's 225 daily credits are shared across ALL Dreamina tools — not Seedance-only</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Disclosed in Dreamina help docs</strong>The 225 daily free tokens on Dreamina are shared across image generation, video generation, editing tools, and avatars — not a dedicated video credit pool.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>1–2 videos/day maximum</strong>At 115 credits per 5-second Seedance clip, 225 daily credits = barely 1–2 video generations per day. Using any other Dreamina tool further reduces video output.</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Free tier is a demo, not production</strong>Dreamina's marketing implies a meaningful free tier. In practice, 1–2 watermarked clips per day with no commercial rights is insufficient for any workflow beyond initial testing.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Jun 2026</span> — atlascloud.ai analysis</div>
+            <span class="src-badge src-official">OFFICIAL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hb-card medium" onclick="toggleCard(this)">
+        <div class="hb-header">
+          <div class="hb-left">
+            <div class="hb-meta"><span class="hb-index">05</span><span class="impact-pill medium">⬤ Medium Impact</span></div>
+            <div class="hb-title">Resolution and audio each roughly double credit cost — stacking both multiplies by ~4×</div>
+          </div>
+          <div class="hb-chevron">▾</div>
+        </div>
+        <div class="hb-body">
+          <div class="hb-body-inner">
+            <div>
+              <div class="hb-col-label official">Official</div>
+              <div class="hb-col-content"><strong>Disclosed in credit documentation</strong>Seedance 2.0 charges per-second with cost scaling by resolution (720p→1080p≈2×) and audio (adding native audio adds ~50–100%). Each upgrade multiplies the bill.</div>
+            </div>
+            <div>
+              <div class="hb-col-label observed">Observed <span style="font-weight:400;opacity:.7">(community)</span></div>
+              <div class="hb-col-content"><strong>$0.60 draft → $4+ final cut</strong>Community testing shows a 720p no-audio draft at ~$0.60 per clip becomes $4+ once 1080p and native audio are enabled — a 6-7× cost jump for "finished quality."</div>
+            </div>
+            <div>
+              <div class="hb-col-label estimated">Estimated <span style="font-weight:400;opacity:.7">(not verified)</span></div>
+              <div class="hb-col-content"><strong>Draft-first workflow saves ~40%</strong>Always prototype at 720p/no-audio first. Upgrading only confirmed shots reduces monthly spend by roughly 40% without compromising final output quality.</div>
+            </div>
+          </div>
+          <div class="hb-footer">
+            <div class="hb-verified">Verified <span>Apr 2026</span> — cutout.pro testing</div>
+            <span class="src-badge src-observed">OBSERVED</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:18px">Real Limits</div>
+    <div class="rl-box">
+      <div class="rl-head-bar">
+        <div class="rl-head-name">Seedance 2.0 via Dreamina Standard</div>
+        <div class="rl-head-price">~$18/mo · International access</div>
+      </div>
+      <div class="rl-rows">
+        <div class="rl-row"><div class="rl-key">Credits</div><div class="rl-val">Monthly credits expire at cycle end · <em>Yearly plan or credit packs required for rollover</em></div></div>
+        <div class="rl-row"><div class="rl-key">Clip Length</div><div class="rl-val">Up to 15 seconds (Seedance 2.0) · Seedance 2.5 expected to extend to 30 seconds (Jul 2026)</div></div>
+        <div class="rl-row"><div class="rl-key">Resolution</div><div class="rl-val">Up to 2K · audio support included · <em>each resolution step ~doubles credit cost</em></div></div>
+        <div class="rl-row"><div class="rl-key">International Access</div><div class="rl-val"><em>Invite-only via Dreamina</em> since Feb 2026 · Runway, CapCut, BytePlus API as alternatives</div></div>
+        <div class="rl-row"><div class="rl-key">Free Tier</div><div class="rl-val">225 shared daily credits (all Dreamina tools) · watermarked · no commercial use · 1–2 clips/day max</div></div>
+        <div class="rl-row"><div class="rl-key">Jimeng vs Dreamina</div><div class="rl-val">Same model · <em>Dreamina costs 2× more</em> — $18/mo vs ~$9.60/mo (Jimeng, Chinese-language only)</div></div>
+      </div>
+      <div class="rl-alert">
+        <div class="rl-alert-label">⚠ The international access trap</div>
+        <div class="rl-alert-text">International users pay 2× more than Chinese users for the identical Seedance model via Jimeng. Dreamina's direct access is now invite-only. Routing through Runway or third-party resellers adds another cost layer on top.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-header"><div class="stitle">Policy History</div></div>
+    <p class="ssub">Key events since launch — documented with source type.</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">Jun 2025</div>
+        <div class="tl-line-col"><div class="tl-dot" style="background:var(--green)"></div><div class='tl-connector'></div></div>
+        <div class="tl-content">
+          <div class="tl-event">Seedance 1.0 launches on Dreamina — text-to-video and image-to-video with native audio and cinematic camera control</div>
+          <div class="tl-src-row"><span class="src-badge src-official">OFFICIAL</span><span class="tl-src-note">ByteDance press release</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Feb 12, 2026</div>
+        <div class="tl-line-col"><div class="tl-dot" style="background:var(--green)"></div><div class='tl-connector'></div></div>
+        <div class="tl-content">
+          <div class="tl-event">Seedance 2.0 launches globally — multi-shot storytelling, 2K output, improved character consistency across scenes</div>
+          <div class="tl-src-row"><span class="src-badge src-official">OFFICIAL</span><span class="tl-src-note">ByteDance Seed blog</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Feb 2026</div>
+        <div class="tl-line-col"><div class="tl-dot" style="background:var(--red)"></div><div class='tl-connector'></div></div>
+        <div class="tl-content">
+          <div class="tl-event">Deepfake celebrity videos go viral — Disney C&D issued, MPA demands access controls; ByteDance restricts international Dreamina to invite-only within days</div>
+          <div class="tl-src-row"><span class="src-badge src-observed">OBSERVED</span><span class="tl-src-note">community + tryonr.com</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Jun 23, 2026</div>
+        <div class="tl-line-col"><div class="tl-dot" style="background:var(--blue)"></div><div class='tl-connector'></div></div>
+        <div class="tl-content">
+          <div class="tl-event">Seedance 2.5 announced at Volcano Engine FORCE — 30-second clips, 50 multimodal reference inputs, native 4K, 10-bit color, controllable editing</div>
+          <div class="tl-src-row"><span class="src-badge src-official">OFFICIAL</span><span class="tl-src-note">Volcano Engine FORCE conference</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Jul 2026</div>
+        <div class="tl-line-col"><div class="tl-dot" style="background:var(--amber)"></div></div>
+        <div class="tl-content">
+          <div class="tl-event">Seedance 2.5 public launch expected — pricing not finalized; 30-second and 4K generation likely to consume significantly more credits than 2.0</div>
+          <div class="tl-src-row"><span class="src-badge src-estimated">ESTIMATED</span><span class="tl-src-note">gamsgo.com analysis — upcoming</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:12px">Transparency Score</div>
+    <div class="tscore-list">
+      <div class="tscore-row">
+        <div class="tscore-top"><span class="tscore-label">Credit Expiry Policy</span><span class="tscore-meta">NOT on pricing page</span></div>
+        <div class="tscore-detail">Monthly credits expire silently. Only yearly plans and credit packs roll over — not disclosed in Dreamina's plan comparison table.</div>
+        <div class="tscore-track"><div class="tscore-fill red" id="b1" style="width:0%"></div></div>
+        <div class="tscore-src">source: cutout.pro testing</div>
+      </div>
+      <div class="tscore-row">
+        <div class="tscore-top"><span class="tscore-label">International Access Restriction</span><span class="tscore-meta">NO advance notice given</span></div>
+        <div class="tscore-detail">Access restricted without warning after deepfake scandal. Users discovered the lock-out by attempting to log in, not via official communication.</div>
+        <div class="tscore-track"><div class="tscore-fill red" id="b2" style="width:0%"></div></div>
+        <div class="tscore-src">source: community reports</div>
+      </div>
+      <div class="tscore-row">
+        <div class="tscore-top"><span class="tscore-label">Resolution/Audio Credit Multiplier</span><span class="tscore-meta">in credit docs only</span></div>
+        <div class="tscore-detail">Cost scaling by resolution and audio is documented in credit guides but not surfaced on the main pricing page where purchase decisions are made.</div>
+        <div class="tscore-track"><div class="tscore-fill amber" id="b3" style="width:0%"></div></div>
+        <div class="tscore-src">source: official credit documentation</div>
+      </div>
+      <div class="tscore-row">
+        <div class="tscore-top"><span class="tscore-label">Native Audio Included</span><span class="tscore-meta">clearly disclosed</span></div>
+        <div class="tscore-detail">Seedance 2.0 includes native audio generation — a genuine competitive advantage over Runway (silent) that is disclosed on the product page.</div>
+        <div class="tscore-track"><div class="tscore-fill green" id="b4" style="width:0%"></div></div>
+        <div class="tscore-src">source: ByteDance Seed product page</div>
+      </div>
+      <div class="tscore-row">
+        <div class="tscore-top"><span class="tscore-label">Jimeng vs Dreamina Price Gap</span><span class="tscore-meta">NOT disclosed to intl users</span></div>
+        <div class="tscore-detail">International users paying Dreamina rates have no way of knowing Jimeng offers the same model at half the price — ByteDance does not cross-reference platforms.</div>
+        <div class="tscore-track"><div class="tscore-fill red" id="b5" style="width:0%"></div></div>
+        <div class="tscore-src">source: stevenvideo.com pricing analysis</div>
+      </div>
+    </div>
+    <div class="tscore-summary">
+      <div>
+        <div class="tscore-summary-label">Overall Transparency Score</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">Access fragmentation and the Jimeng/Dreamina price gap are the biggest issues for international users.</div>
+      </div>
+      <div class="tscore-pct">38%</div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:12px">Other Services</div>
+    <div class="compare-list">
+      <div class="compare-row current">
+        <div><div class="compare-name">Seedance</div><div class="compare-meta">ByteDance · Video Gen · ~$18/mo (Dreamina)</div></div>
+        <div class="compare-badge">viewing now</div>
+      </div>
+      <a href="runway.html" class="compare-row"><div><div class="compare-name">Runway</div><div class="compare-meta">Runway AI · Video Gen · $12/mo</div></div><div class="compare-badge">view report →</div></a>
+      <a href="kling.html" class="compare-row"><div><div class="compare-name">Kling AI</div><div class="compare-meta">Kuaishou · Video Gen · ~$10/mo</div></div><div class="compare-badge">view report →</div></a>
+      <a href="pika.html" class="compare-row"><div><div class="compare-name">Pika</div><div class="compare-meta">Pika Labs · Video Gen · $8/mo</div></div><div class="compare-badge">view report →</div></a>
+    </div>
+  </section>
+
+  <section class="sec">
+    <a href="https://dreamina.capcut.com" target="_blank" rel="noopener" class="visit-btn">Visit Dreamina (Seedance) <span class="visit-arrow">→</span></a>
+  </section>
+
+  <section class="sec">
+    <div class="stitle" style="margin-bottom:18px">Frequently Asked</div>
+    <details><summary>Do Seedance / Dreamina credits roll over?</summary><div class="fansw">Monthly subscription credits expire at the end of the billing cycle with no rollover. Only yearly plans (credits valid for 12 months) and one-time credit packs (never expire) carry forward. If your usage is inconsistent month to month, yearly or credit pack purchases prevent waste.</div></details>
+    <details><summary>Why is Seedance so hard to access internationally?</summary><div class="fansw">ByteDance restricted international Dreamina access in mid-February 2026 after deepfake videos of Tom Cruise and Disney characters generated with Seedance 2.0 went viral. Disney issued a cease-and-desist and the MPA demanded stricter controls. Dreamina's international access shifted to an invite-only Creative Partner Program with no public waitlist. Alternatives include Runway (Seedance 2.0 bundled in Standard+), CapCut, and BytePlus API for developers.</div></details>
+    <details><summary>Is Seedance cheaper than Runway or Kling?</summary><div class="fansw">Via Jimeng (Chinese-language): yes, significantly cheaper — around $9.60/month. Via Dreamina internationally: comparable to Runway Standard at ~$18/month, but with more credits per dollar on equivalent generations. Via third-party resellers: Atlas Cloud Fast tier starts at ~$0.022/sec, which is the cheapest per-second API rate among all major video AI models including Veo 3.1 and Kling 3.0.</div></details>
+    <details><summary>What's new in Seedance 2.5?</summary><div class="fansw">Announced June 23, 2026 at Volcano Engine FORCE conference: 30-second native clips (vs 15s in 2.0), 50 multimodal reference inputs (vs fewer in 2.0), native 4K output, 10-bit color depth, 3D white-box preview, and controllable video editing. Public launch expected early July 2026 via Dreamina and Volcano Engine API. Pricing not yet finalized — expect higher credit consumption for 30s/4K generations.</div></details>
+  </section>
+
+  <section class="sec">
+    <div class="cta-box">
+      <div class="cta-title">Get alerted when policies change</div>
+      <p class="cta-sub">We track silent limit cuts before most users notice them.</p>
+      <div class="cta-form">
+        <input class="cta-inp" type="email" placeholder="your@email.com"/>
+        <button class="cta-btn" type="button" onclick="signup(this)">NOTIFY ME</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <a href="methodology.html" class="meth-link">
+      <span class="meth-link-label">How we audit — full methodology and source classification</span>
+      <span class="meth-link-arrow">→</span>
+    </a>
+  </section>
+</main>
+
+<footer>
+  <div class="fin">
+    <div class="f-brand"><span>AI</span> Transparency Database</div>
+    <div class="flinks"><a href="index.html">Home</a><a href="methodology.html">Methodology</a><a href="mailto:data@aitransparency.com">Contact</a></div>
+    <div class="flegal">Analysis based on public documentation, community reports, and third-party benchmarks. Figures are estimates unless marked OFFICIAL. Not affiliated with or endorsed by ByteDance. No affiliate links. © 2026 AI Transparency Database</div>
+  </div>
+</footer>
+<a href="#" class="btt">↑</a>
+<script>
+  function toggleCard(card) { card.classList.toggle('open'); }
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzSaizHz7RYJpBPIQqwLTueMktQHjG9isLGMQxaqetT_uGHNiDtjw4tymmEAm9t6r3S/exec";
+  async function signup(btn){
+    const form=btn.closest('.cta-form')||btn.parentElement;
+    const inp=form.querySelector('input[type="email"]');
+    if(!inp)return;
+    const email=inp.value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){inp.style.borderColor='var(--red)';inp.focus();return;}
+    btn.textContent='...';btn.disabled=true;
+    let msg=btn.closest('.cta-box')&&btn.closest('.cta-box').querySelector('.cta-msg');
+    if(!msg){msg=document.createElement('div');msg.className='cta-msg';msg.style.cssText="font-family:'DM Mono',monospace;font-size:11px;margin-top:10px;display:none";(btn.closest('.cta-box')||btn.parentElement).appendChild(msg);}
+    try{await fetch(SCRIPT_URL,{method:'POST',body:JSON.stringify({email,source:location.pathname})});btn.textContent='✓ DONE';inp.disabled=true;msg.style.display='block';msg.style.color='var(--green)';msg.textContent="Subscribed! We'll alert you when policies change.";}
+    catch(err){btn.textContent='NOTIFY ME';btn.disabled=false;msg.style.display='block';msg.style.color='var(--red)';msg.textContent='Something went wrong. Please try again.';}
+  }
+  setTimeout(() => {
+    document.getElementById('b1').style.width = '12%';
+    document.getElementById('b2').style.width = '8%';
+    document.getElementById('b3').style.width = '38%';
+    document.getElementById('b4').style.width = '82%';
+    document.getElementById('b5').style.width = '10%';
+    let c=0,el=document.getElementById('counter-hidden'),t=setInterval(()=>{if(c>=5){clearInterval(t);return;}el.textContent=++c;},220);
+  }, 200);
+</script>
+</body>
+</html>
